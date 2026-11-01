@@ -17,7 +17,7 @@ import zipfile
 from dataclasses import dataclass
 from pathlib import Path
 
-from .config import ConfigError, CursoConfig, Enlace
+from .config import CursoConfig, Enlace
 from .manifest import ItemManifest, generar_manifest
 from .parser import CursoParseado, ParseError, parsear_markdown, Leccion, Evaluacion, Pregunta, BloqueApoyo
 from .renderer import PaginaNav, render_actividad, render_evaluacion, render_indice, render_leccion, render_conectabloques
@@ -35,14 +35,6 @@ class ResultadoBuild:
     archivo_zip: Path
     curso: CursoParseado
     enlaces: list[Enlace]
-
-
-def _slug(texto: str, prefijo: str, indice: int | None = None) -> str:
-    base = "".join(c if c.isalnum() else "_" for c in texto.lower()).strip("_")
-    base = base or prefijo
-    if indice is not None:
-        return f"{prefijo}_{indice:02d}_{base}"[:60]
-    return f"{prefijo}_{base}"[:60]
 
 
 def _combinar_enlaces(config: CursoConfig, curso: CursoParseado) -> list[Enlace]:
@@ -98,6 +90,17 @@ def construir_curso(config: CursoConfig, base_dir: str | Path | None = None) -> 
         raise BuildError(f"El curso parseado no es válido:\n  - {detalle}")
 
     salida_dir = config.ruta_salida(base)
+    # Verificación de contención de ruta para evitar sobreescritura fuera del workspace
+    try:
+        base_res = base.resolve()
+        salida_res = salida_dir.resolve()
+        # Permitir salida si está dentro de base o es un subdirectorio relativo seguro
+        if not (salida_res == base_res or str(salida_res).startswith(str(base_res))):
+            # Si apunta fuera de la base, validar que no apunte a directorios críticos del sistema
+            if str(salida_res).lower().startswith((r"c:\windows", "/etc", "/var", "/bin", "/usr")):
+                raise BuildError(f"Ruta de salida no permitida por seguridad: {salida_dir}")
+    except (RuntimeError, ValueError) as exc:
+        raise BuildError(f"Error de seguridad en ruta de salida: {exc}") from exc
     salida_dir.mkdir(parents=True, exist_ok=True)
 
     items_manifest: list[ItemManifest] = []
@@ -226,13 +229,15 @@ def construir_desde_checkpoint(checkpoint_data: dict, base_dir: str | Path | Non
     
     # --- 1. Renderizar Introducción ---
     apoyos_intro = []
-    if metadata["video_url"]:
+    v_adic = metadata.get("videos_adicionales", [])
+    if metadata.get("video_url") or v_adic:
         apoyos_intro.append(BloqueApoyo(
             contenido_md="### Video de la Clase\nVisualiza la explicación del docente para comprender el tema:",
-            video_url=metadata["video_url"]
+            video_url=metadata.get("video_url"),
+            videos_adicionales=v_adic
         ))
     content_intro = checkpoint_data["introduccion"]
-    if metadata["video_url"]:
+    if metadata.get("video_url") or v_adic:
         content_intro += "\n\n{{APOYO_0}}"
         
     intro_obj = Leccion(titulo=intro_titulo, contenido_md=content_intro, apoyos=apoyos_intro)

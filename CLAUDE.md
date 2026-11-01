@@ -4,124 +4,84 @@ Este archivo proporciona pautas para Claude Code / Antigravity cuando trabaja co
 
 ## Descripción General del Proyecto
 
-Sistema de generación de contenidos de cursos SCORM 1.2 utilizando un flujo de trabajo multi-agente. Crea contenido de e-learning universalmente compatible con todas las plataformas LMS principales (Moodle, Canvas, Blackboard, Google Classroom, TalentLMS, Schoology, D2L Brightspace, etc.).
+**Aula Lista EDUCAI** es un ecosistema multi-agente para la creación, mediación didáctica, producción audiovisual y gamificación de aulas virtuales en **Moodle 4.5**. Implementa la arquitectura pedagógica del **Aula Tripartita** reglamentada por la Circular N° 5 de Educación en Salud (1. La Clase, 2. La Lectura, 3. La Práctica), integrando objetos interactivos SCORM 1.2 (Conecta Bloques y Gran Trivia), podcasts rioplatenses y renderizado audiovisual con HyperFrames.
 
 ## Comandos Comunes
 
 ```bash
-# Generar paquete SCORM a partir de contenido markdown (formato "# Módulo X: Título")
-python scripts/scorm_generators/create_scorm_package.py
+# 1. Generar podcast pedagógico de dos voces (acento rioplatense Elena y Tomás)
+python -c "from scripts.audio_generators.podcast_engine import generate_podcast_sync; generate_podcast_sync('A: Hola...\nB: Hola...', 'outputs/audio/podcast.mp3')"
 
-# Generar paquete SCORM moderno: 1 Lección + 1 Evaluación (quiz) + N Actividades + enlaces
-python scripts/scorm_generators/create_scorm_modern_package.py validate <config.yaml>
-python scripts/scorm_generators/create_scorm_modern_package.py build <config.yaml>
-python scripts/scorm_generators/create_scorm_modern_package.py list <config.yaml>
+# 2. Generar y compilar Gran Trivia SCORM 1.2 (sin numeración rígida)
+python scripts/content_generation/generate_trivia_ai.py content/lecturas.md -o content/trivia.md
+python scripts/scorm_generators/build_trivia_scorm.py content/trivia.md -o outputs/scorm/trivia-SCORM.zip
 
-# Crear paquete SCORM de audio
-python scripts/scorm_generators/create_audio_scorm.py <archivo_de_audio> [titulo] [descripcion]
+# 3. Compilar Desafío Conecta Bloques SCORM 1.2 (8 pares conceptuales)
+python scripts/scorm_generators/build_conectabloques_scorm.py content/pares.md -o outputs/scorm/conectabloques-SCORM.zip
 
-# Generar podcasts pedagógicos de cátedra (motor local gratuito edge-tts con acento rioplatense + ffmpeg)
-python -c "from scripts.audio_generators.podcast_engine import generate_podcast_sync; generate_podcast_sync('A: Guion...\nB: Guion...', 'podcast.mp3')"
+# 4. Validar y construir paquete SCORM moderno con Video Adicional
+python scripts/scorm_generators/create_scorm_modern_package.py validate scorm_modern/ejemplo/config.yaml
+python scripts/scorm_generators/create_scorm_modern_package.py build scorm_modern/ejemplo/config.yaml
 
-# Construir aula Moodle completa con podcasts y SCORMs embebidos
-python cursos/gestion_personas_talento/generate_moodle_aula.py
+# 5. Auditar archivo HTML para Moodle con Tiza
+tiza comprobar outputs/cursos/gestion_personas_talento/02_u1_la_clase.html
 
-# Crear paquete SCORM de video
-python scripts/scorm_generators/create_video_scorm.py <archivo_de_video> [titulo] [descripcion]
-
-# Comprimir archivos de video grandes (CRF recomendado: 23)
-ffmpeg -i input.mp4 -vcodec libx264 -crf 23 -preset medium -acodec aac -b:a 128k output.mp4
+# 6. Renderizar videotutoriales de guías ilustradas
+python scripts/render_all_videotutorials.py
 ```
 
 ## Estructura de Directorios
 
+```text
+aula lista EDUCAI/
+├── agents/                       # Definiciones de los 10 agentes especializados
+├── .claude/agents/               # Agentes sincronizados para Claude Code / Antigravity
+├── skills/                       # Las 6 habilidades ejecutables (SKILL.md)
+├── scorm_core/                   # Motor unificado de manifiesto y caché IA SHA-256
+├── scorm_modern/                 # Paquete Python: Lección + Video Adicional + Quizzes
+├── templates/                    # Plantillas HyperFrames HTML/GSAP para videos MP4
+├── assets/audio/                 # Banco de sonido y pistas base
+├── content/                      # Documentos de cátedra e insumos (.md, .docx)
+├── scripts/
+│   ├── audio_generators/         # podcast_engine.py (edge-tts + ffmpeg)
+│   ├── content_generation/       # Generadores IA de HTML, Conecta Bloques y Trivias
+│   ├── scorm_generators/         # Compiladores SCORM 1.2 interactivos
+│   ├── course_builders/          # Constructores de cursos
+│   └── render_all_videotutorials.py # Renderizador masivo de guías
+└── outputs/                      # SALIDAS Y ENTREGABLES CENTRALIZADOS
+    ├── cursos/                   # Aulas virtuales estructuradas
+    ├── scorm/                    # Archivos finales *-SCORM.zip
+    ├── articles/                 # Guías ilustradas Schema v2 con videotutoriales
+    ├── renders/                  # Videos MP4 masterizados en 1080p y 9:16
+    ├── audio/                    # Podcasts exportados
+    └── mbz/                      # Respaldos Moodle (.mbz)
 ```
-scripts/
-├── scorm_generators/        # Creadores de paquetes SCORM (texto, audio, video, moderno)
-├── content_generation/      # Generación de páginas HTML, edición de contenido
-└── legacy/                  # Scripts obsoletos (solo referencia)
 
-scorm_modern/                 # Generador moderno: Lección + Evaluación + N Actividades + enlaces
-├── scorm_modern/             # Paquete Python (config, parser, renderer, manifest, builder, cli)
-├── tests/                    # pytest (30 tests)
-├── ejemplo/                  # config.yaml + markdown de ejemplo funcional
-└── README.md                 # Formato de config.yaml y del markdown fuente
+## Flujo de Trabajo de los 10 Agentes
 
-content/                     # Contenido de los cursos organizado por curso
-├── ai-principianti/         # Ejemplo: Curso de IA para principiantes
-└── sicurezza-lavoro/        # Ejemplo: Curso de seguridad laboral
+El flujo autónomo **«Genera la Unidad X»** orquesta 10 agentes y 6 habilidades especializadas:
 
-.claude/agents/              # Archivos de definición de agentes
-output/                      # Paquetes SCORM generados (.zip)
-docs/                        # Guías de importación y resolución de problemas
-```
+1. **`copiloto-orquestador`** (+ skill `asistente-toma-decisiones`): Puerta de entrada con menú cerrado: Modo Turbo (1-Click) vs. Modo Guiado en 4 Checkpoints.
+2. **`asistente-notebooklm`** (+ skill `notebooklm-video-shorts`): Extracción de fuentes, transcripciones y guiones dialógicos.
+3. **`course-outliner`**: Diseño de la arquitectura curricular bajo Circular N° 5.
+4. **`content-creator`** (+ skill `diseno-instruccional-aula-tripartita`): Redacción de contenidos, encuadre (2 oraciones + 3 preguntas) y rúbricas.
+5. **`senior-editor`**: Revisión de estilo, verificación de consigna obligatoria y preguntas anti-trampa.
+6. **`multimedia-integrator`**: Generación de banners panorámicos, infografías vectoriales y diapositivas.
+7. **`edtech-video-director`** (+ skill `hyperframes-render`): Dirección y render de videos MP4 (1080p / 9:16).
+8. **`scorm-architect`** (+ skill `scorm-gamification`): Compilación de Conecta Bloques y Trivias en 4 modos (Turbo 1, Turno, Turbo 2, Personalizado).
+9. **`moodle-xml-formatter`** (+ skill `tiza`): Maquetación HTML responsiva (Bootstrap 4.6.2) y verificación.
+10. **`auditor-calidad-aula-lista`**: Verificación física de los 10 elementos canónicos (*Zero-Missing Gate*) y auto-reparación (*Self-Healing*).
 
-## Flujo de Trabajo de Agentes
+## Directiva de Calidad Zero-Missing Gate
 
-El sistema utiliza cinco agentes especializados invocados con `subagent_type`:
-
-| Agente | subagent_type | Propósito |
-|-------|---------------|-----------|
-| Course Outliner | `course-outliner` | Entrevistar al usuario → crear una estructura pedagógica del curso |
-| Content Creator | `content-creator` | Generar contenido textual a partir de la estructura |
-| Senior Editor | `senior-editor` | Refinar y pulir el contenido escrito |
-| SCORM Packager | `moodle-xml-formatter` | Convertir markdown → paquete SCORM .zip |
-| Multimedia Integrator | `multimedia-integrator` | Crear paquetes SCORM de audio/video |
-
-**Flujo estándar:**
-1. `course-outliner` → Entrevista y creación de la estructura.
-2. `content-creator` → Escribir contenido a partir de la estructura.
-3. `senior-editor` → Pulir y editar.
-4. `moodle-xml-formatter` → Empaquetar como SCORM .zip.
-
-## Generación de Paquetes SCORM
-
-Hay **dos generadores de texto** disponibles; elegir según la estructura del contenido:
-
-| Generador | Estructura de origen | Cuándo usarlo |
-|---|---|---|
-| `create_scorm_package.py` | `# Módulo X: Título` (secuencia simple de módulos) | Cursos lineales sin quiz interactivo ni enlaces estructurados. |
-| `create_scorm_modern_package.py` (→ paquete `scorm_modern/`) | `# Lección:` + `# Evaluación:` + `# Actividad:`/`# Ejercicio:` + `# Enlaces` | Cursos que necesitan un quiz corregido en el navegador (con seguimiento SCORM de aprobado/reprobado), actividades separadas de la lección, bloques de apoyo (`:::apoyo:::`) con video embebido de YouTube/Drive, y una lista de enlaces (`ENLACES.md`). |
-
-**`create_scorm_package.py`**: convierte markdown a HTML con estilo y botones de navegación, crea `imsmanifest.xml` compatible con SCORM 1.2, y empaqueta todo en un .zip listo para importar en el LMS.
-
-**`create_scorm_modern_package.py`** (`validate` / `build` / `list`): lee un `config.yaml` (con `identificador`, `titulo`, `contenido_md`, `puntaje_minimo`, `enlaces`) y el markdown que referencia, valida ambos, y genera 1 página de lección + 1 de evaluación (quiz autoevaluable) + N páginas de actividad + `ENLACES.md` + `imsmanifest.xml` con título real por objeto, todo empaquetado en `<identificador>-SCORM.zip`. Ver `scorm_modern/README.md` para el formato completo del config y del markdown.
-
-**SCORM de Audio:** Se marca como completado cuando el audio termina. Soporta MP3, WAV, OGG, M4A, AAC.
-
-**SCORM de Video:** Se marca como completado al visualizar el 90%. Soporta MP4, WEBM, MOV, AVI, MKV.
-
-## Pautas de Tamaño de Archivos Multimedia
-
-| Tamaño | Acción |
-|------|--------|
-| < 10 MB | Usar directamente |
-| 10-25 MB | Compresión opcional |
-| 25-50 MB | Compresión recomendada |
-| 50-100 MB | Compresión obligatoria |
-| > 100 MB | Alojamiento externo (YouTube/Vimeo) |
-
-## Directrices para el Idioma Español
-
-- Utilizar de forma consistente el tono informal "tú".
-- Acentuación y caracteres correctos: á, é, í, ó, ú, ñ, ü, ¡, ¿.
-- Ejemplos adaptados a contextos culturalmente relevantes de habla hispana.
-
-## Estándares de Calidad
-
-- **Pedagógico**: Taxonomía de Bloom, complejidad progresiva.
-- **Tablas**: Tablas markdown con separadores `|`, fila de encabezado y separador `|---|---|`.
-- **SCORM**: Archivo `imsmanifest.xml` válido en la raíz del zip.
-- **Responsivo**: Salida HTML compatible con dispositivos móviles.
-
-## Resolución de Problemas
-
-**Fallo al importar SCORM:** Comprobar que `imsmanifest.xml` esté en la raíz del archivo zip.
-
-**Tablas rotas:** Asegurar fila de cabecera + fila separadora (`|---|---|`) + número consistente de columnas.
-
-**Carga demasiado grande:** Para Moodle/XAMPP, editar php.ini: `upload_max_filesize=100M`, `post_max_size=100M`.
-
-**Los medios no se reproducen:** Volver a codificar a formato H.264/AAC.
-
-Ver `docs/` para guías detalladas: `GUIA_IMPORTAR_MOODLE.md`, `GUIA_AUMENTAR_LIMITE_UPLOAD_MOODLE.md`
+Antes de dar por concluida la generación de cualquier unidad, el agente auditor debe certificar la existencia física en disco de los 10 componentes:
+1. `banner_unidad.png`
+2. `01_etiqueta_encabezado.html` (2 oraciones + 3 preguntas andragógicas)
+3. `video_short.mp4` (renderizado por HyperFrames)
+4. `02_pagina_la_clase.html` (Dual Video + Videoclase magistral + Podcast)
+5. `diapositivas.*` (.pdf o .pptx descargable)
+6. `03_pagina_la_lectura.html` (Marco teórico, glosario y FAQs)
+7. `infografia_unidad.png`
+8. `04_tarea_la_practica.html` (Consigna orientadora obligatoria + Caso con rúbrica)
+9. `conectabloques-SCORM.zip` y `trivia-SCORM.zip`
+10. Auditoría `tiza comprobar` aprobada sin errores.

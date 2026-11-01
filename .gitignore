@@ -5,3 +5,8 @@ cursos/gestion_personas_talento/media/
 cursos/gestion_personas_talento/lecturas/
 cursos/gestion_personas_talento/img/
 cursos/gestion_personas_talento/diapositivas/
+
+__pycache__/
+*.pyc
+.agents/
+scripts/legacy_archive.zip

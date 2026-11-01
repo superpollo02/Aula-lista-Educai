@@ -1,0 +1,137 @@
+{
+  "version": 1,
+  "comando": "comprobar",
+  "entorno": null,
+  "curso": null,
+  "resultado": "error",
+  "pasos": [
+    {
+      "codigo": "ESTRUCTURA",
+      "resultado": "fallo",
+      "detalle": "ESTRUCTURA_AUSENTE"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "ok",
+      "detalle": "00_encabezado_general_curso.html"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "ok",
+      "detalle": "01_u1_encabezado.html"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "fallo",
+      "detalle": "02_u1_la_clase.html: HTML_PELIGROSO"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "fallo",
+      "detalle": "03_u1_la_lectura.html: DEPENDENCIA_INVALIDA"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "fallo",
+      "detalle": "04_u1_la_practica.html: DEPENDENCIA_INVALIDA"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "fallo",
+      "detalle": "05_u1_conecta_bloques_y_trivia.md: DEPENDENCIA_INVALIDA"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "ok",
+      "detalle": "06_u2_encabezado.html"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "fallo",
+      "detalle": "07_u2_la_clase.html: HTML_PELIGROSO"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "fallo",
+      "detalle": "08_u2_la_lectura.html: DEPENDENCIA_INVALIDA"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "fallo",
+      "detalle": "09_u2_la_practica.html: DEPENDENCIA_INVALIDA"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "fallo",
+      "detalle": "10_u2_conecta_bloques_y_trivia.md: DEPENDENCIA_INVALIDA"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "ok",
+      "detalle": "11_cierre_encabezado.html"
+    },
+    {
+      "codigo": "COMPROBAR",
+      "resultado": "fallo",
+      "detalle": "12_examen_final_integrador.md: DEPENDENCIA_INVALIDA"
+    }
+  ],
+  "ficheros": [
+    {
+      "nombre": "00_encabezado_general_curso.html",
+      "tipo": "etiqueta",
+      "cmid": null,
+      "accion": null,
+      "oculto": null,
+      "url": null,
+      "seccion": null,
+      "hash": "c04f97755a582d18cbee78e0ba47af73b9f4e4c7853649898b5e493d6802f391",
+      "curso": null
+    },
+    {
+      "nombre": "01_u1_encabezado.html",
+      "tipo": "etiqueta",
+      "cmid": null,
+      "accion": null,
+      "oculto": null,
+      "url": null,
+      "seccion": null,
+      "hash": "3296c933bbc9781d381c9381001c14dfb53158d95607b115379b223d839781e7",
+      "curso": null
+    },
+    {
+      "nombre": "06_u2_encabezado.html",
+      "tipo": "etiqueta",
+      "cmid": null,
+      "accion": null,
+      "oculto": null,
+      "url": null,
+      "seccion": null,
+      "hash": "b11fb3820b5fc3a87e0d6a766ed98cadd93d72c145309a218642a31167f9cd48",
+      "curso": null
+    },
+    {
+      "nombre": "11_cierre_encabezado.html",
+      "tipo": "etiqueta",
+      "cmid": null,
+      "accion": null,
+      "oculto": null,
+      "url": null,
+      "seccion": null,
+      "hash": "c5116c6ee70aed32ac47d8764629a10058efdc2fce3338b66f250f4f01e6cd65",
+      "curso": null
+    }
+  ],
+  "errores": [
+    "ESTRUCTURA_AUSENTE",
+    "HTML_PELIGROSO",
+    "DEPENDENCIA_INVALIDA",
+    "DEPENDENCIA_INVALIDA",
+    "DEPENDENCIA_INVALIDA",
+    "HTML_PELIGROSO",
+    "DEPENDENCIA_INVALIDA",
+    "DEPENDENCIA_INVALIDA",
+    "DEPENDENCIA_INVALIDA",
+    "DEPENDENCIA_INVALIDA"
+  ]
+}

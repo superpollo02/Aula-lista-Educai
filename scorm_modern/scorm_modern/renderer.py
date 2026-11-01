@@ -39,40 +39,99 @@ __all__ = [
 
 _RE_APOYO_MARCADOR = re.compile(r"\{\{APOYO_(\d+)\}\}")
 
+# Precompilación de expresiones regulares para conversión Markdown -> HTML
+_RE_H4 = re.compile(r"^#### (.*?)$", re.MULTILINE)
+_RE_H3 = re.compile(r"^### (.*?)$", re.MULTILINE)
+_RE_H2 = re.compile(r"^## (.*?)$", re.MULTILINE)
+_RE_H1 = re.compile(r"^# (.*?)$", re.MULTILINE)
+_RE_BOLD_ITALIC = re.compile(r"\*\*\*(.*?)\*\*\*")
+_RE_BOLD = re.compile(r"\*\*(.*?)\*\*")
+_RE_ITALIC = re.compile(r"(?<!\*)\*([^\*\r\n]+?)\*(?!\*)")
+_RE_HR = re.compile(r"^---$", re.MULTILINE)
+_RE_OL_START = re.compile(r"^\d+\.\s")
+_RE_TABLE_DIVIDER = re.compile(r"^\|[\s\-:|]+\|$")
+
+# Etiquetas HTML permitidas en el Markdown didáctico
+_TAGS_PERMITIDAS = frozenset({
+    "p", "br", "hr", "h1", "h2", "h3", "h4", "h5", "h6",
+    "strong", "b", "em", "i", "u", "s", "span", "code", "pre", "blockquote",
+    "ul", "ol", "li", "table", "thead", "tbody", "tr", "th", "td",
+    "div", "a", "img", "iframe", "video", "source"
+})
+
+_RE_TAG_CHECK = re.compile(r"^</?([a-zA-Z0-9]+)", re.IGNORECASE)
+_RE_SCRIPT_ONERROR = re.compile(r"(?i)(<script|javascript:|onerror\s*=|onload\s*=|onclick\s*=|onmouseover\s*=)")
+
+
+def _sanitizar_linea_html(line: str) -> str:
+    """Verifica que una línea HTML use únicamente etiquetas y atributos seguros.
+    Si contiene scripts, manejadores de eventos (onerror/onload) o etiquetas prohibidas,
+    se escapa de forma segura para prevenir Stored XSS en el LMS."""
+    stripped = line.strip()
+    if not stripped:
+        return ""
+
+    # Bloqueo inmediato de manejadores de eventos y javascript:
+    if _RE_SCRIPT_ONERROR.search(stripped):
+        import html
+        return f"<p>{html.escape(line)}</p>"
+
+    # Comprobación de etiqueta raíz
+    m = _RE_TAG_CHECK.match(stripped)
+    if m:
+        tag_name = m.group(1).lower()
+        if tag_name not in _TAGS_PERMITIDAS:
+            import html
+            return f"<p>{html.escape(line)}</p>"
+
+    return line
+
+_RE_YT_PATTERNS = [
+    re.compile(r"youtube\.com/watch\?v=([\w-]+)"),
+    re.compile(r"youtu\.be/([\w-]+)"),
+    re.compile(r"youtube\.com/embed/([\w-]+)"),
+    re.compile(r"youtube\.com/shorts/([\w-]+)"),
+]
+
+_RE_DRIVE_PATTERNS = [
+    re.compile(r"drive\.google\.com/file/d/([\w-]+)"),
+    re.compile(r"drive\.google\.com/open\?id=([\w-]+)"),
+    re.compile(r"[?&]id=([\w-]+)"),
+]
+
+_RE_VIMEO_PATTERNS = [
+    re.compile(r"vimeo\.com/video/(\d+)"),
+    re.compile(r"vimeo\.com/(\d+)"),
+    re.compile(r"player\.vimeo\.com/video/(\d+)"),
+]
+
 
 def _youtube_id(url: str) -> str | None:
-    patrones = [
-        r"youtube\.com/watch\?v=([\w-]+)",
-        r"youtu\.be/([\w-]+)",
-        r"youtube\.com/embed/([\w-]+)",
-        r"youtube\.com/shorts/([\w-]+)",
-    ]
-    for patron in patrones:
-        m = re.search(patron, url)
+    for patron in _RE_YT_PATTERNS:
+        m = patron.search(url)
         if m:
             return m.group(1)
     return None
 
 
 def _drive_id(url: str) -> str | None:
-    patrones = [
-        r"drive\.google\.com/file/d/([\w-]+)",
-        r"drive\.google\.com/open\?id=([\w-]+)",
-        r"[?&]id=([\w-]+)",
-    ]
-    for patron in patrones:
-        m = re.search(patron, url)
+    for patron in _RE_DRIVE_PATTERNS:
+        m = patron.search(url)
+        if m:
+            return m.group(1)
+    return None
+
+
+def _vimeo_id(url: str) -> str | None:
+    for patron in _RE_VIMEO_PATTERNS:
+        m = patron.search(url)
         if m:
             return m.group(1)
     return None
 
 
 def embed_video(url: str) -> str:
-    """Devuelve el HTML de embebido para un video de YouTube o Google Drive.
-
-    Si la URL no coincide con ninguno de los dos proveedores soportados,
-    se devuelve un enlace simple como alternativa segura.
-    """
+    """Devuelve el HTML de embebido para YouTube, Vimeo, Google Drive o video local (MP4/WEBM)."""
     url = url.strip()
 
     yid = _youtube_id(url)
@@ -86,6 +145,16 @@ def embed_video(url: str) -> str:
             "</div>"
         )
 
+    vid = _vimeo_id(url)
+    if vid:
+        return (
+            '<div class="video-embed">'
+            f'<iframe src="https://player.vimeo.com/video/{vid}" '
+            'title="Video incrustado" frameborder="0" allowfullscreen '
+            'allow="autoplay; fullscreen; picture-in-picture"></iframe>'
+            "</div>"
+        )
+
     did = _drive_id(url)
     if did:
         return (
@@ -93,6 +162,18 @@ def embed_video(url: str) -> str:
             f'<iframe src="https://drive.google.com/file/d/{did}/preview" '
             'title="Video incrustado" frameborder="0" allow="autoplay"></iframe>'
             "</div>"
+        )
+
+    # Comprobar si es un video local (.mp4, .webm, .ogg)
+    url_lower = url.lower()
+    if any(url_lower.endswith(ext) or ext + "?" in url_lower for ext in (".mp4", ".webm", ".ogg")):
+        return (
+            '<div class="video-embed video-local-wrapper">'
+            f'<video controls preload="metadata" style="position:absolute; inset:0; width:100%; height:100%; background:#000;">'
+            f'<source src="{url}" type="video/mp4">'
+            'Tu navegador no soporta la reproducción de video HTML5.'
+            '</video>'
+            '</div>'
         )
 
     return f'<p class="video-fallback"><a href="{url}" target="_blank" rel="noopener">Ver video ↗</a></p>'
@@ -105,15 +186,15 @@ def markdown_to_html(md_text: str, apoyos: list[BloqueApoyo] | None = None) -> s
     apoyos = apoyos or []
     html = md_text
 
-    html = re.sub(r"^#### (.*?)$", r"<h4>\1</h4>", html, flags=re.MULTILINE)
-    html = re.sub(r"^### (.*?)$", r"<h3>\1</h3>", html, flags=re.MULTILINE)
-    html = re.sub(r"^## (.*?)$", r"<h2>\1</h2>", html, flags=re.MULTILINE)
-    html = re.sub(r"^# (.*?)$", r"<h1>\1</h1>", html, flags=re.MULTILINE)
+    html = _RE_H4.sub(r"<h4>\1</h4>", html)
+    html = _RE_H3.sub(r"<h3>\1</h3>", html)
+    html = _RE_H2.sub(r"<h2>\1</h2>", html)
+    html = _RE_H1.sub(r"<h1>\1</h1>", html)
 
-    html = re.sub(r"\*\*\*(.*?)\*\*\*", r"<strong><em>\1</em></strong>", html)
-    html = re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", html)
-    html = re.sub(r"(?<!\*)\*([^*\n]+?)\*(?!\*)", r"<em>\1</em>", html)
-    html = re.sub(r"^---$", r"<hr>", html, flags=re.MULTILINE)
+    html = _RE_BOLD_ITALIC.sub(r"<strong><em>\1</em></strong>", html)
+    html = _RE_BOLD.sub(r"<strong>\1</strong>", html)
+    html = _RE_ITALIC.sub(r"<em>\1</em>", html)
+    html = _RE_HR.sub(r"<hr>", html)
 
     lines = html.split("\n")
     result: list[str] = []
@@ -164,15 +245,15 @@ def markdown_to_html(md_text: str, apoyos: list[BloqueApoyo] | None = None) -> s
                 result.append("<ul>")
                 in_ul = True
             result.append(f"  <li>{stripped[2:]}</li>")
-        elif re.match(r"^\d+\.\s", stripped):
+        elif _RE_OL_START.match(stripped):
             if not in_ol:
                 result.append("<ol>")
                 in_ol = True
-            result.append(f"  <li>{re.sub(r'^\\d+\\.\\s', '', stripped)}</li>")
+            result.append(f"  <li>{_RE_OL_START.sub('', stripped)}</li>")
         else:
             cerrar_listas()
             if stripped.startswith("<"):
-                result.append(line)
+                result.append(_sanitizar_linea_html(line))
             elif stripped:
                 result.append(f"<p>{line}</p>")
 
@@ -189,7 +270,7 @@ def _convert_table(table_rows: list[str]) -> str:
 
     html = '<table class="data-table">\n'
     for i, row in enumerate(table_rows):
-        if i == 1 and re.match(r"^\|[\s\-:|]+\|$", row):
+        if i == 1 and _RE_TABLE_DIVIDER.match(row):
             continue
         cells = [c.strip() for c in row.split("|") if c.strip()]
         if not cells:
@@ -207,10 +288,25 @@ def _convert_table(table_rows: list[str]) -> str:
 def render_apoyo(apoyo: BloqueApoyo) -> str:
     contenido_html = markdown_to_html(apoyo.contenido_md) if apoyo.contenido_md else ""
     video_html = embed_video(apoyo.video_url) if apoyo.video_url else ""
+    
+    videos_adic_html = ""
+    if getattr(apoyo, "videos_adicionales", None):
+        items_v = []
+        for v in apoyo.videos_adicionales:
+            tit = v.get("titulo", "Video Adicional")
+            u = v.get("url", "")
+            items_v.append(
+                f'<div class="video-adicional-card" style="margin-top:14px; border-top:1px solid rgba(0,0,0,0.1); padding-top:10px;">'
+                f'<h4 style="margin:6px 0 10px; color:#1f77b4; font-size:15px;">🎬 {tit}</h4>'
+                f'{embed_video(u)}'
+                f'</div>'
+            )
+        videos_adic_html = "".join(items_v)
+
     return (
         '<div class="apoyo-box">'
         '<div class="apoyo-icono">💡</div>'
-        f'<div class="apoyo-contenido">{contenido_html}{video_html}</div>'
+        f'<div class="apoyo-contenido">{contenido_html}{video_html}{videos_adic_html}</div>'
         "</div>"
     )
 
