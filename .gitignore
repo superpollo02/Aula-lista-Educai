@@ -13,7 +13,9 @@ scripts/legacy_archive.zip
 
 # Outputs generados (contenido privado)
 outputs/
-!outputs/
-!outputs/**/.gitkeep
+
+**/.gitkeep
 content/*.docx
 content/*.pdf
+outputs/*
+!outputs/**/.gitkeep
