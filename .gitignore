@@ -10,3 +10,10 @@ __pycache__/
 *.pyc
 .agents/
 scripts/legacy_archive.zip
+
+# Outputs generados (contenido privado)
+outputs/
+!outputs/
+!outputs/**/.gitkeep
+content/*.docx
+content/*.pdf
