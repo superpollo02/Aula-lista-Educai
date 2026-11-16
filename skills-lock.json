@@ -15,6 +15,13 @@
       "skillPath": "skills/curriculum-assessment/curriculum-knowledge-architecture-designer/SKILL.md",
       "computedHash": "1d3332b43a395c281ceea7461c181608477d0c687cb23bbb499e0205929e5210"
     },
+    "notebooklm": {
+      "source": "teng-lin/notebooklm-py",
+      "commit": "85143f05b5650bad70bffc72035d4bcaeef70270",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "1d38377d3e871eb301b9c345b686f0d51dd26f14b7261052fae98568057045c6"
+    },
     "ste80-humanizer": {
       "source": "Dodaios/ste80-humanizer",
       "sourceType": "github",
