@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "skills": {
+    "add-educational-comments": {
+      "source": "github/awesome-copilot",
+      "commit": "dc0083dbe22133bfa7ce3500dee85e187e0cd47a",
+      "sourceType": "github",
+      "skillPath": "skills/add-educational-comments/SKILL.md",
+      "computedHash": "83e51d0ac0b5b5972c9ab2b3115d3143052fdd6f458802b68d100f34e3b8bc02"
+    },
+    "curriculum-knowledge-architecture-designer": {
+      "source": "GarethManning/education-agent-skills",
+      "commit": "135d6275e7db0657d70b147f46d3191c5430677d",
+      "sourceType": "github",
+      "skillPath": "skills/curriculum-assessment/curriculum-knowledge-architecture-designer/SKILL.md",
+      "computedHash": "1d3332b43a395c281ceea7461c181608477d0c687cb23bbb499e0205929e5210"
+    },
+    "ste80-humanizer": {
+      "source": "Dodaios/ste80-humanizer",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "a8cc9c90c8d355b30f82a9b1a658c69d98143ee75e54dea3d4d910dd4977ca7a"
+    }
+  }
+}
