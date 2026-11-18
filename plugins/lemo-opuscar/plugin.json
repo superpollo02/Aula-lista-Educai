@@ -1,0 +1,12 @@
+{
+  "name": "lemo-opuscar",
+  "displayName": "Lemo-Opuscar Film Studio (99 Styles)",
+  "version": "1.0.0",
+  "description": "Direct and produce short films, explainers, and animations made entirely in code across 99 distinctive visual styles (Canvas, WebGL, Three.js, audio synthesis, and headless rendering).",
+  "suggestedPrompts": [
+    "Make a film in the Neon Tubes style about our mission",
+    "Show me the film styles available in Lemo-Opuscar",
+    "Create an animated explainer in the Whiteboard style",
+    "Produce a video in the Blueprint style explaining our architecture"
+  ]
+}
