@@ -73,9 +73,10 @@ El sistema utiliza seis agentes especializados invocados con `subagent_type`:
 1. `course-outliner` → Entrevista y creación de la estructura pedagógica tripartita (*La Clase*, *La Lectura*, *La Práctica*).
 2. `content-creator` → Escribir contenido textual de cátedra y actividades.
 3. `senior-editor` → Pulir, auditar y editar.
-4. **Flujo de Video para "La Clase":**
-   - `lemo-opuscar-video-director` → Diseña el guion audiovisual, selecciona el estilo (ej. Blueprint, Isometric, Colored-Pencil) y compila las animaciones por código para la clase/cápsula de microlearning.
-   - `multimedia-integrator` → Revisa resolución, comprime y genera el paquete SCORM interactivo (o enlace directo para incrustar en la página de La Clase).
+4. **Flujo de Video para "La Clase" (Doble Formato Audiovisual Complementario):**
+   - **Video Conceptual Gemini Notebook (NotebookLM):** Síntesis explicativa narrada y estructurada a partir de las fuentes documentales de la cátedra (formato Video Studio / Resumen conceptual).
+   - **Video Short Animado Lemo-Opuscar (`lemo-opuscar-video-director`):** Video adicional de microlearning visual animado por código (99 estilos en Canvas/WebGL/Three.js) para ilustrar esquemas, dinámicas y conceptos clave.
+   - `multimedia-integrator` → Optimiza ambos videos con FFmpeg (CRF 23) y genera sus paquetes SCORM interactivos o embeds para la página de **La Clase** (`02_la_clase.html`).
 5. `moodle-xml-formatter` → Empaquetar unidades y evaluaciones como SCORM .zip para Moodle.
 
 ## Generación de Paquetes SCORM

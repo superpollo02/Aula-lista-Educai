@@ -226,16 +226,19 @@ El sistema utiliza **seis agentes especializados**, articulados en torno al mode
 │         │                                        │ Pulido        │
 │         ▼                                        ▼               │
 │  ┌──────────────────────────────────────────────────────────┐   │
-│  │       FLUJO DE "LA CLASE" (VIDEOS Y ANIMACIONES)          │   │
+│  │       FLUJO DE "LA CLASE" (DOBLE FORMATO AUDIOVISUAL)     │   │
 │  │  ┌────────────────────────────────────────────────────┐  │   │
-│  │  │ LEMO-OPUSCAR VIDEO DIRECTOR (Cian)                 │  │   │
-│  │  │ Producción de Videos y Animaciones con Código      │  │   │
-│  │  │ (99 estilos visuales: Canvas, WebGL, Three.js)      │  │   │
+│  │  │ 1. VIDEO CONCEPTUAL GEMINI NOTEBOOK (NotebookLM)   │  │   │
+│  │  │ Síntesis temática narrada basada en las fuentes    │  │   │
+│  │  └────────────────────────────────────────────────────┘  │   │
+│  │  ┌────────────────────────────────────────────────────┐  │   │
+│  │  │ 2. VIDEO ANIMADO ADICIONAL (Lemo-Opuscar Director) │  │   │
+│  │  │ Animación por código (99 estilos Canvas/WebGL/3D)  │  │   │
 │  │  └────────────────────────┬───────────────────────────┘  │   │
 │  │                           ▼                              │   │
 │  │  ┌────────────────────────────────────────────────────┐  │   │
 │  │  │ MULTIMEDIA INTEGRATOR (Morado)                     │  │   │
-│  │  │ Compresión + Paquete SCORM de Video / HTML Embed   │  │   │
+│  │  │ Optimización FFmpeg + SCORMs de Video / HTML Embed │  │   │
 │  │  └────────────────────────────────────────────────────┘  │   │
 │  └───────────────────────────┬──────────────────────────────┘   │
 │                              ▼                                   │
