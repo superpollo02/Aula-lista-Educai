@@ -58,21 +58,25 @@ docs/                        # Guías de importación y resolución de problemas
 
 ## Flujo de Trabajo de Agentes
 
-El sistema utiliza cinco agentes especializados invocados con `subagent_type`:
+El sistema utiliza seis agentes especializados invocados con `subagent_type`:
 
 | Agente | subagent_type | Propósito |
 |-------|---------------|-----------|
 | Course Outliner | `course-outliner` | Entrevistar al usuario → crear una estructura pedagógica del curso |
 | Content Creator | `content-creator` | Generar contenido textual a partir de la estructura |
 | Senior Editor | `senior-editor` | Refinar y pulir el contenido escrito |
+| Lemo-Opuscar Video Director | `lemo-opuscar-video-director` | Diseñar y producir videos/animaciones por código (99 estilos) para el bloque **La Clase** |
+| Multimedia Integrator | `multimedia-integrator` | Crear paquetes SCORM de audio/video y optimizar archivos |
 | SCORM Packager | `moodle-xml-formatter` | Convertir markdown → paquete SCORM .zip |
-| Multimedia Integrator | `multimedia-integrator` | Crear paquetes SCORM de audio/video |
 
-**Flujo estándar:**
-1. `course-outliner` → Entrevista y creación de la estructura.
-2. `content-creator` → Escribir contenido a partir de la estructura.
-3. `senior-editor` → Pulir y editar.
-4. `moodle-xml-formatter` → Empaquetar como SCORM .zip.
+**Flujo estándar de contenidos:**
+1. `course-outliner` → Entrevista y creación de la estructura pedagógica tripartita (*La Clase*, *La Lectura*, *La Práctica*).
+2. `content-creator` → Escribir contenido textual de cátedra y actividades.
+3. `senior-editor` → Pulir, auditar y editar.
+4. **Flujo de Video para "La Clase":**
+   - `lemo-opuscar-video-director` → Diseña el guion audiovisual, selecciona el estilo (ej. Blueprint, Isometric, Colored-Pencil) y compila las animaciones por código para la clase/cápsula de microlearning.
+   - `multimedia-integrator` → Revisa resolución, comprime y genera el paquete SCORM interactivo (o enlace directo para incrustar en la página de La Clase).
+5. `moodle-xml-formatter` → Empaquetar unidades y evaluaciones como SCORM .zip para Moodle.
 
 ## Generación de Paquetes SCORM
 

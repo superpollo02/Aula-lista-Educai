@@ -209,7 +209,7 @@ Sube el archivo `.zip` generado a tu LMS como "Paquete SCORM".
 
 ## Arquitectura Multi-Agente
 
-El sistema utiliza **cinco agentes especializados**, cada uno con competencias específicas:
+El sistema utiliza **seis agentes especializados**, articulados en torno al modelo pedagógico de Moodle (estructura tripartita: *La Clase*, *La Lectura*, *La Práctica*):
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -222,24 +222,33 @@ El sistema utiliza **cinco agentes especializados**, cada uno con competencias e
 │  │  (Naranja)   │    │   (Azul)     │    │   (Rojo)     │       │
 │  └──────────────┘    └──────────────┘    └──────────────┘       │
 │         │                                        │               │
-│         │              Esquema                   │ Contenido     │
-│         │              Estructurado              │ Pulido        │
+│         │            Esquema Tripartito          │ Contenido     │
+│         │                                        │ Pulido        │
 │         ▼                                        ▼               │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │       FLUJO DE "LA CLASE" (VIDEOS Y ANIMACIONES)          │   │
+│  │  ┌────────────────────────────────────────────────────┐  │   │
+│  │  │ LEMO-OPUSCAR VIDEO DIRECTOR (Cian)                 │  │   │
+│  │  │ Producción de Videos y Animaciones con Código      │  │   │
+│  │  │ (99 estilos visuales: Canvas, WebGL, Three.js)      │  │   │
+│  │  └────────────────────────┬───────────────────────────┘  │   │
+│  │                           ▼                              │   │
+│  │  ┌────────────────────────────────────────────────────┐  │   │
+│  │  │ MULTIMEDIA INTEGRATOR (Morado)                     │  │   │
+│  │  │ Compresión + Paquete SCORM de Video / HTML Embed   │  │   │
+│  │  └────────────────────────────────────────────────────┘  │   │
+│  └───────────────────────────┬──────────────────────────────┘   │
+│                              ▼                                   │
 │  ┌──────────────────────────────────────────────────────────┐   │
 │  │                    SCORM PACKAGER                         │   │
 │  │                       (Verde)                             │   │
-│  └──────────────────────────────────────────────────────────┐   │
+│  └───────────────────────────┬──────────────────────────────┘   │
 │                              │                                   │
 │                              ▼                                   │
 │                    ┌──────────────────┐                         │
-│                    │  Paquete SCORM   │                         │
-│                    │     (.zip)       │                         │
+│                    │  Aula Moodle     │                         │
+│                    │  (Clase/Lect/Pr) │                         │
 │                    └──────────────────┘                         │
-│                                                                  │
-│  ┌──────────────────────────────────────────────────────────┐   │
-│  │              MULTIMEDIA INTEGRATOR (Morado)               │   │
-│  │       Audio/Video → Paquetes SCORM Independientes          │   │
-│  └──────────────────────────────────────────────────────────┐   │
 │                                                                  │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -303,7 +312,27 @@ El sistema utiliza **cinco agentes especializados**, cada uno con competencias e
 5. **E-learning**: Adaptación a formatos de lectura digital ágiles.
 6. **Fluidez**: Coherencia y transición narrativa óptima.
 
-#### 4. SCORM Packager (Verde)
+#### 4. Lemo-Opuscar Video Director (Cian)
+**Objetivo**: Diseña y produce animaciones y videos explicativos por código para el bloque **La Clase** (Modelo Tripartito).
+
+| Aspecto | Detalle |
+|---------|-----------|
+| **Entrada** | Ejes conceptuales de la unidad y directivas pedagógicas |
+| **Salida** | Videos 1080p (.mp4) con animaciones generadas por código y subtítulos (.srt) |
+| **Biblioteca** | 99 estilos visuales únicos (Blueprint, Isometric, Science Illustration, etc.) |
+| **Invocación** | `subagent_type="lemo-opuscar-video-director"` o skill `lemo-opuscar` |
+
+#### 5. Multimedia Integrator (Morado)
+**Objetivo**: Optimiza y crea paquetes SCORM dedicados a archivos de audio o video.
+
+| Aspecto | Detalle |
+|---------|-----------|
+| **Entrada** | Archivo de audio (MP3, WAV...) o de video (MP4, WEBM...) generado |
+| **Salida** | Paquete SCORM independiente con reproductor HTML5 integrado |
+| **Funciones** | Análisis de integridad, compresión y optimización |
+| **Invocación** | `subagent_type="multimedia-integrator"` |
+
+#### 6. SCORM Packager (Verde)
 **Objetivo**: Convierte los contenidos markdown a formato SCORM.
 
 | Aspecto | Detalle |
@@ -312,16 +341,6 @@ El sistema utiliza **cinco agentes especializados**, cada uno con competencias e
 | **Salida** | Archivo .zip compatible con el estándar SCORM 1.2 |
 | **Componentes** | HTML estructurado, estilos, navegación y manifest XML |
 | **Invocación** | `subagent_type="moodle-xml-formatter"` |
-
-#### 5. Multimedia Integrator (Morado)
-**Objetivo**: Crea paquetes SCORM dedicados a archivos de audio o video.
-
-| Aspecto | Detalle |
-|---------|-----------|
-| **Entrada** | Archivo de audio (MP3, WAV...) o de video (MP4, WEBM...) |
-| **Salida** | Paquete SCORM independiente con reproductor HTML5 integrado |
-| **Funciones** | Análisis de integridad, compresión y optimización |
-| **Invocación** | `subagent_type="multimedia-integrator"` |
 
 ---
 
@@ -334,6 +353,20 @@ scorm-course-generator/
 │   ├── agents/                       # Definiciones de los agentes
 │   │   ├── course-outliner.md       # Agente de estructura del curso
 │   │   ├── content-creator.md       # Agente de creación de contenido
+│   │   ├── senior-editor.md         # Agente de edición
+│   │   ├── lemo-opuscar-video-director.md # Agente director de video para La Clase
+│   │   ├── moodle-xml-formatter.md  # Agente de empaquetado SCORM
+│   │   └── multimedia-integrator.md # Agente multimedia
+│   └── settings.local.json          # Ajustes locales
+│
+├── plugins/                          # Plugins y motores de medios
+│   └── lemo-opuscar/                # Motor de video y 99 estilos visuales
+│
+├── .agents/skills/                   # Skills locales del workspace
+│   ├── lemo-opuscar/                # Skill lemo-opuscar
+│   ├── notebooklm/                  # Skill NotebookLM
+│   ├── add-educational-comments/    # Skill comentarios pedagógicos
+│   └── curriculum-knowledge-architecture-designer/ # Skill arquitectura curricular
 │   │   ├── senior-editor.md         # Agente de edición
 │   │   ├── moodle-xml-formatter.md  # Agente de empaquetado SCORM
 │   │   └── multimedia-integrator.md # Agente multimedia
