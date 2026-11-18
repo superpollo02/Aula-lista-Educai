@@ -226,19 +226,25 @@ El sistema utiliza **seis agentes especializados**, articulados en torno al mode
 │         │                                        │ Pulido        │
 │         ▼                                        ▼               │
 │  ┌──────────────────────────────────────────────────────────┐   │
-│  │       FLUJO DE "LA CLASE" (DOBLE FORMATO AUDIOVISUAL)     │   │
+│  │   1. VIDEOS DE INTRODUCCIÓN VISUAL / BANNER (HyperFrames) │   │
+│  │   Cápsulas < 1 min de encuadre en banners de cada sección │   │
+│  │   (Bienvenida General, Unidades Temáticas y Examen Final) │   │
+│  └───────────────────────────┬──────────────────────────────┘   │
+│                              ▼                                   │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │   2. FLUJO DE VIDEO PARA "LA CLASE" (DOBLE FORMATO)      │   │
 │  │  ┌────────────────────────────────────────────────────┐  │   │
-│  │  │ 1. VIDEO CONCEPTUAL GEMINI NOTEBOOK (NotebookLM)   │  │   │
-│  │  │ Síntesis temática narrada basada en las fuentes    │  │   │
+│  │  │ • Video Conceptual Gemini Notebook (NotebookLM)    │  │   │
+│  │  │   Síntesis de fuentes de cátedra (Audio/Video)     │  │   │
 │  │  └────────────────────────────────────────────────────┘  │   │
 │  │  ┌────────────────────────────────────────────────────┐  │   │
-│  │  │ 2. VIDEO ANIMADO ADICIONAL (Lemo-Opuscar Director) │  │   │
-│  │  │ Animación por código (99 estilos Canvas/WebGL/3D)  │  │   │
+│  │  │ • Video Short Animado Adicional (Lemo-Opuscar)     │  │   │
+│  │  │   Animación por código (99 estilos Canvas/WebGL/3D)│  │   │
 │  │  └────────────────────────┬───────────────────────────┘  │   │
 │  │                           ▼                              │   │
 │  │  ┌────────────────────────────────────────────────────┐  │   │
-│  │  │ MULTIMEDIA INTEGRATOR (Morado)                     │  │   │
-│  │  │ Optimización FFmpeg + SCORMs de Video / HTML Embed │  │   │
+│  │  │ • MULTIMEDIA INTEGRATOR (Morado)                   │  │   │
+│  │  │   Optimización FFmpeg + SCORMs de Video / Embeds   │  │   │
 │  │  └────────────────────────────────────────────────────┘  │   │
 │  └───────────────────────────┬──────────────────────────────┘   │
 │                              ▼                                   │

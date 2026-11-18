@@ -73,10 +73,12 @@ El sistema utiliza seis agentes especializados invocados con `subagent_type`:
 1. `course-outliner` → Entrevista y creación de la estructura pedagógica tripartita (*La Clase*, *La Lectura*, *La Práctica*).
 2. `content-creator` → Escribir contenido textual de cátedra y actividades.
 3. `senior-editor` → Pulir, auditar y editar.
-4. **Flujo de Video para "La Clase" (Doble Formato Audiovisual Complementario):**
-   - **Video Conceptual Gemini Notebook (NotebookLM):** Síntesis explicativa narrada y estructurada a partir de las fuentes documentales de la cátedra (formato Video Studio / Resumen conceptual).
-   - **Video Short Animado Lemo-Opuscar (`lemo-opuscar-video-director`):** Video adicional de microlearning visual animado por código (99 estilos en Canvas/WebGL/Three.js) para ilustrar esquemas, dinámicas y conceptos clave.
-   - `multimedia-integrator` → Optimiza ambos videos con FFmpeg (CRF 23) y genera sus paquetes SCORM interactivos o embeds para la página de **La Clase** (`02_la_clase.html`).
+4. **Flujo Audiovisual del Aula Moodle:**
+   - **Videos de Introducción Visual de Sección / Banner (< 1 min con HyperFrames):** Micro-videos de apertura (15 a 45 seg) situados en el encabezado de cada sección junto al banner (Bienvenida general, cada Unidad y la sección de Examen Final / Cierre), proporcionando encuadre andragógico de impacto inmediato.
+   - **Flujo de Video para "La Clase" (Doble Formato Audiovisual Complementario):**
+     - **Video Conceptual Gemini Notebook (NotebookLM):** Síntesis explicativa narrada y estructurada a partir de las fuentes documentales de la cátedra (formato Video Studio / Resumen conceptual).
+     - **Video Short Animado Adicional Lemo-Opuscar (`lemo-opuscar-video-director`):** Video adicional de microlearning visual animado por código (99 estilos en Canvas/WebGL/Three.js) para ilustrar esquemas, dinámicas y conceptos clave.
+     - `multimedia-integrator` → Optimiza ambos videos con FFmpeg (CRF 23) y genera sus paquetes SCORM interactivos o embeds para la página de **La Clase** (`02_la_clase.html`).
 5. `moodle-xml-formatter` → Empaquetar unidades y evaluaciones como SCORM .zip para Moodle.
 
 ## Generación de Paquetes SCORM
