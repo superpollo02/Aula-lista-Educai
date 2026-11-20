@@ -9,6 +9,7 @@ cursos/gestion_personas_talento/diapositivas/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*.pyc
 *$py.class
 
 # Node / dependencies
@@ -19,6 +20,10 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 
-# Generated video and media outputs
+# Generated video, media and outputs (contenido privado)
 output/videos/
-
+outputs/*
+!outputs/**/.gitkeep
+content/*.docx
+content/*.pdf
+scripts/legacy_archive.zip

@@ -1,534 +1,198 @@
-# SCORM Course Generator
+# Aula Lista EDUCAI
 
-Sistema profesional para la generación de contenidos didácticos en formato SCORM 1.2, compatible con cualquier LMS (Learning Management System).
+Ecosistema multi-agente para la creación, mediación pedagógica, producción audiovisual y gamificación de aulas virtuales en **Moodle 4.5**.
 
-[![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![Moodle 4.5](https://img.shields.io/badge/Moodle-4.5-orange.svg)](https://moodle.org/)
+[![Bootstrap 4.6.2](https://img.shields.io/badge/Bootstrap-4.6.2-purple.svg)](https://getbootstrap.com/)
 [![SCORM 1.2](https://img.shields.io/badge/SCORM-1.2-green.svg)](https://scorm.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ---
 
 ## Índice
 
 - [Descripción General](#descripción-general)
-- [Características Principales](#características-principales)
-- [Requisitos del Sistema](#requisitos-del-sistema)
-- [Instalación](#instalación)
-- [Inicio Rápido](#inicio-rápido)
-- [Arquitectura Multi-Agente](#arquitectura-multi-agente)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Guía Completa de Scripts](#guía-completa-de-scripts)
-- [Integración Multimedia](#integración-multimedia)
-- [Centro de Ayuda y Guías Ilustradas](#centro-de-ayuda-y-guías-ilustradas)
-- [Importación en LMS](#importación-en-lms)
-- [Estándares de Calidad](#estándares-de-calidad)
-- [Resolución de Problemas](#resolución-de-problemas)
-- [Ejemplos de Cursos](#ejemplos-de-cursos)
-- [Contribuciones](#contribuciones)
-- [Licencia](#licencia)
+- [Flujo Autónomo «Genera la Unidad X» (Kit Aula Lista & HyperFrames)](#-flujo-autónomo-genera-la-unidad-x-kit-aula-lista--hyperframes)
+- [Matriz de Agentes y Habilidades](#-matriz-de-agentes-y-habilidades)
+- [Estructura del Proyecto y Directorio Central de Salidas (`outputs/`)](#-estructura-del-proyecto-y-directorio-central-de-salidas-outputs)
+- [Componentes del Aula Tripartita](#-componentes-del-aula-tripartita)
+- [Estudio Audiovisual EducAI (`scripts/video_engine/`)](#-estudio-audiovisual-educai-scriptsvideo_engine)
+- [Gamificación Interactiva: Conecta Bloques y Gran Trivia SCORM](#-gamificación-interactiva-conecta-bloques-y-gran-trivia-scorm)
+- [Centro de Ayuda y Guías Ilustradas](#-centro-de-ayuda-y-guías-ilustradas)
+- [Guía Rápida de Comandos](#-guía-rápida-de-comandos)
+- [Publicación Segura en Moodle](#-publicación-segura-en-moodle)
+- [Estándares de Calidad y Directiva Zero-Missing](#-estándares-de-calidad-y-directiva-zero-missing)
+- [Requisitos del Sistema](#-requisitos-del-sistema)
+- [Licencia](#-licencia)
 
 ---
 
 ## Descripción General
 
-Este proyecto utiliza una **arquitectura multi-agente basada en IA** para crear contenidos didácticos de alta calidad en formato SCORM 1.2. El sistema divide el proceso de creación en fases especializadas, cada una gestionada por un agente dedicado con competencias específicas.
+**Aula Lista EDUCAI** es una plataforma orientada a docentes e instituciones educativas que transforma programas, documentos de cátedra y apuntes en un **aula virtual completa y homologada para Moodle 4.5**. 
 
-### ¿Por qué SCORM 1.2?
+A diferencia de los generadores estáticos lineales, el proyecto implementa la arquitectura pedagógica del **Aula Tripartita** reglamentada por la Circular N° 5 de Educación en Salud:
+1. **1. La Clase**: Videoclases magistrales, podcast pedagógico de dos voces con acento rioplatense, cápsulas audiovisuales de microlearning y presentaciones descargables.
+2. **2. La Lectura**: Dossier teórico estructurado, infografías vectoriales de síntesis, glosario terminológico y preguntas frecuentes (FAQs).
+3. **3. La Práctica**: Desafíos interactivos gamificados (Conecta Bloques y Gran Trivia), consignas situadas de gestión con rúbrica analítica y evaluación final con sistema de Doble Candado.
 
-SCORM 1.2 es el estándar de e-learning más confiable y universalmente compatible:
-
-| Ventaja | Descripción |
-|-----------|-------------|
-| **Compatibilidad Universal** | Funciona en cualquier LMS moderno |
-| **Fiabilidad** | Estándar maduro y estable desde 2001 |
-| **Seguimiento** | Soporta el estado de finalización y el progreso del usuario |
-| **Portabilidad** | Un único paquete funciona en cualquier parte |
-| **Listo para modo local** | Se puede visualizar localmente sin necesidad de un LMS |
-
-### LMS Soportados
-
-- **Moodle** (todas las versiones)
-- **Canvas** (Instructure)
-- **Blackboard Learn**
-- **Google Classroom**
-- **TalentLMS**
-- **Schoology**
-- **D2L Brightspace**
-- **SAP Litmos**
-- **Docebo**
-- **iSpring Learn**
-- Y cualquier otro LMS compatible con SCORM 1.2
+SCORM 1.2 se utiliza en este ecosistema como **objeto interactivo de aprendizaje embebido**, permitiendo trazabilidad y reporte de calificaciones directo al libro de calificaciones de Moodle.
 
 ---
 
-## Características Principales
+## 🏛️ Flujo Autónomo «Genera la Unidad X» (Kit Aula Lista & HyperFrames)
 
-### Generación de Contenidos
-- **Creación Automática**: Desde un simple esquema hasta un curso completo
-- **Calidad Profesional**: Contenidos pedagógicamente válidos y gramaticalmente correctos
-- **Optimización en Español**: Soporte completo para acentos, caracteres especiales y tono formal/informal
+Al solicitar **«Genera la Unidad X»**, el orquestador activa una cadena en 5 fases continuas:
 
-### Formateo
-- **Markdown → HTML**: Conversión automática con estilos profesionales
-- **Tablas Responsivas**: Visualización perfecta tanto en escritorio como en dispositivos móviles
-- **Navegación Integrada**: Botones de Anterior/Siguiente/Índice
-
-### Multimedia & Estudio de Video EducAI
-- **Estudio Unificado de Video (`scripts/video_engine/`)**: Generación de videos didácticos deterministas a partir de documentos (`.docx`, `.pptx`, `.pdf`) o prompts con síntesis neural EdgeTTS.
-- **Subtítulos Dinámicos Estilo CapCut**: Resaltado activo palabra por palabra (`WordBoundary`) con tipografía de alto impacto y zona segura.
-- **SCORM de Video Pasivo**: Reproductor HTML5 con seguimiento de finalización al 90% visto (`create_video_scorm.py`).
-- **Video-Cuestionario SCORM 1.2 Interactivo**: Pausas evaluativas automáticas con preguntas formativas sincronizadas al fin de escena que reportan nota en el calificador de Moodle.
-- **Empaquetado Dual ZIP**: Emisión de paquete completo autocontenido y paquete liviano Zero-Weight (< 400 KB) con enlace a CDN/streaming.
-- **Motores Visuales Integrados**: Explainer Canvas declarativo (adaptable a 9:16 vertical y 16:9 horizontal), Pizarra Whiteboard, Motion Graphics y 99 estilos artísticos en código Lemo-Opuscar.
-- **SCORM de Audio & Podcasts**: Reproductor de audio con seguimiento y generador de podcasts de cátedra con acento rioplatense (`podcast_engine.py`).
-- **Compresión Inteligente**: Optimización automática con FFmpeg (CRF 23).
-
-### Seguimiento
-- **API SCORM**: Comunicación completa con el LMS
-- **Estado de Finalización**: de `incomplete` a `completed`
-- **Puntuaciones**: Soporte para el reporte de calificaciones (`score raw`)
-
----
-
-## Requisitos del Sistema
-
-### Obligatorios
-
-| Requisito | Versión | Notas |
-|-----------|----------|------|
-| **Python** | 3.8+ | Probado en 3.9, 3.10, 3.11, 3.14 |
-| **Claude Code / Antigravity** | Última | Para el uso de agentes de IA |
-
-### Opcionales
-
-| Requisito | Versión | Uso |
-|-----------|----------|----------|
-| **ffmpeg** | 4.0+ | Compresión de video/audio |
-| **Git** | 2.0+ | Control de versiones |
-
-### Instalación de ffmpeg
-
-**Windows (con Chocolatey):**
-```powershell
-choco install ffmpeg
-```
-
-**Windows (manual):**
-1. Descarga desde https://ffmpeg.org/download.html
-2. Extrae los archivos en `C:\ffmpeg`
-3. Añade `C:\ffmpeg\bin` al PATH del sistema
-
-**macOS:**
-```bash
-brew install ffmpeg
-```
-
-**Linux (Ubuntu/Debian):**
-```bash
-sudo apt update && sudo apt install ffmpeg
+```text
+Usuario: «Genera la Unidad X»
+  │
+  ├── 0. MENÚ DE DECISIÓN (Copiloto Orquestador + asistente-toma-decisiones)
+  │      • 🚀 Modo Turbo Autónomo (1-Click, sin fricción, presets óptimos institucionales).
+  │      • 🧭 Modo Guiado Paso a Paso (4 Checkpoints asistidos con opciones cerradas).
+  │
+  ├── 1. INGESTA COGNITIVA Y DISEÑO CURRICULAR
+  │      Conexión a cuadernos de fuentes, extracción de citas verificadas, transcripciones
+  │      y estructuración de competencias andragógicas.
+  │
+  ├── 2. PRODUCCIÓN AUDIOVISUAL Y MULTIMEDIA
+  │      • Videos Shorts Microlearning: Render headless MP4 con HyperFrames y EducAI Video Studio (16:9 y 9:16).
+  │      • Subtítulos Estilo CapCut: Resaltado activo palabra por palabra con tipografía de alto impacto.
+  │      • Podcasts de Cátedra: Diálogos A/B a dos voces con acento rioplatense (edge-tts + ffmpeg).
+  │      • Gráfica Institucional: Banners panorámicos e infografías conceptuales en SVG/PNG.
+  │      • Diapositivas: Presentaciones oficiales en formato PDF y PPTX editable.
+  │
+  ├── 3. MAQUETACIÓN AULA TRIPARTITA (Moodle 4.5 / Bootstrap 4.6.2)
+  │      • Encabezado: Banner + Frase de encuadre (2 oraciones) + 3 preguntas andragógicas.
+  │      • 1. La Clase: Dual Video (Videoclase magistral + Short HyperFrames/EducAI + Podcast).
+  │      • 2. La Lectura: 3 lecturas didácticas, 2 infografías incrustadas, glosario y FAQs.
+  │      • 3. La Práctica: Consigna orientadora obligatoria, desafíos y caso situado con rúbrica.
+  │
+  └── 4. GAMIFICACIÓN SCORM, AUTO-AUDITORÍA Y PUBLICACIÓN
+         • Conecta Bloques SCORM 1.2 (8 pares conceptuales con Web Audio y temporizador).
+         • Gran Trivia SCORM 1.2 (sin numeración fija en enunciados para aleatorización anti-trampa).
+         • Video-Cuestionario SCORM 1.2 Interactivo con pausas evaluativas (Dual ZIP).
+         • Examen Final Sumativo con restricción condicional (candado de Moodle) si es la unidad de cierre.
+         • Auto-auditoría Zero-Missing Gate (verificación física de 10 elementos canónicos) y Self-Healing.
+         • Validación de sintaxis HTML limpia con CLI tiza.
 ```
 
 ---
 
-## Instalación
+## 🤖 Matriz de Agentes y Habilidades
 
-### 1. Clona el Repositorio
+El ecosistema articula **10 agentes especializados** y **6 habilidades ejecutables (skills)**:
 
-```bash
-git clone https://github.com/tuusername/scorm-course-generator.git
-cd scorm-course-generator
-```
+### Agentes Especializados (`agents/` y `.claude/agents/`)
 
-### 2. Verifica Python
+| Agente | Archivo | Rol y Responsabilidad Técnica |
+| :--- | :--- | :--- |
+| **Copiloto Orquestador** | `copiloto-orquestador.md` | Puerta de entrada. Gestiona la toma de decisiones cerrada (Modo Turbo vs. 4 Checkpoints guiados). |
+| **Asistente NotebookLM** | `asistente-notebooklm.md` | Ingesta de fuentes documentales, extracción de citas textuales y elaboración de guiones dialógicos. |
+| **Course Outliner** | `course-outliner.md` | Arquitectura didáctica de la unidad, definición de objetivos y encuadre curricular bajo Circular N° 5. |
+| **Content Creator** | `content-creator.md` | Redacción integral de marcos teóricos, introducciones andragógicas, glosarios y casos situados. |
+| **Senior Editor** | `senior-editor.md` | Control de estilo, cumplimiento de la consigna obligatoria y formulación anti-trampa de preguntas. |
+| **Multimedia Integrator** | `multimedia-integrator.md` | Diseño de banners panorámicos, infografías vectoriales, optimización de medios y empaquetado SCORM de audio/video. |
+| **EdTech Video Director** | `edtech-video-director.md` | Dirección y renderizado headless de video (HyperFrames / EducAI Video Studio, 1080p y 9:16). |
+| **SCORM Architect** | `scorm-architect.md` | Compilación de paquetes interactivos SCORM 1.2 (Trivias Turbo/Turno, Conecta Bloques y bancos GIFT). |
+| **Moodle XML Formatter** | `moodle-xml-formatter.md` | Maquetación HTML responsiva (Bootstrap 4.6.2), sanitización offline y preparación de metadatos Tiza. |
+| **Auditor Calidad Aula Lista** | `auditor-calidad-aula-lista.md` | Ejecución del checklist físico *Zero-Missing Gate* y protocolo de auto-reparación (*Self-Healing*). |
 
-```bash
-python --version  # Debe ser 3.8+
-```
+### Habilidades Ejecutables (`skills/`)
 
-### 3. Crea el Entorno Virtual (Opcional)
-
-```bash
-python -m venv venv
-
-# Windows
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process; .\venv\Scripts\Activate.ps1
-
-# macOS/Linux
-source venv/bin/activate
-```
-
-### 4. Verifica la Instalación
-
-```bash
-python scripts/scorm_generators/create_scorm_package.py --help
-```
+| Habilidad (Skill) | Directorio | Función Principal |
+| :--- | :--- | :--- |
+| `asistente-toma-decisiones` | `skills/asistente-toma-decisiones/` | Menú interactivo de opciones estrictamente cerradas con previsualizaciones de 3 líneas y salto a Turbo. |
+| `diseno-instruccional-aula-tripartita` | `skills/diseno-instruccional-aula-tripartita/` | Estructuración pedagógica: encuadre de 2 oraciones, 3 preguntas andragógicas y consignas orientadoras. |
+| `edtech-moodle-video` | `skills/edtech-moodle-video/` | Metodología de captura, sincronización audiovisual y mediación de videoclases para entornos virtuales. |
+| `hyperframes-render` | `skills/hyperframes-render/` | Pipeline de renderizado programático HTML5/GSAP hacia MP4 usando Chromium Headless y ffmpeg. |
+| `notebooklm-video-shorts` | `skills/notebooklm-video-shorts/` | Conexión e interacción con cuadernos de cátedra para generación de guiones didácticos de síntesis. |
+| `scorm-gamification` | `skills/scorm-gamification/` | Motor de gamificación: configuración de estilos (Neón, Clásico), temporizadores y reporte de score LMS. |
 
 ---
 
-## Inicio Rápido
+## 📁 Estructura del Proyecto y Directorio Central de Salidas (`outputs/`)
 
-### Método 1: Usando los Agentes de IA (Recomendado)
+El repositorio mantiene una estricta separación entre los módulos funcionales de producción y los entregables generados:
 
-La forma más sencilla de crear un curso completo es utilizar los agentes de IA integrados:
-
-```
-1. Abre tu terminal de IA en el directorio del proyecto.
-2. Solicita: "Quiero crear un curso sobre [TEMA]"
-3. El agente de estructura de cursos te entrevistará para definir los requisitos.
-4. Los agentes de creación, edición y empaquetado generarán automáticamente el archivo SCORM final.
-```
-
-### Método 2: Usando los Scripts Directamente
-
-#### Paso 1: Prepara el Contenido
-
-Crea un archivo markdown con la siguiente estructura:
-
-```markdown
-# Módulo 1: Introducción
-
-## Objetivos de Aprendizaje
-- Comprender los conceptos básicos
-- Aplicar las técnicas fundamentales
-
-## Contenido
-Texto del módulo...
-
-# Módulo 2: Profundización
-
-## Objetivos de Aprendizaje
-...
-```
-
-#### Paso 2: Genera el Paquete SCORM
-
-```bash
-python scripts/scorm_generators/create_scorm_package.py
-```
-
-#### Paso 3: Importa en tu LMS
-
-Sube el archivo `.zip` generado a tu LMS como "Paquete SCORM".
-
----
-
-## Arquitectura Multi-Agente y Pipeline E2E
-
-Este proyecto opera mediante un **pipeline integral de producción didáctica y audiovisual** orquestado por un ecosistema de **agentes inteligentes especializados** (`.claude/agents/`) y un catálogo de **habilidades operativas deterministas** (`.agents/skills/`). 
-
-La arquitectura está diseñada para dar soporte a la metodología de **Aula Moodle** (Modelo Tripartito: *La Clase*, *La Lectura*, *La Práctica*), permitiendo transformar desde un simple esquema curricular o un documento en bruto (`.pptx`, `.docx`, `.pdf`) hasta un paquete educativo completo listo para desplegar en el campus virtual.
-
-```mermaid
-flowchart TD
-    subgraph FASE1["Fase 1: Estructuración Pedagógica"]
-        Docente["Docente / Cátedra"] --> Outliner["Course Outliner<br/>(Arquitectura Curricular)"]
-        Outliner --> Struct["Esquema Pedagógico Tripartito<br/>(La Clase / La Lectura / La Práctica)"]
-    end
-
-    subgraph FASE2["Fase 2: Redacción, Humanización y Edición"]
-        Struct --> Creator["Content Creator<br/>(Redacción Markdown)"]
-        Creator --> Humanizer["STE80 Humanizer<br/>(Claridad y Des-AIficación)"]
-        Humanizer --> Editor["Senior Editor<br/>(Auditoría y Edición en 6 Pasos)"]
-        Editor --> TextApproved["Contenido Textual Aprobado"]
-    end
-
-    subgraph FASE3["Fase 3: Estudio Audiovisual EducAI (scripts/video_engine/)"]
-        DocSource["Documentos Fuente<br/>(.docx / .pptx / .pdf / Prompt)"] --> VideoProducer["Educational Video Producer<br/>(Director Integral de Video)"]
-        TextApproved -.-> VideoProducer
-        
-        VideoProducer --> DocParser["Raw Document Parser<br/>(Extracción + Notas Orador)"]
-        DocParser --> ScenesJSON["scenes.json + theme_config.json"]
-        
-        ScenesJSON --> StyleChoice{"Selección de Motor Visual"}
-        StyleChoice -->|"Canvas Declarativo (9:16 / 16:9)"| ExplainerEng["Explainer Canvas Engine"]
-        StyleChoice -->|"Pizarra Didáctica"| WhiteboardEng["Whiteboard Canvas 2D"]
-        StyleChoice -->|"99 Estilos por Código"| LemoDirector["Lemo-Opuscar Video Director"]
-        StyleChoice -->|"Tarjetas Modernas"| MotionEng["Motion Graphics Cards"]
-        
-        ExplainerEng --> VoiceGen["Síntesis Neural EdgeTTS<br/>(word_timings.json)"]
-        WhiteboardEng --> VoiceGen
-        LemoDirector --> VoiceGen
-        MotionEng --> VoiceGen
-        
-        VoiceGen --> CapCutSubs["Subtítulos Estilo CapCut<br/>(tiktok-word-captions)"]
-        CapCutSubs --> PreQA["Pre-Render QA Gatekeeper<br/>(Invariante 1: No cortar voz)"]
-        PreQA --> RenderEngine["Render Determinista de Frames / MP4"]
-        RenderEngine --> OutroMux["Mezcla Estéreo + Outro Institucional"]
-        OutroMux --> PostQA["Post-Render QA Gatekeeper<br/>(ffprobe / silencedetect)"]
-    end
-
-    subgraph FASE4["Fase 4: Empaquetado Multimedia y Entrega LMS"]
-        PostQA --> MMIntegrator["Multimedia Integrator<br/>(Optimización CRF 23 + SCORM)"]
-        TextApproved --> SCORMPackager["SCORM Packager / scorm_modern<br/>(moodle-xml-formatter)"]
-        
-        MMIntegrator --> DeliverDual{"Tipo de Entrega Audiovisual"}
-        DeliverDual -->|"Caso A: Video Común Lineal"| LinearMP4["Video MP4 Full HD 1080p<br/>(Para 'La Clase' o YouTube)"]
-        DeliverDual -->|"Caso B: Video SCORM Interactivo"| InteractiveSCORM["Dual ZIP SCORM 1.2<br/>(Completo + Zero-Weight con Checkpoints)"]
-        
-        SCORMPackager --> TextSCORM["Paquete SCORM de Lección/Evaluación"]
-        
-        LinearMP4 --> Moodle["Aula Moodle Completa<br/>(La Clase / La Lectura / La Práctica)"]
-        InteractiveSCORM --> Moodle
-        TextSCORM --> Moodle
-    end
-```
-
----
-
-### El Elenco de Agentes Inteligentes (`.claude/agents/`)
-
-Cada agente representa un rol profesional dentro del equipo docente y técnico, con responsabilidades, insumos y entregables estrictamente delimitados:
-
-#### 1. Course Outliner (`course-outliner` · Naranja)
-- **¿Qué hace?**: Actúa como el arquitecto pedagógico. Entrevista al docente o analiza el programa de la materia para formular un esquema estructurado basado en la Taxonomía de Bloom y la metodología tripartita (*La Clase*, *La Lectura*, *La Práctica*).
-- **Entradas**: Directivas del docente, objetivos de aprendizaje, carga horaria y nivel formativo.
-- **Salidas**: Esquema curricular detallado con desglose de unidades, temas y propuestas de actividades.
-- **Funcionamiento Aislado**: Puede ejecutarse independientemente para estructurar nuevas carreras, diplomaturas o cursos antes de redactar una sola línea de contenido.
-- **Integración**: Su salida alimenta directamente a `content-creator` y a `educational-video-producer` con los ejes temáticos a desarrollar.
-
-#### 2. Content Creator (`content-creator` · Azul)
-- **¿Qué hace?**: Redacta el contenido didáctico en profundidad. Transforma los títulos y temas del esquema en lecciones explicativas, lecturas guiadas, casos prácticos y actividades formativas en Markdown.
-- **Entradas**: Esquema curricular producido por `course-outliner`.
-- **Salidas**: Documentos Markdown estructurados con encabezados normativos, tablas responsivas y bloques de apoyo pedagógico (`:::apoyo:::`).
-- **Funcionamiento Aislado**: Puede redactar módulos individuales o actualizar lecciones puntuales sin necesidad de reestructurar el curso.
-- **Integración**: Entrega sus borradores a `ste80-humanizer` y `senior-editor` para la fase de curaduría.
-
-#### 3. Senior Editor (`senior-editor` · Rojo)
-- **¿Qué hace?**: Audita y refina los textos bajo un estricto **protocolo de 6 pasos**:
-  1. *Mecánica*: Ortografía, acentuación perfecta en español y gramática.
-  2. *Claridad*: Desarticulación de oraciones complejas.
-  3. *Concisión*: Eliminación de redundancias y paja académica.
-  4. *Consistencia*: Coherencia terminológica y tono formal/cercano.
-  5. *Andragogía*: Adaptación al ritmo de lectura en pantallas.
-  6. *Fluidez*: Transiciones pedagógicas naturales entre conceptos.
-- **Entradas**: Borradores generados por `content-creator` o textos provistos por docentes.
-- **Salidas**: Archivos `course-content-edited.md` listos para producción final.
-- **Funcionamiento Aislado**: Puede ser llamado para auditar y corregir cualquier documento o artículo externo.
-- **Integración**: Valida los textos antes de que pasen a empaquetado SCORM (`moodle-xml-formatter`) o a locución de video.
-
-#### 4. Educational Video Producer (`educational-video-producer` · Azul Marino)
-- **¿Qué hace?**: Director general del estudio audiovisual didáctico. Ingesta documentos de cátedra, conduce el briefing interactivo de estilos gráficos, coordina la síntesis de voz sincronizada, supervisa las compuertas de calidad pre y post-render, y gestiona la entrega dual (Video Común vs. Video-Cuestionario SCORM 1.2).
-- **Entradas**: Presentaciones PowerPoint (`.pptx`), documentos Word (`.docx`), PDFs, imágenes de logotipos institucionales o prompts temáticos.
-- **Salidas**: `scenes.json`, videos Full HD 1080p (`*_EducAI_Final.mp4`) y paquetes SCORM interactivos.
-- **Funcionamiento Aislado**: Puede crear piezas de video completas a partir de cualquier archivo docente en un solo paso mediante `scripts/video_engine/orchestrator.py`.
-- **Integración**: Se nutre de los contenidos aprobados por `senior-editor` o de archivos del docente, y deriva la animación especializada a `lemo-opuscar-video-director` y el empaquetado a `multimedia-integrator`.
-
-#### 5. Lemo-Opuscar Video Director (`lemo-opuscar-video-director` · Cian)
-- **¿Qué hace?**: Diseña y dirige animaciones y videos explicativos por código utilizando el catálogo de **99 estilos artísticos** de Lemo-Opuscar (Canvas, WebGL, Three.js, SVG Mocap, Ukiyo-e, Blueprint, Vintage Engraving, Ink Wash, etc.).
-- **Entradas**: Ejes conceptuales, dinámicas de procesos o metáforas visuales de la unidad.
-- **Salidas**: Código reproducible en HTML/JS y videos Full HD 1080p (.mp4) con subtítulos normativos (.srt).
-- **Funcionamiento Aislado**: Puede producir clips artísticos autónomos, intros animadas o visualizaciones de datos independientes.
-- **Integración**: Provee el formato de video animado complementario para el bloque **La Clase** en coordinación con `educational-video-producer` y `multimedia-integrator`.
-
-#### 6. Multimedia Integrator (`multimedia-integrator` · Morado)
-- **¿Qué hace?**: Especialista en optimización de medios y empaquetado interactivo. Analiza pesos, aplica compresión FFmpeg inteligente (CRF 23) y genera paquetes SCORM dedicados para audios/podcasts y videos (tanto en modo pasivo al 90% como en modo interactivo con checkpoints en formato Dual ZIP).
-- **Entradas**: Archivos de audio (MP3, WAV), videos (MP4, WEBM) y listas de preguntas evaluativas (`checkpoints`).
-- **Salidas**: Paquetes SCORM 1.2 listos para Moodle (`_SCORM_Completo.zip` y `_SCORM.zip` Zero-Weight < 400 KB) y archivos multimedia optimizados.
-- **Funcionamiento Aislado**: Permite empaquetar o comprimir cualquier video o audio externo sin tocar el resto del curso.
-- **Integración**: Recibe los videos renderizados por `educational-video-producer` o `lemo-opuscar-video-director` y los transforma en actividades calificables para el libro de calificaciones de Moodle.
-
-#### 7. SCORM Packager (`moodle-xml-formatter` · Verde)
-- **¿Qué hace?**: Compila lecciones y evaluaciones escritas en Markdown a paquetes estándar SCORM 1.2 (`imsmanifest.xml`), asegurando compatibilidad universal con Moodle, Canvas, Blackboard, etc.
-- **Entradas**: Markdown estructurado o archivo `config.yaml` (`scorm_modern`).
-- **Salidas**: Archivos `.zip` instalables con seguimiento de lección, estado `completed` y reporte de calificación (`cmi.core.score.raw`).
-- **Funcionamiento Aislado**: Se invoca directamente vía CLI mediante `create_scorm_package.py` o `create_scorm_modern_package.py`.
-- **Integración**: Cierra la Fase 2 y Fase 4 convirtiendo los textos de cátedra en actividades formales del aula virtual.
-
----
-
-### Catálogo de Habilidades Operativas (`.agents/skills/`)
-
-Las habilidades son herramientas programáticas especializadas que ejecutan tareas técnicas deterministas bajo estándares rigurosos:
-
-| Habilidad (`Skill`) | Propósito Técnico | Herramientas / Librerías | Entregable Garantizado |
-| :--- | :--- | :--- | :--- |
-| **`educational-video-producer`** | Orquestación integral del flujo dual (Caso A lineal vs. Caso B SCORM) y aplicación de invariantes técnicas. | `scripts/video_engine/orchestrator.py` | Video final validado y empaquetado bajo los estándares de `AGENTS.md`. |
-| **`raw-document-video-parser`** | Ingesta profunda de documentos docentes multiformato con extracción de diapositivas y notas del orador. | `python-pptx`, `python-docx`, `pypdf`, `pymupdf`, `pdfplumber` | Archivo `scenes.json` normalizado con jerarquías y texto de locución. |
-| **`tiktok-word-captions`** | Generación de subtítulos dinámicos estilo CapCut con resaltado activo palabra por palabra (Invariante 5). | `edge-tts` (eventos `WordBoundary`), formato `.ass` karaoke (`libass`) | Archivos `word_timings.json` y `captions.ass` sincronizados al milisegundo. |
-| **`pre-render-composition-validator`** | Compuerta de calidad previa al render para detectar inconsistencias, duraciones dispares y errores JS/CSS. | Headless Chromium, Playwright, analizador JSON de timelines | Aprobación formal (0 errores de consola, duraciones alineadas, checkpoints al fin de voz). |
-| **`post-render-video-qa`** | Auditoría posterior al ensamble del video final MP4. | `ffprobe`, `ffmpeg` (`silencedetect`, descarte de fotogramas negros) | Confirmación de stream de video H.264 + audio AAC estéreo sin caídas abruptas. |
-| **`interactive-scorm-video-packager`** | Generación de paquetes SCORM 1.2 interactivos con pausas evaluativas y arquitectura Dual ZIP. | SCORM 1.2 API Wrapper, HTML5 Player seguro sobre `#player-container` | Paquete autocontenido (`_SCORM_Completo.zip`) y paquete liviano (`_SCORM.zip` < 400 KB). |
-| **`modular-video-orchestrator`** | Renderizado modular por lotes de escenas con caché en disco para evitar saturación de memoria en videos largos. | Node.js, Puppeteer/Playwright, FFmpeg | Fotogramas PNG a 24 fps cacheados en disco listos para multiplexado determinista. |
-| **`explainer`** | Motor declarativo Canvas 2D adaptativo a 4 relaciones de aspecto (`9:16`, `16:9`, `1:1`, `4:5`). | `explainer.json`, Zod, `compilador.mjs`, `simular.cjs` (Node sin navegador) | Página HTML autónoma, simulación sin errores y exportación MP4 Full HD. |
-| **`lemo-opuscar`** | Catálogo de 99 estilos artísticos por código (Blueprint, Vintage Engraving, Ink Wash, etc.). | Canvas 2D, SVG Mocap, Three.js, WebGL | Código reproducible y video animado con estética editorial de alta gama. |
-| **`notebooklm`** | Síntesis explicativa narrada y estructurada a partir de fuentes documentales oficiales de cátedra. | NotebookLM CLI / Gemini API | Resumen conceptual y video narrado oficial para **La Clase**. |
-| **`curriculum-knowledge-architecture-designer`** | Mapeo epistémico de asignaturas para secuenciación didáctica óptima. | Taxonomías curriculares y andragogía | Matriz de prerrequisitos conceptuales y progresión del aprendizaje. |
-| **`ste80-humanizer`** | Humanización y des-AI-ficación según el estándar 80% ASD-STE100 (Simplified Technical English). | Reglas anti-slop, voz activa, oraciones directas | Textos pedagógicos claros, accesibles y libres de clichés de IA. |
-| **`add-educational-comments`** | Enriquecimiento didáctico de scripts y código con comentarios formativos. | Parsers de código fuente | Archivos de código comentados pedagógicamente para estudiantes. |
-
----
-
-### Dinámica Operativa: Trabajo por Separado vs. Integración en Pipeline
-
-#### 1. Cómo trabajan por separado (Autonomía y Modularidad Quirúrgica)
-Cada componente del sistema fue diseñado con una frontera limpia y bajo el principio de **alta cohesión y bajo acoplamiento**:
-- **Herramientas de Diagnóstico y Utilidad Directa**: Un docente o desarrollador puede invocar `python scripts/video_engine/doctor.py` en cualquier momento para comprobar el estado de sus binarios y librerías sin ejecutar ningún pipeline.
-- **Empaquetado Independiente**: Si ya cuentas con un video pregrabado (ej. una clase grabada por Zoom de 400 MB) y un cuestionario en JSON, no necesitas renderizar nada: ejecutas `python scripts/scorm_generators/create_video_scorm.py mi_clase.mp4 --checkpoints preguntas.json` y obtienes en 2 segundos el paquete SCORM interactivo listo para Moodle.
-- **Simulación Rápida sin Navegador**: El motor Explainer permite validar animaciones Canvas complejas mediante `node scripts/video_engine/engines/explainer/simular.cjs archivo.html --todos`, simulando miles de cuadros en segundos desde Node sin consumir memoria gráfica.
-- **Intercambiabilidad Basada en JSON**: Todos los agentes intercambian estados mediante archivos legibles en disco (`scenes.json`, `explainer.json`, `audio_timeline.json`, `word_timings.json`). Esto permite pausar la ejecución, ajustar manualmente un texto o una pregunta evaluativa en un editor, y reanudar el proceso sin fricción.
-
-#### 2. Cómo se integran (Coreografía E2E de Principio a Fin)
-Cuando se ejecuta la producción integral de una unidad didáctica, los agentes y habilidades se coordinan en un flujo continuo y determinista:
-
-```
-[Insumo: Presentación PPTX o Documento Word]
-       │
-       ▼
-1. educational-video-producer invoca raw-document-video-parser
-   └─► Extrae títulos, diapositivas y notas del orador hacia scenes.json
-       │
-       ▼
-2. brand_theme extrae la paleta institucional desde el logo
-   └─► Genera theme_config.json y variables CSS con contraste WCAG AA
-       │
-       ▼
-3. Menú Interactivo de Estilos (Prompt o Selección)
-   └─► El docente elige: Explainer (Canvas 9:16/16:9), Whiteboard o Lemo-Opuscar
-       │
-       ▼
-4. Síntesis de Locución Neural (captions/word_timings.py)
-   └─► EdgeTTS genera scene_XX.mp3, audio_timeline.json y word_timings.json
-       │
-       ▼
-5. Alineación de Checkpoints y Subtitulado CapCut (Invariantes 1 y 5)
-   └─► tiktok-word-captions genera subtítulos dinámicos palabra por palabra
-   └─► scene_builder alinea las preguntas evaluativas exactamente a: sc_end + 0.08s
-       │
-       ▼
-6. Compuerta de Calidad Pre-Render (qa/pre_render.py)
-   └─► Valida duraciones, ausencia de cortes de voz y cero errores en headless Chrome
-       │
-       ▼
-7. Renderizado Visual Determinista (engines/ + FFmpeg)
-   └─► Renderizado cuadro a cuadro a 24 fps Full HD 1080p -> video_raw.mp4
-       │
-       ▼
-8. Mezcla de Audio y Outro Institucional (outro_mux.py)
-   └─► Multiplexado estéreo AAC 44.1 kHz y ensamble de ending. educai.mp4
-       │
-       ▼
-9. Compuerta de Calidad Post-Render (qa/post_render.py)
-   └─► ffprobe analiza streams, descarta cuadros negros y detecta caídas de audio
-       │
-       ▼
-10. Empaquetado Dual ZIP para Moodle (scorm/scorm_packager.py)
-    ├─► Caso A: Video Común Lineal (*_EducAI_Final.mp4 para La Clase)
-    └─► Caso B: Video-Cuestionario SCORM 1.2 (*_SCORM_Completo.zip y *_SCORM.zip)
-```
-
----
-
-### Las 5 Invariantes de Producción y Calidad (Zero Mocks)
-
-Todo el ecosistema se rige por cinco reglas de oro inviolables estipuladas en `AGENTS.md`:
-
-1. **Invariante 1 (Sincronía de Preguntas):** Prohibido cortar la voz del docente. Todo bloque evaluativo (`checkpoint`) en un video SCORM debe ubicarse estrictamente al finalizar la alocución de la escena (`sc_end + 0.08s`).
-2. **Invariante 2 (Pantalla Completa Segura):** El botón nativo de pantalla completa del `<video>` se deshabilita (`controlsList="nofullscreen"`), implementando un botón de maximizado sobre `#player-container` para evitar que los overlays de preguntas queden ocultos detrás del video.
-3. **Invariante 3 (Reanudación de Renders):** Si un renderizado se interrumpe, el sistema reutiliza los fotogramas en disco o `video_raw.mp4`, retomando directamente desde la codificación FFmpeg sin gastar tiempo redundante.
-4. **Invariante 4 (Compuertas Obligatorias):** Ningún video se entrega sin pasar formalmente el gate Pre-Render (validación estructural) y el gate Post-Render (inspección de streams y detección de silencios).
-5. **Invariante 5 (Subtítulos CapCut por Defecto):** Toda producción audiovisual incluye subtítulos dinámicos palabra por palabra estilo CapCut generados desde `word_timings.json`, salvo que el usuario pida expresamente *"sin subtítulos"* o pase `--no-captions`.
-
----
-
-## Estructura del Proyecto
-
-```
-scorm-course-generator/
+```text
+aula lista EDUCAI/
 │
-├── .claude/                          # Definiciones de agentes de inteligencia artificial
-│   ├── agents/                       
-│   │   ├── course-outliner.md       # Arquitecto curricular pedagógico
-│   │   ├── content-creator.md       # Redactor de contenidos en Markdown
-│   │   ├── senior-editor.md         # Auditor y editor senior en 6 pasos
-│   │   ├── educational-video-producer.md # Director integral del estudio de video EducAI
-│   │   ├── lemo-opuscar-video-director.md # Director de animación en código (99 estilos)
-│   │   ├── multimedia-integrator.md # Integrador multimedia y SCORM interactivo Dual ZIP
-│   │   └── moodle-xml-formatter.md  # Empaquetador SCORM tradicional
-│   └── settings.local.json          # Configuración local de permisos y modelos
+├── 🤖 NÚCLEO DE PRODUCCIÓN
+│   ├── agents/                       # Definiciones canónicas de los 10 agentes
+│   ├── .claude/agents/               # Agentes sincronizados para Claude Code / Antigravity
+│   ├── skills/                       # Las 6 habilidades ejecutables (SKILL.md)
+│   ├── scorm_core/                   # Motor base: manifiesto XML seguro y caché SHA-256
+│   ├── scorm_modern/                 # Módulo Python: Clase con Video Adicional, Quizzes y Actividades
+│   ├── templates/                    # Plantillas maestras HyperFrames (showcase, tutoriales, verticales)
+│   ├── assets/audio/                 # Banco sonoro (BGMs, SFX, locuciones base)
+│   ├── content/                      # Documentos de cátedra e insumos (.md, .docx)
+│   ├── docs/                         # Manual oficial (MANUAL_DE_USO.md) y guías técnicas
+│   ├── scripts/                      # Scripts de procesamiento y generación
+│   │   ├── video_engine/             # Estudio Unificado EducAI (orquestador, parsers, captions, QA, SCORM interactivo)
+│   │   │   ├── doctor.py             # Diagnóstico de entorno (FFmpeg, Node, Playwright, TTS)
+│   │   │   ├── orchestrator.py       # Orquestador integral CLI & Python
+│   │   │   ├── parsers/              # Ingesta de PPTX, DOCX, PDF y paletas de marca
+│   │   │   ├── captions/             # Word timings y subtítulos CapCut (.ass)
+│   │   │   ├── qa/                   # Compuertas Pre-Render y Post-Render (Zero Mocks)
+│   │   │   ├── scorm/                # Empaquetador SCORM interactivo Dual ZIP
+│   │   │   └── engines/              # Adaptadores de render (Explainer Canvas, Motion, Lemo)
+│   │   ├── audio_generators/         # podcast_engine.py (síntesis rioplatense edge-tts + ffmpeg)
+│   │   ├── content_generation/       # Generadores IA de HTML, Conecta Bloques y Trivias
+│   │   ├── scorm_generators/         # Compiladores SCORM 1.2 (Conecta Bloques, Trivia, Audio, Video)
+│   │   ├── course_builders/          # Constructores de cursos integrales
+│   │   ├── legacy/                   # Scripts de referencia histórica
+│   │   └── render_all_videotutorials.py # Renderizador masivo de guías ilustradas
 │
-├── .agents/skills/                   # Catálogo de habilidades operativas del workspace
-│   ├── educational-video-producer/  # Orquestación integral de video (Caso A vs Caso B)
-│   ├── raw-document-video-parser/   # Ingesta profunda de PPTX, DOCX y PDF
-│   ├── tiktok-word-captions/        # Subtítulos dinámicos estilo CapCut (WordBoundary)
-│   ├── pre-render-composition-validator/ # Gate Pre-Render de calidad y determinismo
-│   ├── post-render-video-qa/        # Gate Post-Render (ffprobe / silencedetect)
-│   ├── interactive-scorm-video-packager/ # Empaquetador SCORM interactivo con pausas
-│   ├── modular-video-orchestrator/  # Renderizado modular por lotes de escenas
-│   ├── explainer/                   # Motor declarativo Canvas 2D (9:16, 16:9, 1:1, 4:5)
-│   ├── lemo-opuscar/                # Motor de 99 estilos artísticos en código puro
-│   ├── notebooklm/                  # Síntesis conceptual de cátedra
-│   ├── curriculum-knowledge-architecture-designer/ # Mapeo epistémico curricular
-│   ├── ste80-humanizer/             # Humanizador de textos (Simplified Technical English)
-│   └── add-educational-comments/    # Comentarios pedagógicos en código
-│
-├── scripts/                          # Scripts ejecutables y suites de generación
-│   ├── video_engine/                # Estudio Unificado de Video Didáctico (EducAI)
-│   │   ├── doctor.py                # Diagnóstico de entorno (FFmpeg, Node, Playwright, TTS)
-│   │   ├── orchestrator.py          # Orquestador integral CLI & Python
-│   │   ├── parsers/                 # Ingesta de PPTX, DOCX, PDF y paletas de marca
-│   │   ├── captions/                # Word timings y subtítulos CapCut (.ass)
-│   │   ├── qa/                      # Compuertas Pre-Render y Post-Render (Zero Mocks)
-│   │   ├── scorm/                   # Empaquetador SCORM interactivo Dual ZIP
-│   │   ├── engines/                 # Adaptadores de render (Explainer, Motion, Lemo)
-│   │   └── assets/                  # Outro institucional, logotipos y plantillas
-│   ├── scorm_generators/            # Creadores de SCORM
-│   │   ├── create_scorm_package.py  # Genera paquete SCORM de texto tradicional
-│   │   ├── create_scorm_modern_package.py # SCORM moderno: Lección + Quiz + Actividades
-│   │   ├── create_audio_scorm.py    # Genera paquete SCORM de audio
-│   │   ├── create_video_scorm.py    # Genera paquete SCORM de video pasivo o interactivo
-│   │   └── create_sicurezza_scorm.py# Generador especializado de seguridad
-│   ├── audio_generators/            # Generación de podcasts pedagógicos
-│   │   └── podcast_engine.py        # Podcasts dialógicos rioplatenses con edge-tts + ffmpeg
-│   ├── content_generation/          # Procesamiento y edición de contenido HTML
-│   └── legacy/                      # Scripts antiguos (referencia técnica)
-│
-├── films/                           # Proyectos audiovisuales de cátedra
-│   ├── demo-caso-a-lineal/          # Ejemplo: Video Común Full HD lineal con subtítulos CapCut
-│   ├── demo-caso-b-scorm-interactivo/ # Ejemplo: Video-Cuestionario SCORM 1.2 interactivo
-│   └── demo-explainer-campus/       # Ejemplo: Explainer animado en Canvas (9:16 y 16:9)
-│
-├── scorm_modern/                    # Paquete Python para generación moderna de SCORMs
-│   ├── scorm_modern/                # Módulos del generador (parser, renderer, manifest, builder)
-│   ├── tests/                       # Suite de tests unitarios (pytest)
-│   └── README.md                    # Documentación de sintaxis de config.yaml y curso.md
-│
-├── content/                         # Contenidos de cursos organizados por materia
-├── output/                          # Salidas generadas (archivos .zip de SCORM y videos)
-├── docs/                            # Documentación técnica, guías de LMS e instructivos
-│   ├── MANUAL_DE_USO.md             # Manual de uso oficial y guía paso a paso del ecosistema
-│   ├── GUIA_FLUJO_PRODUCCION_VIDEOS.md # Guía operativa completa de producción de video
-│   ├── GUIA_IMPORTAR_MOODLE.md      # Instrucciones paso a paso para Moodle
-│   └── GUIA_COMPATIBILIDAD_LMS.md   # Matriz de compatibilidad LMS
-│
-├── requirements.txt                 # Dependencias esenciales livianas
-├── requirements-video.txt           # Dependencias opcionales de video y documentos
-├── CLAUDE.md                        # Directivas técnicas para Claude Code / Antigravity
-├── README.md                        # Este documento
-└── .gitignore                       # Reglas de exclusión de git
+└── 📦 DIRECTORIO CENTRALIZADO DE ENTREGABLES (outputs/)
+    ├── outputs/cursos/               # Aulas virtuales completas y recursos estructurados
+    │   └── gestion_personas_talento/ # Unidad 1 y 2 (HTMLs Bootstrap, previews, .tiza, lecturas)
+    ├── outputs/scorm/                # Todos los paquetes SCORM 1.2 comprimidos (*-SCORM.zip)
+    ├── outputs/articles/             # 9 Guías ilustradas paso a paso (Schema v2) y videotutoriales MP4
+    ├── outputs/renders/              # Videos MP4 masterizados con HyperFrames (1080p y 9:16)
+    ├── outputs/audio/                # Podcasts y pistas de audio exportadas
+    └── outputs/mbz/                  # Respaldos de curso Moodle (.mbz)
 ```
 
 ---
 
-## Guía Completa de Scripts
+## 🏛️ Componentes del Aula Tripartita
 
-### doctor.py (Diagnóstico del Entorno Audiovisual)
+Cada unidad didáctica generada en `outputs/cursos/` incluye los siguientes elementos homologados:
 
-**Objetivo**: Realiza una auditoría completa del entorno local, verificando binarios de sistema (`ffmpeg`, `ffprobe`, `node`), librerías de Python para audio y video (`edge-tts`, `Pillow`, `playwright`, `PyYAML`), y dependencias de ingesta docente (`python-docx`, `python-pptx`, `pypdf`, `pymupdf`, `pdfplumber`).
-
-**Uso**:
-```bash
-python scripts/video_engine/doctor.py
-```
+1. **01_encabezado**:
+   - `banner_unidad.png`: Banner gráfico de 1200x400 px con estética institucional.
+   - `01_etiqueta_encabezado.html`: Frase de encuadre curricular (exactamente 2 oraciones) y 3 preguntas andragógicas disparadoras.
+2. **02_la_clase**:
+   - Dual Video: Videoclase magistral de 20-30 min + Video Short Microlearning de HyperFrames / EducAI Video Studio.
+   - Podcast pedagógico de cátedra a dos voces embebido con reproductor HTML5 y botón de descarga.
+   - Enlace y descarga de las diapositivas oficiales de clase en PDF y PPTX editable.
+3. **03_la_lectura**:
+   - Dossier de 3 lecturas didácticas de profundización.
+   - 2 Infografías conceptuales de síntesis integradas.
+   - Glosario de términos clave y bloque de preguntas frecuentes (FAQs).
+4. **04_la_practica**:
+   - **Consigna orientadora obligatoria**: *«Esta práctica se resuelve con lo visto en los videos docentes; no necesitás repasar toda la bibliografía obligatoria para completarla»*.
+   - Caso situado de gestión asistencial con rúbrica analítica de evaluación.
+   - Accesos a los desafíos interactivos SCORM.
 
 ---
 
-### orchestrator.py (Estudio Unificado EducAI)
+## 🎬 Estudio Audiovisual EducAI (`scripts/video_engine/`)
 
-**Objetivo**: Orquesta el flujo completo de producción audiovisual didáctica desde documentos crudos o esquemas hasta el entregable final (Video Común MP4 o Video-Cuestionario SCORM 1.2 interactivo con pausas evaluativas).
+El **Estudio Unificado de Video EducAI** produce videos didácticos deterministas a partir de documentos crudos (`.docx`, `.pptx`, `.pdf`) o esquemas temáticos:
 
-**Uso**:
+### Características Clave
+- **Subtítulos Dinámicos Estilo CapCut**: Resaltado activo palabra por palabra (`WordBoundary`) con zona segura y tipografía de alto contraste.
+- **Pausas Evaluativas Interactivas**: Checkpoints automáticos al final de cada escena con preguntas formativas que pausan el reproductor y reportan la calificación a Moodle.
+- **Empaquetado Dual ZIP**: Emisión simultánea del paquete completo autocontenido (`_SCORM_Completo.zip`) y del paquete ultraliviano Zero-Weight (`_SCORM.zip` < 400 KB) para streaming.
+- **Compuertas de Calidad Inviolables (Zero Mocks)**: Pre-Render QA (validación de duraciones, locuciones y sintaxis) y Post-Render QA (`ffprobe` y `silencedetect`).
+
+### Comandos de Utilidad
+
 ```bash
-# Diagnóstico rápido antes de renderizar
+# Diagnóstico rápido de dependencias audiovisuales
 python scripts/video_engine/doctor.py
 
 # Producción completa desde un documento Word o PowerPoint
@@ -540,237 +204,138 @@ python scripts/video_engine/orchestrator.py films/mi-unidad --engine explainer -
 # Video Común Lineal (sin empaquetado SCORM, listo para YouTube o streaming)
 python scripts/video_engine/orchestrator.py films/mi-unidad --doc material.pptx --linear
 
-# Reanudar un render interrumpido reutilizando frames previos
-python scripts/video_engine/orchestrator.py films/mi-unidad --skip-render
-```
-
----
-
-### create_video_scorm.py
-
-**Objetivo**: Empaquetador SCORM de video para Moodle con soporte dual: modo pasivo tradicional (tracking al 90% visto) y modo interactivo con pausas evaluativas (`checkpoints`) y arquitectura Dual ZIP.
-
-**Uso**:
-```bash
-# Modo Pasivo tradicional (completitud al 90% visualizado)
-python scripts/scorm_generators/create_video_scorm.py video.mp4 "Clase Magistral" "Introducción temática"
-
-# Modo Interactivo con Checkpoints evaluativos que califican en Moodle
+# Empaquetar video interactivo existente con checkpoints evaluativos
 python scripts/scorm_generators/create_video_scorm.py video.mp4 --checkpoints checkpoints.json --timeline audio_timeline.json
 ```
 
 ---
 
-### create_scorm_package.py
+## 🎮 Gamificación Interactiva: Conecta Bloques y Gran Trivia SCORM
 
-**Objetivo**: Genera un paquete SCORM a partir de un archivo markdown.
+Las actividades formativas interactivas se compilan como paquetes SCORM 1.2 estándar:
 
-**Uso**:
-```bash
-python scripts/scorm_generators/create_scorm_package.py
-```
+### 1. Desafío Conecta Bloques
+- **Mecánica**: Asociación de 8 pares de conceptos clave mediante una interfaz synthwave accesible.
+- **Técnica**: Motor Web Audio API autónomo, temporizador configurable, barra de precisión y reporte de finalización al LMS.
+- **Compilación**:
+  ```bash
+  python scripts/scorm_generators/build_conectabloques_scorm.py ruta/a/pares.md -o outputs/scorm/conectabloques-SCORM.zip
+  ```
 
-**Requisitos**:
-- Archivo `course-content-edited.md` en el directorio de ejecución.
-- Estructura con encabezados `# Módulo X: Título`.
-
-**Salida**:
-- Directorio de desarrollo `scorm_package/` con los archivos HTML.
-- Archivo empaquetado final `[nombre-del-curso]-SCORM.zip`.
-
----
-
-### create_scorm_modern_package.py
-
-**Objetivo**: Genera un paquete SCORM moderno compuesto por **1 Clase o Lectura + 1 Evaluación (cuestionario interactivo) + N Actividades**, con soporte de bloques de apoyo (`:::apoyo:::`) con video embebido de YouTube/Drive, y una lista de enlaces externos (`ENLACES.md`).
-
-**Uso**:
-```bash
-# Validar configuración + contenido, sin generar nada
-python scripts/scorm_generators/create_scorm_modern_package.py validate mi-curso/config.yaml
-
-# Listar los objetos parseados (clase/lectura/evaluación/actividades/enlaces)
-python scripts/scorm_generators/create_scorm_modern_package.py list mi-curso/config.yaml
-
-# Construir el paquete SCORM (.zip)
-python scripts/scorm_generators/create_scorm_modern_package.py build mi-curso/config.yaml
-```
-
-**Guía de Creación del Archivo de Configuración (`config.yaml`)**:
-El archivo `config.yaml` orquesta las propiedades del curso. Debes crear un archivo de texto con extensión `.yaml` siguiendo esta estructura:
-```yaml
-identificador: mi-curso-id         # ID único para el paquete (sin espacios ni acentos)
-titulo: "Mi Curso SCORM Moderno"   # Título del curso que aparecerá en el LMS
-contenido_md: curso.md             # Ruta relativa al archivo markdown con el contenido
-salida_dir: output                 # Carpeta donde se generará el paquete final
-puntaje_minimo: 80                 # Puntaje mínimo para aprobar la evaluación (0 a 100)
-
-enlaces:                           # (Opcional) Listado de enlaces de interés
-  - titulo: "Sitio Oficial"
-    url: "https://ejemplo.com"
-    descripcion: "Documentación y recursos del tema."
-```
-
-**Guía de Creación del Archivo de Contenido (`.md`)**:
-El archivo markdown referenciado (por ejemplo, `curso.md`) debe estructurarse usando títulos de nivel 1 (`# `) que definen los componentes. 
-
-> [!NOTE]
-> Se utiliza **`# Clase:`** o **`# Lectura:`** (o `# Lecturas:`) en lugar de `# Lección:` para estructurar la unidad de estudio del curso, reflejando el propósito de clases académicas y lecturas sugeridas.
-
-```markdown
-# Clase: Introducción al Tema
-Aquí va el contenido teórico de la clase o lectura.
-
-:::apoyo
-Este es un bloque de apoyo destacado para tips o notas adicionales.
-VIDEO: https://www.youtube.com/watch?v=EjemploVideoId
-:::
-
-# Actividad: Práctica Guiada
-Descripción de la actividad o ejercicio práctico que el estudiante debe realizar.
-
-# Evaluación: Cuestionario del Módulo
-Breve introducción al quiz.
-
-## Pregunta 1
-¿Cuál es la respuesta correcta?
-A) Opción incorrecta 1
-B) Opción correcta
-C) Opción incorrecta 2
-D) Opción incorrecta 3
-
-**Respuesta correcta: B**
-**Explicación:** Opcional. Aquí se detalla la justificación de la respuesta correcta.
-
-# Enlaces
-- [Recurso Adicional](https://recurso.com) — Descripción opcional del recurso.
-```
-
-**Salida**:
-- Directorio `<salida_dir>/<identificador>/` con `index.html`, `leccion.html` (o el nombre correspondiente a Clase/Lectura), `evaluacion.html`, `actividad_NN.html`, `imsmanifest.xml` y `ENLACES.md`.
-- Archivo empaquetado final `<identificador>-SCORM.zip`.
-
-**Cuándo usarlo en lugar de `create_scorm_package.py`**: cuando el curso necesita una clase o lectura con un quiz autocorregido con seguimiento SCORM de aprobado/reprobado, actividades separadas de la lección, o una lista curada de enlaces externos.
+### 2. Gran Trivia SCORM
+- **Aleatorización Anti-Trampa**: Las preguntas se formulan **sin numeración fija en los enunciados** (sin "Pregunta 1") para permitir la rotación aleatoria en Moodle.
+- **4 Modos de Configuración**:
+  - **🚀 Modo Turbo 1**: 10 preguntas, 60% de aprobación, 30 min, estilo Neón y retroalimentación inmediata.
+  - **🎮 Modo Turno Estándar**: Navegación libre por pasos (`← Anterior` y `Siguiente →`), revisión antes de entregar y 70% de aprobación.
+  - **⚡ Modo Turbo 2**: Generación masiva por lotes para todas las unidades existentes.
+  - **🎨 Personalización Total**: Selección de tema visual (`neon`, `corporate`, `minimal`), tiempo y momento de feedback.
+- **Compilación**:
+  ```bash
+  python scripts/scorm_generators/build_trivia_scorm.py ruta/a/trivia.md -o outputs/scorm/trivia-SCORM.zip
+  ```
 
 ---
 
-### create_audio_scorm.py
+## 📚 Centro de Ayuda y Guías Ilustradas
 
-**Objetivo**: Crea un paquete SCORM con un reproductor de audio integrado.
-
-**Uso**:
-```bash
-# Básico
-python scripts/scorm_generators/create_audio_scorm.py leccion.mp3
-
-# Con título
-python scripts/scorm_generators/create_audio_scorm.py leccion.mp3 "Lección 1"
-
-# Completo
-python scripts/scorm_generators/create_audio_scorm.py leccion.mp3 "Lección 1" "Introducción general"
-```
-
-**Formatos**: MP3, WAV, OGG, M4A, AAC.
-
----
-
-### create_video_scorm.py
-
-**Objetivo**: Crea un paquete SCORM con un reproductor de video interactivo.
-
-**Uso**:
-```bash
-# Básico
-python scripts/scorm_generators/create_video_scorm.py video.mp4
-
-# Con título y descripción
-python scripts/scorm_generators/create_video_scorm.py video.mp4 "Video Lección 1" "Vista general"
-```
-
-**Formatos**: MP4, WEBM, MOV, AVI, MKV.
-
----
-
-## Integración Multimedia
-
-### Guía de Tamaños Recomendados
-
-| Tamaño | Recomendación | Acción sugerida |
-|------------|-----------------|--------|
-| < 10 MB | Ideal | Usar directamente |
-| 10-25 MB | Aceptable | Compresión opcional |
-| 25-50 MB | Grande | Compresión recomendada |
-| 50-100 MB | Muy grande | Compresión obligatoria |
-| > 100 MB | Excesivo | Alojamiento externo (YouTube/Vimeo) |
-
-### Compresión de Video con ffmpeg
-
-**Alta Calidad (Recomendado)**:
-```bash
-ffmpeg -i input.mp4 -vcodec libx264 -crf 23 -preset medium -acodec aac -b:a 128k output.mp4
-```
-
-**Calidad Media (Tamaño reducido)**:
-```bash
-ffmpeg -i input.mp4 -vcodec libx264 -crf 28 -preset fast -acodec aac -b:a 96k output.mp4
-```
-
----
-
----
-
-## Centro de Ayuda y Guías Ilustradas
-
-El proyecto incluye un centro de documentación y guías paso a paso ilustradas con capturas de pantalla, generadas bajo el estándar Schema v2 en `output/articles/`:
+El proyecto incluye 9 guías ilustradas paso a paso generadas bajo el estándar Schema v2, acompañadas de sus respectivos videotutoriales MP4 en `outputs/articles/`:
 
 | Guía / Flujo | Descripción Pedagógica y Técnica | Tipo | Video MP4 |
 | :--- | :--- | :---: | :---: |
-| [**Instructivo: Instalación del repositorio y prompts de línea de comandos**](output/articles/guia-instalacion-prompts-linea-comandos/article.json) | Flujo guiado: clonación, entorno virtual, prompts para agentes IA y comandos de despliegue en Moodle. | how-to | [Ver Video](output/articles/guia-instalacion-prompts-linea-comandos/videotutorial.mp4) |
-| [**Cómo usar Aula Lista para crear actividades del curso y conectarse a Moodle**](output/articles/guia-aula-lista-moodle/article.json) | Ejecución del pipeline de ensamblado de aula, previsualización local y conexión autenticada mediante la CLI `tiza`. | `how-to` [Ver Video](output/articles/guia-aula-lista-moodle/videotutorial.mp4) |
-| [**Cómo diseñar una unidad didáctica bajo la estructura tripartita en Moodle**](output/articles/disenar-unidad-tripartita-moodle/article.json) | Metodología de la Circular N° 5: integración de **1. La Clase** (cápsulas 20-30 min), **2. La Lectura** (glosario y 20 FAQs) y **3. La Práctica** (gamificación). | `how-to` [Ver Video](output/articles/disenar-unidad-tripartita-moodle/videotutorial.mp4) |
-| [**Cómo crear trivias gamificadas y desafíos Conecta Bloques en SCORM**](output/articles/crear-trivias-scorm-conecta-bloques/article.json) | Formulación de ítems de autoevaluación sin numeración fija para mezcla aleatoria y exportación a SCORM 1.2 interactivo. | `how-to` [Ver Video](output/articles/crear-trivias-scorm-conecta-bloques/videotutorial.mp4) |
-| [**Cómo generar podcasts pedagógicos de dos voces con acento rioplatense**](output/articles/generar-podcasts-pedagogicos-dos-voces/article.json) | Redacción de guiones dialógicos (A/B), síntesis con `edge-tts` (Elena y Tomás) y masterización con filtros `ffmpeg` de calidad cálida. | `how-to` [Ver Video](output/articles/generar-podcasts-pedagogicos-dos-voces/videotutorial.mp4) |
-| [**Cómo comprimir y empaquetar videos pedagógicos en formato SCORM**](output/articles/empaquetar-videos-comprimir-scorm/article.json) | Compresión optimizada para LMS (`crf 23`, `libx264`) y configuración de rastreo de lección al 90% visto. | `how-to` [Ver Video](output/articles/empaquetar-videos-comprimir-scorm/videotutorial.mp4) |
-| [**Cómo configurar el sistema de Doble Candado para emitir certificados en Moodle**](output/articles/configurar-doble-candado-certificacion/article.json) | Encadenamiento condicional: aprobación del Examen Final Sumativo (≥ 70%) y envío de la Encuesta de Calidad obligatoria. | `how-to` [Ver Video](output/articles/configurar-doble-candado-certificacion/videotutorial.mp4) |
-| [**Cómo auditar la integridad técnica de un curso con la CLI tiza**](output/articles/auditar-integridad-tecnica-tiza/article.json) | Auditoría offline de HTML peligroso, validación de dependencias entre lecciones y control de calidad institucional. | `troubleshooting` [Ver Video](output/articles/auditar-integridad-tecnica-tiza/videotutorial.mp4) |
-| [**Cómo aumentar el límite de subida de archivos para paquetes SCORM en Moodle**](output/articles/aumentar-limite-subida-archivos-moodle/article.json) | Ajuste coordinado en `php.ini`, servidores web (Apache / Nginx) y políticas de administración del campus. | `troubleshooting` [Ver Video](output/articles/aumentar-limite-subida-archivos-moodle/videotutorial.mp4) |
-
-## Importación en LMS
-
-### Moodle
-
-1. **Accede a tu curso** en Moodle.
-2. **Activa la edición** en la esquina superior derecha.
-3. Haz clic en **"Añadir una actividad o recurso"**.
-4. Selecciona **"Paquete SCORM"**.
-5. Sube tu archivo `.zip` generado.
-6. Ajusta los parámetros de visualización (se recomienda "Nueva ventana" y tamaño responsivo) y haz clic en **"Guardar cambios"**.
+| [**Instructivo: Instalación del repositorio y prompts**](outputs/articles/guia-instalacion-prompts-linea-comandos/article.json) | Clonación, entorno virtual, prompts para agentes IA y comandos de despliegue. | `how-to` | [Ver Video](outputs/articles/guia-instalacion-prompts-linea-comandos/videotutorial.mp4) |
+| [**Uso de Aula Lista y conexión con Moodle**](outputs/articles/guia-aula-lista-moodle/article.json) | Ensamblado de aula, previsualización local y conexión autenticada con la CLI `tiza`. | `how-to` | [Ver Video](outputs/articles/guia-aula-lista-moodle/videotutorial.mp4) |
+| [**Diseño de unidad didáctica tripartita**](outputs/articles/disenar-unidad-tripartita-moodle/article.json) | Estructuración Circular N° 5: La Clase, La Lectura y La Práctica. | `how-to` | [Ver Video](outputs/articles/disenar-unidad-tripartita-moodle/videotutorial.mp4) |
+| [**Creación de trivias y Conecta Bloques**](outputs/articles/crear-trivias-scorm-conecta-bloques/article.json) | Preguntas sin numeración fija para mezcla aleatoria y exportación SCORM 1.2. | `how-to` | [Ver Video](outputs/articles/crear-trivias-scorm-conecta-bloques/videotutorial.mp4) |
+| [**Podcasts pedagógicos de dos voces**](outputs/articles/generar-podcasts-pedagogicos-dos-voces/article.json) | Guiones dialógicos (A/B), síntesis con `edge-tts` (Elena y Tomás) y masterización `ffmpeg`. | `how-to` | [Ver Video](outputs/articles/generar-podcasts-pedagogicos-dos-voces/videotutorial.mp4) |
+| [**Compresión y empaquetado de video SCORM**](outputs/articles/empaquetar-videos-comprimir-scorm/article.json) | Compresión optimizada (`crf 23`, `libx264`) y rastreo de finalización al 90% visto. | `how-to` | [Ver Video](outputs/articles/empaquetar-videos-comprimir-scorm/videotutorial.mp4) |
+| [**Configuración del sistema de Doble Candado**](outputs/articles/configurar-doble-candado-certificacion/article.json) | Encadenamiento: Examen Final (≥ 70%) y Encuesta de Calidad obligatoria. | `how-to` | [Ver Video](outputs/articles/configurar-doble-candado-certificacion/videotutorial.mp4) |
+| [**Auditoría de integridad técnica con tiza**](outputs/articles/auditar-integridad-tecnica-tiza/article.json) | Auditoría offline de HTML, validación de recursos y control de calidad. | `troubleshooting` | [Ver Video](outputs/articles/auditar-integridad-tecnica-tiza/videotutorial.mp4) |
+| [**Aumento del límite de subida en Moodle**](outputs/articles/aumentar-limite-subida-archivos-moodle/article.json) | Configuración de `php.ini`, Apache/Nginx y administración de campus virtual. | `troubleshooting` | [Ver Video](outputs/articles/aumentar-limite-subida-archivos-moodle/videotutorial.mp4) |
 
 ---
 
-## Estándares de Calidad
+## ⚡ Guía Rápida de Comandos
 
-- **Pedagogía**: Contenido estructurado según la taxonomía de Bloom con dificultad incremental.
-- **Formato**: Markdown a HTML responsivo. Tablas bien estructuradas con separadores estándar.
-- **Idioma**: Tono cercano "tú" consistente, acentuación perfecta en español y ejemplos relevantes.
-- **SCORM**: Cumplimiento estricto del esquema XML 1.2 verificado mediante validaciones de estructura.
+```bash
+# 1. Generar podcast pedagógico rioplatense (Elena y Tomás)
+python -c "from scripts.audio_generators.podcast_engine import generate_podcast_sync; generate_podcast_sync('A: Hola colega...\nB: Hola, hoy analizamos cultura organizacional.', 'outputs/audio/podcast_demo.mp3')"
+
+# 2. Generar preguntas de trivia interactivas con IA
+python scripts/content_generation/generate_trivia_ai.py content/apuntes_unidad.md -o content/trivia_unidad.md
+
+# 3. Compilar Gran Trivia SCORM 1.2
+python scripts/scorm_generators/build_trivia_scorm.py content/trivia_unidad.md -o outputs/scorm/trivia_unidad-SCORM.zip
+
+# 4. Compilar Conecta Bloques SCORM 1.2
+python scripts/scorm_generators/build_conectabloques_scorm.py content/pares_conceptuales.md -o outputs/scorm/conectabloques_unidad-SCORM.zip
+
+# 5. Compilar lección moderna con video adicional y quiz
+python scripts/scorm_generators/create_scorm_modern_package.py build scorm_modern/ejemplo/config.yaml
+
+# 6. Diagnóstico y producción audiovisual integral EducAI
+python scripts/video_engine/doctor.py
+python scripts/video_engine/orchestrator.py films/<proyecto> --doc material.docx --title "Título"
+
+# 7. Renderizar videotutoriales de guías ilustradas
+python scripts/render_all_videotutorials.py
+```
 
 ---
 
-## Contribuciones
+## 🔒 Publicación Segura en Moodle
 
-1. Realiza un **Fork** del repositorio.
-2. Crea una rama para tu característica: `git checkout -b feature/nueva-funcion`.
-3. Haz commit de tus cambios: `git commit -m "Añade nueva función"`.
-4. Envía la rama: `git push origin feature/nueva-funcion`.
-5. Abre una **Pull Request**.
+La sincronización con el aula virtual Moodle se realiza a través de la CLI oficial **Tiza**, garantizando aislamiento estricto de credenciales:
+
+1. **Auditoría Offline de Calidad**:
+   ```bash
+   tiza comprobar outputs/cursos/gestion_personas_talento/02_u1_la_clase.html
+   ```
+2. **Sesión Docente Autenticada**:
+   El docente abre la sesión desde su terminal (`tiza empezar`), sin que ningún agente tenga acceso a sus claves.
+3. **Publicación Directa**:
+   ```bash
+   tiza publicar outputs/cursos/gestion_personas_talento/02_u1_la_clase.html --en real
+   ```
 
 ---
 
-## Licencia
+## 🛡️ Estándares de Calidad y Directiva Zero-Missing
+
+El sistema no da por finalizada ninguna unidad hasta que el agente `auditor-calidad-aula-lista` ejecuta la verificación física de los **10 elementos canónicos**:
+1. Banner visual panorámico (`banner_unidad.png`) presente y vinculado.
+2. Etiqueta de encuadre con síntesis de 2 oraciones y 3 preguntas andragógicas.
+3. Video short de microlearning renderizado en MP4.
+4. Página de la clase con integración Dual Video y enlace a videoclase magistral.
+5. Presentación de clase en formato descargable (`.pdf` o `.pptx`).
+6. Módulo teórico estructurado con glosario terminológico y bloque FAQ.
+7. Infografía conceptual de síntesis incrustada en la lectura.
+8. Tarea de práctica con consigna orientadora obligatoria y caso situado con rúbrica.
+9. Paquetes interactivos SCORM 1.2 compilados (Conecta Bloques y Gran Trivia).
+10. Aprobación del validador de sintaxis y seguridad HTML (`tiza comprobar`).
+
+Si se detecta la ausencia de cualquiera de ellos, el sistema activa automáticamente su protocolo de auto-reparación (**Self-Healing**) hasta completar el 100% de los requisitos.
+
+---
+
+## 💻 Requisitos del Sistema
+
+### Obligatorios
+
+| Requisito | Versión | Notas |
+|-----------|----------|------|
+| **Python** | 3.10+ | Probado en 3.10, 3.11, 3.14 |
+| **Claude Code / Antigravity** | Última | Para el uso de agentes de IA |
+
+### Opcionales / Recomendados
+
+| Requisito | Versión | Uso |
+|-----------|----------|----------|
+| **ffmpeg / ffprobe** | 4.0+ | Compresión y ensamblado de video/audio |
+| **Node.js** | 18+ | Renderizado de Canvas y simulaciones |
+| **Git** | 2.0+ | Control de versiones |
+
+---
+
+## 📄 Licencia
 
 Este proyecto está liberado bajo la Licencia MIT. Consulta el archivo `LICENSE` para más información.
-
----
-
-*Desarrollado de forma profesional para la creación y gestión ágil de contenidos e-learning.*
