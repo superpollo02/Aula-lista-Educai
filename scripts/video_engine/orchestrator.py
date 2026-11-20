@@ -341,7 +341,7 @@ class EducAIPipeline:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="EducAI Unified Video Studio Orchestrator")
-    parser.add_argument("project_dir", nargs="?", default="films/demo-produccion", help="Directorio del proyecto")
+    parser.add_argument("project_dir", nargs="?", default="output/videos/demo-produccion", help="Directorio del proyecto (subdirectorio en output/videos)")
     parser.add_argument("--doc", "-d", help="Documento de cátedra de origen (.pptx, .docx, .pdf)")
     parser.add_argument("--engine", "-e", default="motion_graphics", choices=["motion_graphics", "explainer", "canvas", "hyperframes", "lemo"], help="Motor visual")
     parser.add_argument("--voice", "-v", default="es-AR-ElenaNeural", help="Voz neural EdgeTTS")
