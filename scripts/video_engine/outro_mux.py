@@ -54,7 +54,7 @@ def concat_with_outro(
     output_final_path: str | Path,
     outro_path: Optional[str | Path] = None,
 ) -> Path:
-    """Concatenate main video with ending outro, using copy mode or filter fallback."""
+    """Concatenate main video with ending outro, normalizing resolution and audio rate."""
     main_path = Path(main_video_path).resolve()
     final_path = Path(output_final_path).resolve()
     final_path.parent.mkdir(parents=True, exist_ok=True)
@@ -66,61 +66,34 @@ def concat_with_outro(
         shutil.copy2(str(main_path), str(final_path))
         return final_path
 
-    # Try fast concat demuxer via temporary text file
-    with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf-8") as f_list:
-        list_file = Path(f_list.name)
-        f_list.write(f"file '{main_path.as_posix()}'\n")
-        f_list.write(f"file '{actual_outro.as_posix()}'\n")
-
-    cmd = [
+    # Normalize streams: scale outro to 1080p and resample audio to 44.1kHz stereo to avoid clock drift
+    cmd_filter = [
         "ffmpeg", "-y",
-        "-f", "concat",
-        "-safe", "0",
-        "-i", str(list_file),
-        "-c", "copy",
+        "-i", str(main_path),
+        "-i", str(actual_outro),
+        "-filter_complex",
+        "[0:v]setsar=1[v0];"
+        "[1:v]scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2,setsar=1[v1];"
+        "[0:a]aformat=sample_rates=44100:channel_layouts=stereo[a0];"
+        "[1:a]aformat=sample_rates=44100:channel_layouts=stereo[a1];"
+        "[v0][a0][v1][a1]concat=n=2:v=1:a=1[v][a]",
+        "-map", "[v]",
+        "-map", "[a]",
+        "-c:v", "libx264",
+        "-pix_fmt", "yuv420p",
+        "-preset", "fast",
+        "-crf", "18",
+        "-c:a", "aac",
+        "-b:a", "192k",
         str(final_path),
     ]
 
-    try:
-        subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            check=True,
-        )
-    except subprocess.CalledProcessError:
-        # Re-encode filter fallback if codecs or timebases differ
-        cmd_filter = [
-            "ffmpeg", "-y",
-            "-i", str(main_path),
-            "-i", str(actual_outro),
-            "-filter_complex",
-            "[0:v:0][0:a:0][1:v:0][1:a:0]concat=n=2:v=1:a=1[v][a]",
-            "-map", "[v]",
-            "-map", "[a]",
-            "-c:v", "libx264",
-            "-pix_fmt", "yuv420p",
-            "-c:a", "aac",
-            "-b:a", "192k",
-            "-ac", "2",
-            "-ar", "44100",
-            str(final_path),
-        ]
-        subprocess.run(
-            cmd_filter,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            check=True,
-        )
-    finally:
-        if list_file.is_file():
-            try:
-                list_file.unlink()
-            except OSError:
-                pass
-
+    subprocess.run(
+        cmd_filter,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        check=True,
+    )
     return final_path

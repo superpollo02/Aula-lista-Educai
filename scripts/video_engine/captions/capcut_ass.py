@@ -43,7 +43,7 @@ def build_capcut_ass(
         s_offset = scene_offsets.get(sid, 0.0)
         s_words = word_timings.get(sid, [])
         for w in s_words:
-            w_text = w.get("text", "").strip()
+            w_text = w.get("text", "").strip().replace("{", "(").replace("}", ")")
             if not w_text:
                 continue
             w_start = s_offset + float(w.get("start", 0.0))

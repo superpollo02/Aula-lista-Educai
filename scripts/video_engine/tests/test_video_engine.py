@@ -96,6 +96,26 @@ class TestEducAIVideoEngine(unittest.TestCase):
                 self.assertIn("Clase de Prueba", manifest_content)
                 self.assertIn("index.html", manifest_content)
 
+    def test_scorm_special_characters_xml_escaping(self):
+        """Verify XML escaping in imsmanifest.xml with special characters (&, <, >)."""
+        import xml.etree.ElementTree as ET
+        with tempfile.TemporaryDirectory() as tmpdir:
+            out_zip = Path(tmpdir) / "special_scorm.zip"
+            title_with_entities = "Salud & Seguridad <I&D> '2026'"
+            build_scorm_package(
+                title=title_with_entities,
+                video_url="video.mp4",
+                checkpoints=[],
+                output_zip=str(out_zip),
+            )
+            import zipfile
+            with zipfile.ZipFile(out_zip, "r") as z:
+                manifest_xml = z.read("imsmanifest.xml").decode("utf-8")
+                # Parse as XML - must not raise ParseError
+                root = ET.fromstring(manifest_xml)
+                self.assertIsNotNone(root)
+                self.assertIn("Salud &amp; Seguridad &lt;I&amp;D&gt; '2026'", manifest_xml)
+
 
 if __name__ == "__main__":
     unittest.main()

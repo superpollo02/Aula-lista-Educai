@@ -15,6 +15,12 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+
+# Ensure project root is in sys.path for direct CLI execution
+_project_root = Path(__file__).resolve().parent.parent.parent
+if str(_project_root) not in sys.path:
+    sys.path.insert(0, str(_project_root))
+
 from typing import Any, Optional
 
 from scripts.video_engine.captions.word_timings import synthesize_scenes_speech, probe_duration
@@ -179,7 +185,16 @@ class EducAIPipeline:
 
         # --- Stage 7: Post-Render QA Gate ---
         print("[Etapa 7] Ejecutando compuerta de calidad Post-Render...")
-        post_qa = validate_post_render(final_video_path, expected_duration=total_audio_duration)
+        outro_dur = 0.0
+        target_outro = Path(outro_path).resolve() if outro_path else (Path(__file__).resolve().parent / "assets" / "ending. educai.mp4")
+        if target_outro.is_file():
+            try:
+                outro_dur = probe_duration(target_outro)
+            except Exception:
+                outro_dur = 0.0
+        expected_total_duration = total_audio_duration + outro_dur
+
+        post_qa = validate_post_render(final_video_path, expected_duration=expected_total_duration)
         if not post_qa["passed"]:
             print(f"⚠️  [QA Gate Warning] Observaciones detectadas: {post_qa['issues']}")
         else:

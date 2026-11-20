@@ -8,6 +8,7 @@ invariants (safe fullscreen, robust checkpoint trigger windows, and speech synch
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import os
 import re
@@ -15,6 +16,7 @@ import sys
 import zipfile
 from pathlib import Path
 from typing import Any, Optional
+from xml.sax.saxutils import escape as xml_escape
 
 SCORM_HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="es">
@@ -475,15 +477,19 @@ def build_scorm_package(
     video_src = video_basename if include_video_file else video_url
     extra_files = f'\n      <file href="{video_basename}"/>' if include_video_file else ""
 
+    # Safe titles for HTML and XML (prevents XSS and XML parse errors with & or <>)
+    escaped_html_title = html.escape(title)
+    escaped_xml_title = xml_escape(title)
+
     html_content = (
-        SCORM_HTML_TEMPLATE.replace("{title}", title)
+        SCORM_HTML_TEMPLATE.replace("{title}", escaped_html_title)
         .replace("{video_src}", video_src)
         .replace("{checkpoints_json}", json.dumps(cps_formatted, ensure_ascii=False))
     )
 
     manifest_content = (
         MANIFEST_XML_TEMPLATE.replace("{identifier}", identifier)
-        .replace("{title}", title)
+        .replace("{title}", escaped_xml_title)
         .replace("{extra_files}", extra_files)
     )
 
@@ -507,13 +513,13 @@ def build_scorm_package(
         zero_zip_path = out_path.with_name(zero_name)
 
         zero_html = (
-            SCORM_HTML_TEMPLATE.replace("{title}", title)
+            SCORM_HTML_TEMPLATE.replace("{title}", escaped_html_title)
             .replace("{video_src}", video_url)
             .replace("{checkpoints_json}", json.dumps(cps_formatted, ensure_ascii=False))
         )
         zero_manifest = (
             MANIFEST_XML_TEMPLATE.replace("{identifier}", identifier + "_zw")
-            .replace("{title}", title)
+            .replace("{title}", escaped_xml_title)
             .replace("{extra_files}", "")
         )
 
