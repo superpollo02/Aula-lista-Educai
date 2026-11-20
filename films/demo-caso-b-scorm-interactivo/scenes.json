@@ -1,0 +1,107 @@
+[
+  {
+    "scene_id": "scene_01",
+    "order": 1,
+    "title": "Introducción",
+    "voiceover_script": "Instructivo Caso B: Video-Cuestionario SCORM para Moodle",
+    "screen_elements": {
+      "title": "Introducción",
+      "bullets": [
+        "Instructivo Caso B: Video-Cuestionario SCORM para Moodle"
+      ],
+      "theme": {
+        "primary": "#4066c2",
+        "secondary": "#3c60b5",
+        "alert": "#ea580c",
+        "dark_neutral": "#162237",
+        "background": "#ffffff",
+        "board_sheen": "rgba(255, 255, 255, 0.45)"
+      }
+    },
+    "checkpoints": []
+  },
+  {
+    "scene_id": "scene_02",
+    "order": 2,
+    "title": "1. Lección Interactiva para Moodle",
+    "voiceover_script": "Cuando necesitás evaluar la comprensión de tus alumnos dentro de Moodle, el camino es el video-cuestionario interactivo. Le entregás tu apunte y le pedís que formule preguntas de opción múltiple al cerrar cada concepto importante.",
+    "screen_elements": {
+      "title": "1. Lección Interactiva para Moodle",
+      "bullets": [
+        "Cuando necesitás evaluar la comprensión de tus alumnos dentro de Moodle, el camino es el video-cuestionario interactivo. Le entregás tu apunte y le pedís que formule preguntas de opción múltiple al cerrar cada concepto importante."
+      ],
+      "theme": {
+        "primary": "#4066c2",
+        "secondary": "#3c60b5",
+        "alert": "#ea580c",
+        "dark_neutral": "#162237",
+        "background": "#ffffff",
+        "board_sheen": "rgba(255, 255, 255, 0.45)"
+      }
+    },
+    "checkpoints": []
+  },
+  {
+    "scene_id": "scene_03",
+    "order": 3,
+    "title": "2. Sincronía Invariante y Pantalla Segura",
+    "voiceover_script": "La regla de oro del sistema es no cortar jamás la voz del docente. Cada pregunta aparece medio segundo después de que termina la frase. Además, el botón de pantalla completa se ajusta al contenedor para que el cuestionario nunca quede escondido detrás del reproductor.",
+    "screen_elements": {
+      "title": "2. Sincronía Invariante y Pantalla Segura",
+      "bullets": [
+        "La regla de oro del sistema es no cortar jamás la voz del docente. Cada pregunta aparece medio segundo después de que termina la frase. Además, el botón de pantalla completa se ajusta al contenedor para que el cuestionario nunca quede escondido detrás del reproductor."
+      ],
+      "theme": {
+        "primary": "#4066c2",
+        "secondary": "#3c60b5",
+        "alert": "#ea580c",
+        "dark_neutral": "#162237",
+        "background": "#ffffff",
+        "board_sheen": "rgba(255, 255, 255, 0.45)"
+      }
+    },
+    "checkpoints": []
+  },
+  {
+    "scene_id": "scene_04",
+    "order": 4,
+    "title": "3. Empaquetado Dual SCORM 1.2",
+    "voiceover_script": "Para que no tengas problemas de cuota en el campus, el empaquetador genera dos archivos zip: el paquete completo con el video adentro, y la versión liviana de menos de cuatrocientos kilobytes que reproduce el video desde la nube sin ocupar espacio en el servidor.",
+    "screen_elements": {
+      "title": "3. Empaquetado Dual SCORM 1.2",
+      "bullets": [
+        "Para que no tengas problemas de cuota en el campus, el empaquetador genera dos archivos zip: el paquete completo con el video adentro, y la versión liviana de menos de cuatrocientos kilobytes que reproduce el video desde la nube sin ocupar espacio en el servidor."
+      ],
+      "theme": {
+        "primary": "#4066c2",
+        "secondary": "#3c60b5",
+        "alert": "#ea580c",
+        "dark_neutral": "#162237",
+        "background": "#ffffff",
+        "board_sheen": "rgba(255, 255, 255, 0.45)"
+      }
+    },
+    "checkpoints": []
+  },
+  {
+    "scene_id": "scene_05",
+    "order": 5,
+    "title": "4. Registro Automático en Moodle",
+    "voiceover_script": "Subís el paquete como actividad SCORM a tu curso y definís la nota de aprobación. A medida que los estudiantes miran la clase y responden las preguntas, Moodle registra los intentos y asienta la calificación directamente en el libro de notas.",
+    "screen_elements": {
+      "title": "4. Registro Automático en Moodle",
+      "bullets": [
+        "Subís el paquete como actividad SCORM a tu curso y definís la nota de aprobación. A medida que los estudiantes miran la clase y responden las preguntas, Moodle registra los intentos y asienta la calificación directamente en el libro de notas."
+      ],
+      "theme": {
+        "primary": "#4066c2",
+        "secondary": "#3c60b5",
+        "alert": "#ea580c",
+        "dark_neutral": "#162237",
+        "background": "#ffffff",
+        "board_sheen": "rgba(255, 255, 255, 0.45)"
+      }
+    },
+    "checkpoints": []
+  }
+]

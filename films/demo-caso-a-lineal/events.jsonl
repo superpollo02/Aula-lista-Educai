@@ -1,0 +1,6 @@
+{"ts": "2026-11-20T14:40:36.399059+00:00", "call_id": "75fb9d3c025b41e48d5fec16392be0e2", "tool": "edge_tts", "event": "start"}
+{"ts": "2026-11-20T14:40:54.664996+00:00", "call_id": "75fb9d3c025b41e48d5fec16392be0e2", "tool": "edge_tts", "event": "finish", "success": true, "cost_usd": 0.0, "duration_s": 18.26}
+{"ts": "2026-11-20T14:45:22.912393+00:00", "call_id": "2bead8aba5914dac8ba73505e6f90b67", "tool": "edge_tts", "event": "start"}
+{"ts": "2026-11-20T14:45:30.430396+00:00", "call_id": "2bead8aba5914dac8ba73505e6f90b67", "tool": "edge_tts", "event": "finish", "success": true, "cost_usd": 0.0, "duration_s": 7.52}
+{"ts": "2026-11-20T14:45:53.154734+00:00", "call_id": "2fd04bab0f07442989c5b62ac2860f58", "tool": "visual_qa", "event": "start"}
+{"ts": "2026-11-20T14:45:53.157985+00:00", "call_id": "2fd04bab0f07442989c5b62ac2860f58", "tool": "visual_qa", "event": "error", "error": "'input_path'", "duration_s": 0.0}

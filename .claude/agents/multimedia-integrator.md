@@ -27,13 +27,21 @@ python create_audio_scorm.py <audio_file> [title] [description]
 - Creates standalone SCORM with audio player
 - Tracks completion when audio finishes
 
-**For Video:**
+**For Video (Passive & Interactive SCORM):**
 ```bash
-python create_video_scorm.py <video_file> [title] [description]
+# SCORM Pasivo (completitud al 90% visto)
+python scripts/scorm_generators/create_video_scorm.py <video_file> [title] [description]
+
+# SCORM Interactivo con Preguntas/Checkpoints (califica en libro de calificaciones de Moodle)
+python scripts/scorm_generators/create_video_scorm.py <video_file> --checkpoints checkpoints.json --timeline audio_timeline.json
+
+# O empaquetador directo de EducAI Video Studio (Dual ZIP: Completo y Zero-Weight)
+python -c "from scripts.video_engine.scorm.scorm_packager import build_scorm_package; build_scorm_package('Título', 'video.mp4', checkpoints=[], output_zip='out_SCORM_Completo.zip', include_video_file='video.mp4', also_build_zero_weight=True)"
 ```
-- Supports: MP4, WEBM, MOV, AVI, MKV
-- Creates standalone SCORM with video player
-- Progress bar and tracking (90% viewed = complete)
+- Soporta formatos: MP4, WEBM, MOV, AVI, MKV
+- **Modo Pasivo:** Reproductor HTML5 con tracking de completitud al 90% visto.
+- **Modo Interactivo (Checkpoints):** Pausa automática al cierre de conceptos clave con ventana de preguntas formativas, indicador permanente de próxima pregunta y pantalla completa segura sobre `#player-container`.
+- **Dual ZIP:** Genera automáticamente el paquete completo (`*_SCORM_Completo.zip`) y el paquete ultra-liviano (`*_SCORM.zip` < 400 KB) con enlace a CDN/servidor externo.
 
 **For Compression (ffmpeg):**
 ```bash

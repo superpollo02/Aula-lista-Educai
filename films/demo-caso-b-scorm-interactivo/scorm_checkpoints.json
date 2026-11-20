@@ -1,0 +1,41 @@
+[
+  {
+    "scene_id": "scene_02",
+    "question": "¿Cuál es el principal beneficio pedagógico de un video interactivo SCORM frente a un video común?",
+    "options": [
+      "Obliga a mirar el video sin pausas",
+      "Evalúa la comprensión en hitos clave y califica en Moodle",
+      "Reduce el peso del archivo de video a cero"
+    ],
+    "correct_index": 1,
+    "feedback": "Correcto. El video interactivo verifica la comprensión formativa y asienta la nota en el libro de calificaciones del LMS.",
+    "timestamp": 19.368,
+    "section_title": "1. Lección Interactiva para Moodle"
+  },
+  {
+    "scene_id": "scene_03",
+    "question": "Según la Invariante 1 de EducAI, ¿dónde debe situarse la pausa de cada pregunta?",
+    "options": [
+      "Exactamente al finalizar la locución de la escena (+0.05s), sin cortar la voz",
+      "En cualquier segundo aleatorio de la lección",
+      "Al principio de la frase del docente"
+    ],
+    "correct_index": 0,
+    "feedback": "Exacto. La Invariante 1 prohíbe cortar la narración del docente a mitad de una frase.",
+    "timestamp": 37.342,
+    "section_title": "2. Sincronía Invariante y Pantalla Segura"
+  },
+  {
+    "scene_id": "scene_04",
+    "question": "¿Para qué sirve el paquete Zero-Weight (_SCORM.zip) de menos de 400 KB?",
+    "options": [
+      "Para reproducir audio sin video",
+      "Para superar límites de subida de 10-20 MB en campus universitarios",
+      "Para eliminar las preguntas del cuestionario"
+    ],
+    "correct_index": 1,
+    "feedback": "¡Muy bien! El paquete Zero-Weight permite desplegar videos extensos alojados en CDN superando cuotas de subida estrictas en Moodle.",
+    "timestamp": 53.132,
+    "section_title": "3. Empaquetado Dual SCORM 1.2"
+  }
+]

@@ -26,8 +26,18 @@ python -c "from scripts.audio_generators.podcast_engine import generate_podcast_
 # Construir aula Moodle completa con podcasts y SCORMs embebidos
 python cursos/gestion_personas_talento/generate_moodle_aula.py
 
-# Crear paquete SCORM de video
+# Diagnóstico del entorno de video
+python scripts/video_engine/doctor.py
+
+# Producción completa de video con EducAI Video Studio (Orquestador Unificado)
+python scripts/video_engine/orchestrator.py films/<proyecto> --doc material.docx --title "Título" --logo logo.jpg
+python scripts/video_engine/orchestrator.py films/<proyecto> --engine explainer --aspect 16:9
+
+# Crear paquete SCORM de video pasivo (90% visto)
 python scripts/scorm_generators/create_video_scorm.py <archivo_de_video> [titulo] [descripcion]
+
+# Crear paquete SCORM de video interactivo con checkpoints/preguntas
+python scripts/scorm_generators/create_video_scorm.py <archivo_de_video> --checkpoints checkpoints.json
 
 # Comprimir archivos de video grandes (CRF recomendado: 23)
 ffmpeg -i input.mp4 -vcodec libx264 -crf 23 -preset medium -acodec aac -b:a 128k output.mp4
@@ -37,9 +47,21 @@ ffmpeg -i input.mp4 -vcodec libx264 -crf 23 -preset medium -acodec aac -b:a 128k
 
 ```
 scripts/
+├── video_engine/            # Estudio Unificado EducAI (orquestador, parsers, captions, QA, SCORM interactivo)
+│   ├── parsers/             # Ingesta de PPTX, DOCX, PDF y extracción de paleta de marca
+│   ├── captions/            # Subtítulos dinámicos estilo CapCut (word_timings.json y .ass)
+│   ├── qa/                  # Gates obligatorios Pre-Render y Post-Render (Zero Mocks)
+│   ├── scorm/               # Empaquetador SCORM 1.2 interactivo con checkpoints (Dual ZIP)
+│   └── engines/             # Motores de renderizado (Explainer Canvas, Motion Graphics, Lemo)
 ├── scorm_generators/        # Creadores de paquetes SCORM (texto, audio, video, moderno)
+├── audio_generators/        # Podcast engine y síntesis de audio
 ├── content_generation/      # Generación de páginas HTML, edición de contenido
 └── legacy/                  # Scripts obsoletos (solo referencia)
+
+films/                       # Proyectos audiovisuales de cátedra (guiones, audios, MP4 y SCORM zips)
+├── demo-caso-a-lineal/      # Ejemplo: Video Común Full HD lineal con subtítulos CapCut
+├── demo-caso-b-scorm-interactivo/ # Ejemplo: Video-Cuestionario SCORM interactivo con pausas evaluativas
+└── demo-explainer-campus/   # Ejemplo: Explainer animado en Canvas (9:16 vertical y 16:9 horizontal)
 
 scorm_modern/                 # Generador moderno: Lección + Evaluación + N Actividades + enlaces
 ├── scorm_modern/             # Paquete Python (config, parser, renderer, manifest, builder, cli)
@@ -53,7 +75,7 @@ content/                     # Contenido de los cursos organizado por curso
 
 .claude/agents/              # Archivos de definición de agentes
 output/                      # Paquetes SCORM generados (.zip)
-docs/                        # Guías de importación y resolución de problemas
+docs/                        # Manual de uso oficial (MANUAL_DE_USO.md), guías de importación y soporte
 ```
 
 ## Flujo de Trabajo de Agentes
@@ -65,8 +87,9 @@ El sistema utiliza seis agentes especializados invocados con `subagent_type`:
 | Course Outliner | `course-outliner` | Entrevistar al usuario → crear una estructura pedagógica del curso |
 | Content Creator | `content-creator` | Generar contenido textual a partir de la estructura |
 | Senior Editor | `senior-editor` | Refinar y pulir el contenido escrito |
+| Educational Video Producer | `educational-video-producer` | Director integral de video: ingesta docx/pptx, menú de estilos, subtítulos CapCut, QA gates y orquestación |
 | Lemo-Opuscar Video Director | `lemo-opuscar-video-director` | Diseñar y producir videos/animaciones por código (99 estilos) para el bloque **La Clase** |
-| Multimedia Integrator | `multimedia-integrator` | Crear paquetes SCORM de audio/video y optimizar archivos |
+| Multimedia Integrator | `multimedia-integrator` | Crear paquetes SCORM de audio/video (pasivo e interactivo con checkpoints Dual ZIP) y optimizar con FFmpeg |
 | SCORM Packager | `moodle-xml-formatter` | Convertir markdown → paquete SCORM .zip |
 
 **Flujo estándar de contenidos:**

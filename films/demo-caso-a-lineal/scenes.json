@@ -1,0 +1,107 @@
+[
+  {
+    "scene_id": "scene_01",
+    "order": 1,
+    "title": "Introducción",
+    "voiceover_script": "Instructivo Caso A: Video Común Lineal MP4",
+    "screen_elements": {
+      "title": "Introducción",
+      "bullets": [
+        "Instructivo Caso A: Video Común Lineal MP4"
+      ],
+      "theme": {
+        "primary": "#4066c2",
+        "secondary": "#3c60b5",
+        "alert": "#ea580c",
+        "dark_neutral": "#162237",
+        "background": "#ffffff",
+        "board_sheen": "rgba(255, 255, 255, 0.45)"
+      }
+    },
+    "checkpoints": []
+  },
+  {
+    "scene_id": "scene_02",
+    "order": 2,
+    "title": "1. Ingesta y Colores de Marca",
+    "voiceover_script": "Para producir un video explicativo lineal con EducAI, empezás enviando tu documento de cátedra en formato PowerPoint, Word o PDF, junto al logo de tu institución. El sistema lee el contenido y extrae una paleta armónica de ocho colores para que todo mantenga identidad institucional.",
+    "screen_elements": {
+      "title": "1. Ingesta y Colores de Marca",
+      "bullets": [
+        "Para producir un video explicativo lineal con EducAI, empezás enviando tu documento de cátedra en formato PowerPoint, Word o PDF, junto al logo de tu institución. El sistema lee el contenido y extrae una paleta armónica de ocho colores para que todo mantenga identidad institucional."
+      ],
+      "theme": {
+        "primary": "#4066c2",
+        "secondary": "#3c60b5",
+        "alert": "#ea580c",
+        "dark_neutral": "#162237",
+        "background": "#ffffff",
+        "board_sheen": "rgba(255, 255, 255, 0.45)"
+      }
+    },
+    "checkpoints": []
+  },
+  {
+    "scene_id": "scene_03",
+    "order": 3,
+    "title": "2. Guion Didáctico y Subtítulos",
+    "voiceover_script": "A partir de tus textos y notas de orador, el guionista organiza la clase en escenas de un minuto. La narración se graba con voz argentina y activa subtítulos palabra por palabra estilo CapCut, salvo que pidas expresamente dejarlos afuera.",
+    "screen_elements": {
+      "title": "2. Guion Didáctico y Subtítulos",
+      "bullets": [
+        "A partir de tus textos y notas de orador, el guionista organiza la clase en escenas de un minuto. La narración se graba con voz argentina y activa subtítulos palabra por palabra estilo CapCut, salvo que pidas expresamente dejarlos afuera."
+      ],
+      "theme": {
+        "primary": "#4066c2",
+        "secondary": "#3c60b5",
+        "alert": "#ea580c",
+        "dark_neutral": "#162237",
+        "background": "#ffffff",
+        "board_sheen": "rgba(255, 255, 255, 0.45)"
+      }
+    },
+    "checkpoints": []
+  },
+  {
+    "scene_id": "scene_04",
+    "order": 4,
+    "title": "3. Control Técnico Pre-Render",
+    "voiceover_script": "Antes de generar los fotogramas, un navegador automatizado revisa que los textos queden bien encuadrados y que los tiempos de voz coincidan con la animación. Si todo pasa la prueba sin errores, el renderizador comienza a dibujar cada cuadro.",
+    "screen_elements": {
+      "title": "3. Control Técnico Pre-Render",
+      "bullets": [
+        "Antes de generar los fotogramas, un navegador automatizado revisa que los textos queden bien encuadrados y que los tiempos de voz coincidan con la animación. Si todo pasa la prueba sin errores, el renderizador comienza a dibujar cada cuadro."
+      ],
+      "theme": {
+        "primary": "#4066c2",
+        "secondary": "#3c60b5",
+        "alert": "#ea580c",
+        "dark_neutral": "#162237",
+        "background": "#ffffff",
+        "board_sheen": "rgba(255, 255, 255, 0.45)"
+      }
+    },
+    "checkpoints": []
+  },
+  {
+    "scene_id": "scene_05",
+    "order": 5,
+    "title": "4. Ensamble Estéreo y Entrega",
+    "voiceover_script": "El motor mezcla el audio estéreo con silencios naturales de medio segundo entre temas, suma la placa de cierre y produce el archivo MP4 definitivo. En pocos minutos tenés tu video en alta definición listo para proyectar o subir a la web.",
+    "screen_elements": {
+      "title": "4. Ensamble Estéreo y Entrega",
+      "bullets": [
+        "El motor mezcla el audio estéreo con silencios naturales de medio segundo entre temas, suma la placa de cierre y produce el archivo MP4 definitivo. En pocos minutos tenés tu video en alta definición listo para proyectar o subir a la web."
+      ],
+      "theme": {
+        "primary": "#4066c2",
+        "secondary": "#3c60b5",
+        "alert": "#ea580c",
+        "dark_neutral": "#162237",
+        "background": "#ffffff",
+        "board_sheen": "rgba(255, 255, 255, 0.45)"
+      }
+    },
+    "checkpoints": []
+  }
+]

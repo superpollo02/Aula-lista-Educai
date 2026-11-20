@@ -450,19 +450,66 @@ def create_video_scorm(video_file, title=None, description="", output_name=None)
         return False
 
 def main():
-    """Main function"""
+    """Main function supporting both classic passive video SCORM and interactive checkpoint video SCORM."""
     print("=" * 60)
-    print("  Creatore Pacchetto SCORM Video per Moodle")
+    print("  Creatore Pacchetto SCORM Video per Moodle (EducAI)")
     print("=" * 60)
     print()
 
+    import argparse
+    import json
+
+    # If flags are present or user wants interactive mode
+    if any(arg.startswith("--") for arg in sys.argv[1:]):
+        parser = argparse.ArgumentParser(description="Empaquetador SCORM Video para Moodle")
+        parser.add_argument("video_file", help="Ruta al archivo de video (MP4, WEBM, MOV, etc.)")
+        parser.add_argument("title", nargs="?", default=None, help="Título de la actividad")
+        parser.add_argument("description", nargs="?", default="", help="Descripción")
+        parser.add_argument("--interactive", action="store_true", help="Crear SCORM interactivo con pausas evaluativas")
+        parser.add_argument("--checkpoints", "-c", help="Ruta al archivo JSON con preguntas/checkpoints")
+        parser.add_argument("--timeline", "-t", help="Ruta a audio_timeline.json para sincronía exacta")
+        parser.add_argument("--zero-weight", action="store_true", help="Generar también paquete liviano Zero-Weight")
+        args = parser.parse_args()
+
+        if args.interactive or args.checkpoints:
+            try:
+                from scripts.video_engine.scorm.scorm_packager import build_scorm_package
+                v_path = Path(args.video_file).resolve()
+                clean_title = args.title or v_path.stem.replace("-", " ").title()
+                output_zip = v_path.parent / f"{v_path.stem}_SCORM_Completo.zip"
+
+                cps = []
+                if args.checkpoints and Path(args.checkpoints).is_file():
+                    cps = json.loads(Path(args.checkpoints).read_text(encoding="utf-8"))
+
+                print(f"[SCORM Interactivo] Empaquetando {v_path.name} con {len(cps)} checkpoints...")
+                build_scorm_package(
+                    title=clean_title,
+                    video_url=v_path.name,
+                    checkpoints=cps,
+                    output_zip=str(output_zip),
+                    include_video_file=str(v_path),
+                    audio_timeline_path=args.timeline,
+                    also_build_zero_weight=True,
+                )
+                print(f"[OK] Paquete generado exitosamente -> {output_zip}")
+                return
+            except Exception as e:
+                print(f"[ERROR] Error al empaquetar SCORM interactivo: {e}")
+                return
+
+        create_video_scorm(args.video_file, args.title, args.description)
+        return
+
     if len(sys.argv) < 2:
-        print("Uso: python create_video_scorm.py <file_video> [titolo] [descrizione]")
+        print("Uso:")
+        print("  Pasivo:      python create_video_scorm.py <file_video> [titolo] [descrizione]")
+        print("  Interactivo: python create_video_scorm.py <file_video> --checkpoints preguntas.json")
         print()
         print("Esempi:")
         print("  python create_video_scorm.py lezione.mp4")
         print('  python create_video_scorm.py lezione.mp4 "Lezione 1"')
-        print('  python create_video_scorm.py lezione.mp4 "Lezione 1" "Introduzione al corso"')
+        print('  python create_video_scorm.py lezione.mp4 --checkpoints checkpoints.json')
         print()
         print("Formati supportati: MP4, WEBM, MOV, AVI, MKV")
         return

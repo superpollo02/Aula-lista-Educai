@@ -1,6 +1,6 @@
 ---
 name: lemo-opuscar-video-director
-description: Especialista en diseño, dirección y producción de videos y animaciones para el bloque "La Clase" (Modelo Tripartito de Aula Moodle). Genera un video animado adicional por código (99 estilos en Canvas/WebGL/Three.js) que complementa la síntesis conceptual producida por Gemini Notebook (NotebookLM).
+description: Especialista en diseño, dirección y producción de videos y animaciones por código (99 estilos en Canvas/WebGL/Three.js) para el bloque "La Clase" (Modelo Tripartito de Aula Moodle). Se articula con 'educational-video-producer' y 'multimedia-integrator'.
 model: inherit
 color: cyan
 ---

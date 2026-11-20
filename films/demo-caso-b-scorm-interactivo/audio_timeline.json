@@ -1,0 +1,130 @@
+{
+  "total_duration": 69.638,
+  "scenes": [
+    {
+      "scene_id": "scene_01",
+      "order": 1,
+      "title": "Introducción",
+      "mp3_file": "F:\\proyectos antigrtavity\\maquina de videos\\films\\instructivo-caso-b-video-scorm\\scene_01.mp3",
+      "start": 0.0,
+      "duration": 4.728,
+      "end": 4.728,
+      "voiceover_script": "Instructivo Caso B: Video-Cuestionario SCORM para Moodle",
+      "screen_elements": {
+        "title": "Introducción",
+        "bullets": [
+          "Instructivo Caso B: Video-Cuestionario SCORM para Moodle"
+        ],
+        "theme": {
+          "primary": "#4066c2",
+          "secondary": "#3c60b5",
+          "alert": "#ea580c",
+          "dark_neutral": "#162237",
+          "background": "#ffffff",
+          "board_sheen": "rgba(255, 255, 255, 0.45)"
+        }
+      },
+      "checkpoints": []
+    },
+    {
+      "scene_id": "scene_02",
+      "order": 2,
+      "title": "1. Lección Interactiva para Moodle",
+      "mp3_file": "F:\\proyectos antigrtavity\\maquina de videos\\films\\instructivo-caso-b-video-scorm\\scene_02.mp3",
+      "start": 5.278,
+      "duration": 14.04,
+      "end": 19.318,
+      "voiceover_script": "Cuando necesitás evaluar la comprensión de tus alumnos dentro de Moodle, el camino es el video-cuestionario interactivo. Le entregás tu apunte y le pedís que formule preguntas de opción múltiple al cerrar cada concepto importante.",
+      "screen_elements": {
+        "title": "1. Lección Interactiva para Moodle",
+        "bullets": [
+          "Cuando necesitás evaluar la comprensión de tus alumnos dentro de Moodle, el camino es el video-cuestionario interactivo. Le entregás tu apunte y le pedís que formule preguntas de opción múltiple al cerrar cada concepto importante."
+        ],
+        "theme": {
+          "primary": "#4066c2",
+          "secondary": "#3c60b5",
+          "alert": "#ea580c",
+          "dark_neutral": "#162237",
+          "background": "#ffffff",
+          "board_sheen": "rgba(255, 255, 255, 0.45)"
+        }
+      },
+      "checkpoints": []
+    },
+    {
+      "scene_id": "scene_03",
+      "order": 3,
+      "title": "2. Sincronía Invariante y Pantalla Segura",
+      "mp3_file": "F:\\proyectos antigrtavity\\maquina de videos\\films\\instructivo-caso-b-video-scorm\\scene_03.mp3",
+      "start": 19.868,
+      "duration": 17.424,
+      "end": 37.292,
+      "voiceover_script": "La regla de oro del sistema es no cortar jamás la voz del docente. Cada pregunta aparece medio segundo después de que termina la frase. Además, el botón de pantalla completa se ajusta al contenedor para que el cuestionario nunca quede escondido detrás del reproductor.",
+      "screen_elements": {
+        "title": "2. Sincronía Invariante y Pantalla Segura",
+        "bullets": [
+          "La regla de oro del sistema es no cortar jamás la voz del docente. Cada pregunta aparece medio segundo después de que termina la frase. Además, el botón de pantalla completa se ajusta al contenedor para que el cuestionario nunca quede escondido detrás del reproductor."
+        ],
+        "theme": {
+          "primary": "#4066c2",
+          "secondary": "#3c60b5",
+          "alert": "#ea580c",
+          "dark_neutral": "#162237",
+          "background": "#ffffff",
+          "board_sheen": "rgba(255, 255, 255, 0.45)"
+        }
+      },
+      "checkpoints": []
+    },
+    {
+      "scene_id": "scene_04",
+      "order": 4,
+      "title": "3. Empaquetado Dual SCORM 1.2",
+      "mp3_file": "F:\\proyectos antigrtavity\\maquina de videos\\films\\instructivo-caso-b-video-scorm\\scene_04.mp3",
+      "start": 37.842,
+      "duration": 15.24,
+      "end": 53.082,
+      "voiceover_script": "Para que no tengas problemas de cuota en el campus, el empaquetador genera dos archivos zip: el paquete completo con el video adentro, y la versión liviana de menos de cuatrocientos kilobytes que reproduce el video desde la nube sin ocupar espacio en el servidor.",
+      "screen_elements": {
+        "title": "3. Empaquetado Dual SCORM 1.2",
+        "bullets": [
+          "Para que no tengas problemas de cuota en el campus, el empaquetador genera dos archivos zip: el paquete completo con el video adentro, y la versión liviana de menos de cuatrocientos kilobytes que reproduce el video desde la nube sin ocupar espacio en el servidor."
+        ],
+        "theme": {
+          "primary": "#4066c2",
+          "secondary": "#3c60b5",
+          "alert": "#ea580c",
+          "dark_neutral": "#162237",
+          "background": "#ffffff",
+          "board_sheen": "rgba(255, 255, 255, 0.45)"
+        }
+      },
+      "checkpoints": []
+    },
+    {
+      "scene_id": "scene_05",
+      "order": 5,
+      "title": "4. Registro Automático en Moodle",
+      "mp3_file": "F:\\proyectos antigrtavity\\maquina de videos\\films\\instructivo-caso-b-video-scorm\\scene_05.mp3",
+      "start": 53.632,
+      "duration": 15.456,
+      "end": 69.088,
+      "voiceover_script": "Subís el paquete como actividad SCORM a tu curso y definís la nota de aprobación. A medida que los estudiantes miran la clase y responden las preguntas, Moodle registra los intentos y asienta la calificación directamente en el libro de notas.",
+      "screen_elements": {
+        "title": "4. Registro Automático en Moodle",
+        "bullets": [
+          "Subís el paquete como actividad SCORM a tu curso y definís la nota de aprobación. A medida que los estudiantes miran la clase y responden las preguntas, Moodle registra los intentos y asienta la calificación directamente en el libro de notas."
+        ],
+        "theme": {
+          "primary": "#4066c2",
+          "secondary": "#3c60b5",
+          "alert": "#ea580c",
+          "dark_neutral": "#162237",
+          "background": "#ffffff",
+          "board_sheen": "rgba(255, 255, 255, 0.45)"
+        }
+      },
+      "checkpoints": []
+    }
+  ]
+}

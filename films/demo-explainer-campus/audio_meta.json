@@ -1,0 +1,61 @@
+{
+  "total": 57.212,
+  "scenes": [
+    {
+      "index": 0,
+      "text": "Residentes Cohorte 2026/27: tus cursos autogestionados en Campus Esalud ya están listos.",
+      "spoken": "Residentes Cohorte dos mil veintiséis dos mil veintisiete: tus cursos autogestionados en Campus Esalud ya están listos.",
+      "start": 0.0,
+      "dur": 8.06,
+      "audio_dur": 7.56
+    },
+    {
+      "index": 1,
+      "text": "Si ya tenés usuario registrado ingresá directo. Si no recordás tu clave usá recuperación.",
+      "spoken": "Si ya tenés usuario registrado ingresá directo. Si no recordás tu clave usá recuperación de contraseña.",
+      "start": 8.06,
+      "dur": 7.868,
+      "audio_dur": 7.368
+    },
+    {
+      "index": 2,
+      "text": "En el catálogo buscá: Herramientas de Gestión o Economía de la Salud.",
+      "spoken": "En el catálogo de cursos buscá: Herramientas de Gestión o Economía de la Salud.",
+      "start": 15.928,
+      "dur": 5.804,
+      "audio_dur": 5.304
+    },
+    {
+      "index": 3,
+      "text": "Al ingresar usá las claves: Ges.residentes2026* para Gestión y Eco.residentes206* para Economía.",
+      "spoken": "Al ingresar usá las claves institucionales: Ges punto residentes dos mil veintiséis asterisco para Gestión, y Eco punto residentes doscientos seis asterisco para Economía.",
+      "start": 21.732,
+      "dur": 11.012,
+      "audio_dur": 10.512
+    },
+    {
+      "index": 4,
+      "text": "¡Listo! El aula virtual queda habilitada de forma permanente para cursar a tu ritmo.",
+      "spoken": "¡Listo! El aula virtual queda habilitada de forma permanente para cursar a tu ritmo.",
+      "start": 32.744,
+      "dur": 6.644,
+      "audio_dur": 6.144
+    },
+    {
+      "index": 5,
+      "text": "Si no tenés cuenta solicitá el formulario a Residencias. Las altas se procesan los viernes a las doce horas.",
+      "spoken": "Si no tenés cuenta solicitá el formulario a Residencias. Las altas masivas se procesan los viernes a las doce horas.",
+      "start": 39.388,
+      "dur": 8.492,
+      "audio_dur": 7.992
+    },
+    {
+      "index": 6,
+      "text": "¿Consultas o dudas? Escribinos a deptocapacitacionminsalud@mendoza.gov.ar. ¡Buen inicio de cursada!",
+      "spoken": "¿Consultas o dudas? Escribinos a depto capacitación min salud arroba mendoza punto gov punto ar. ¡Buen inicio de cursada!",
+      "start": 47.88,
+      "dur": 9.332,
+      "audio_dur": 8.832
+    }
+  ]
+}

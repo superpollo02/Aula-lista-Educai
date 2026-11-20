@@ -1,0 +1,19 @@
+{
+  "source_image": "sello educai.jpg",
+  "palette": {
+    "primary": "#4066c2",
+    "secondary": "#3c60b5",
+    "alert": "#ea580c",
+    "dark_neutral": "#162237",
+    "background": "#ffffff",
+    "board_sheen": "rgba(255, 255, 255, 0.45)"
+  },
+  "typography": {
+    "font_family": "Segoe UI, -apple-system, sans-serif",
+    "title_weight": "bold",
+    "body_weight": "normal",
+    "subtitles_bg": "rgba(15, 23, 42, 0.88)",
+    "subtitles_text": "#ffffff",
+    "subtitles_border": "#4066c2"
+  }
+}

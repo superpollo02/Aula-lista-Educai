@@ -1,0 +1,150 @@
+{
+  "version": "1.0",
+  "meta": {
+    "titulo": "Instructivo de Automatriculación · Campus Esalud",
+    "descripcion": "Instructivo oficial de ingreso y automatriculación en cursos autogestionados de competencias (Cohorte 2026/27).",
+    "formato": "9:16",
+    "estilo": "Plano Color Salud",
+    "subtitulos": "karaoke",
+    "ritmo": 1.35,
+    "cola": 0.8,
+    "paleta": {
+      "--bg": "#0A1926",
+      "--panel": "#0F293E",
+      "--panel-2": "#163854",
+      "--line": "#204E75",
+      "--glass": "rgba(10,25,38,.86)",
+      "--ink": "#F0F6FC",
+      "--muted": "#8DA5BE",
+      "--accent": "#00C7D4",
+      "--accent-2": "#4EA8DE",
+      "--ok": "#06D6A0",
+      "--warn": "#FF6B6B",
+      "--sub-ink": "#FFFFFF",
+      "--sub-edge": "#06121C",
+      "--track": "rgba(255,255,255,.22)"
+    },
+    "fuentes": {
+      "display": "\"Rubik\",system-ui,-apple-system,sans-serif",
+      "body": "\"Rubik\",system-ui,-apple-system,sans-serif",
+      "mono": "\"JetBrains Mono\",ui-monospace,\"SF Mono\",Menlo,monospace",
+      "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=block"
+    }
+  },
+  "voz": {
+    "engine": "edge-tts",
+    "locutor": "es-MX-JorgeNeural",
+    "rate": "+5%",
+    "pitch": "+0Hz",
+    "pausa": 0.5,
+    "say": {
+      "2026/27": "dos mil veintiséis dos mil veintisiete",
+      "Ges.residentes2026*": "clave gestión",
+      "Eco.residentes206*": "clave economía",
+      "12:00": "doce",
+      "hs": "horas"
+    }
+  },
+  "escenas": [
+    {
+      "id": "intro-credencial",
+      "texto": "Residentes Cohorte 2026/27: tus cursos autogestionados en Campus Esalud ya están listos.",
+      "hablado": "Residentes Cohorte dos mil veintiséis dos mil veintisiete: tus cursos autogestionados en Campus Esalud ya están listos.",
+      "alt": "Credencial médica de residente con sello oficial de Campus Esalud para la cohorte 2026/27.",
+      "cam": [
+        [0, 0, -2, 1.25],
+        [0.8, 0, 0, 1]
+      ],
+      "elementos": [
+        { "tipo": "grid", "opciones": { "alpha": 0.2 } },
+        { "tipo": "credencial", "opciones": { "titulo": "CAMPUS ESALUD", "subtitulo": "PROGRAMA RESIDENCIAS", "cohorte": "COHORTE 2026 / 2027", "estado": "AUTOMATRICULACIÓN ACTIVA" } }
+      ],
+      "drawCode": "drawBackgroundGrid(F, 0.2);\nconst A = F.area, cx = A.cx, cy = A.cy;\nconst kCard = pop(t, 0.1, 0.5);\n\nconst cw = A.w * 0.88, ch = A.h * 0.72;\nctx.save();\nctx.globalAlpha = kCard;\nctx.translate(cx, cy);\nctx.scale(kCard, kCard);\n\nctx.fillStyle = 'rgba(0,0,0,0.45)';\nrrect(-cw / 2, -ch / 2 + 2, cw, ch, 14); ctx.fill();\n\nctx.fillStyle = C.panel;\nctx.strokeStyle = C.line;\nctx.lineWidth = 0.8;\nrrect(-cw / 2, -ch / 2, cw, ch, 14); ctx.fill(); ctx.stroke();\n\nctx.fillStyle = C.panel2;\nrrect(-cw / 2, -ch / 2, cw, ch * 0.24, [14, 14, 0, 0]); ctx.fill();\n\nmedicalBadge(-cw * 0.32, -ch * 0.38, 7, 1);\ntxt('CAMPUS ESALUD', -cw * 0.05, -ch * 0.38, { size: 4.2, color: C.ink, align: 'left', w: 800 });\n\nconst pSize = 14;\nctx.fillStyle = C.panel2;\nctx.strokeStyle = C.accent;\nctx.lineWidth = 0.8;\nctx.beginPath(); ctx.arc(0, -ch * 0.04, pSize, 0, TAU); ctx.fill(); ctx.stroke();\nmedicalBadge(0, -ch * 0.04, 9, 0.85);\n\ntxt('PROGRAMA RESIDENCIAS', 0, ch * 0.18, { size: 3.6, color: C.accent, w: 700 });\ntxt('COHORTE 2026 / 2027', 0, ch * 0.27, { size: 4.8, color: C.ink, w: 900 });\n\nconst bw = cw * 0.65, bh = ch * 0.11;\nctx.fillStyle = rgba(C.ok, 0.16);\nctx.strokeStyle = C.ok;\nctx.lineWidth = 0.6;\nrrect(-bw / 2, ch * 0.35, bw, bh, 6); ctx.fill(); ctx.stroke();\ncheckBadge(-bw * 0.36, ch * 0.405, 2.4, 1);\ntxt('AUTOMATRICULACIÓN ACTIVA', bw * 0.04, ch * 0.405, { size: 2.7, color: C.ok, w: 800 });\n\nctx.restore();"
+    },
+    {
+      "id": "login-recuperacion",
+      "texto": "Si ya tenés usuario registrado ingresá directo. Si no recordás tu clave usá recuperación.",
+      "hablado": "Si ya tenés usuario registrado ingresá directo. Si no recordás tu clave usá recuperación de contraseña.",
+      "alt": "Ventana de inicio de sesión con opción destacada de recuperación de contraseña.",
+      "cam": [
+        [0, 0, 0, 1]
+      ],
+      "elementos": [
+        { "tipo": "grid", "opciones": { "alpha": 0.2 } },
+        { "tipo": "form", "opciones": { "titulo": "INICIAR SESIÓN", "boton": "INGRESAR AL CAMPUS" } }
+      ],
+      "drawCode": "drawBackgroundGrid(F, 0.2);\nconst A = F.area, cx = A.cx, cy = A.cy;\nconst kBox = pop(t, 0.1, 0.4);\n\nconst bw = A.w * 0.9, bh = A.h * 0.74;\nctx.save();\nctx.globalAlpha = kBox;\nctx.translate(cx, cy);\n\nctx.fillStyle = C.panel;\nctx.strokeStyle = C.line;\nctx.lineWidth = 0.8;\nrrect(-bw / 2, -bh / 2, bw, bh, 12); ctx.fill(); ctx.stroke();\n\ntxt('INICIAR SESIÓN', 0, -bh * 0.36, { size: 4.4, color: C.accent, w: 800 });\ntxt('Campus Virtual de Salud', 0, -bh * 0.28, { size: 3.2, color: C.muted, w: 500 });\n\nconst fldW = bw * 0.82, fldH = 8.5;\nctx.fillStyle = C.panel2;\nctx.strokeStyle = C.line;\nctx.lineWidth = 0.6;\nrrect(-fldW / 2, -bh * 0.14, fldW, fldH, 6); ctx.fill(); ctx.stroke();\ntxt('Usuario / DNI de residente', -fldW * 0.42, -bh * 0.14 + fldH * 0.5, { size: 2.8, color: C.ink, align: 'left', w: 500 });\n\nrrect(-fldW / 2, bh * 0.04, fldW, fldH, 6); ctx.fill(); ctx.stroke();\ntxt('● ● ● ● ● ● ● ● ● ●', -fldW * 0.42, bh * 0.04 + fldH * 0.5, { size: 3.2, color: C.accent, align: 'left', w: 600 });\n\nconst kPulse = 1 + 0.04 * Math.sin(t * 5);\nctx.save();\nctx.translate(0, bh * 0.21);\nctx.scale(kPulse, kPulse);\nctx.fillStyle = C.accent;\nrrect(-fldW / 2, -fldH / 2, fldW, fldH, 6); ctx.fill();\ntxt('INGRESAR AL CAMPUS', 0, 0, { size: 3.2, color: '#041B22', w: 800 });\nctx.restore();\n\nconst kRecup = ease(seg(t, 2.5, 3.2));\nif (kRecup > 0) {\n  ctx.save();\n  ctx.globalAlpha = kRecup;\n  ctx.fillStyle = rgba(C.accent2, 0.12);\n  ctx.strokeStyle = C.accent2;\n  ctx.lineWidth = 0.5;\n  rrect(-fldW / 2, bh * 0.32, fldW, 8.5, 6); ctx.fill(); ctx.stroke();\n  padlock(-fldW * 0.38, bh * 0.32 + 3.8, 2.6, 0.2);\n  txt('¿Olvidaste tu contraseña?', -fldW * 0.24, bh * 0.32 + 4.25, { size: 2.6, color: C.ink, align: 'left', w: 700 });\n  txt('Usá la opción de recupero antes de pedir nuevo usuario', 0, bh * 0.44, { size: 2.4, color: C.muted, w: 500 });\n  ctx.restore();\n}\n\nctx.restore();"
+    },
+    {
+      "id": "catalogo-cursos",
+      "texto": "En el catálogo buscá: Herramientas de Gestión o Economía de la Salud.",
+      "hablado": "En el catálogo de cursos buscá: Herramientas de Gestión o Economía de la Salud.",
+      "alt": "Búsqueda en catálogo mostrando los cursos de Gestión en Salud y Economía.",
+      "cam": [
+        [0, 0, 0, 1]
+      ],
+      "elementos": [
+        { "tipo": "grid", "opciones": { "alpha": 0.2 } },
+        { "tipo": "search", "opciones": { "placeholder": "Competencias Residentes..." } },
+        { "tipo": "list", "opciones": { "items": ["CURSO 1: HERRAMIENTAS DE GESTIÓN", "CURSO 2: ECONOMÍA DE LA SALUD"] } }
+      ],
+      "drawCode": "drawBackgroundGrid(F, 0.2);\nconst A = F.area, cx = A.cx, cy = A.cy;\n\nconst sw = A.w * 0.9, sh = 9.5;\nconst kSearch = pop(t, 0.1, 0.4);\nctx.save();\nctx.globalAlpha = kSearch;\nctx.fillStyle = C.panel;\nctx.strokeStyle = C.accent;\nctx.lineWidth = 0.8;\nrrect(cx - sw / 2, cy - A.h * 0.36, sw, sh, 8); ctx.fill(); ctx.stroke();\n\nconst lx = cx - sw * 0.42, ly = cy - A.h * 0.36 + sh * 0.5;\nctx.strokeStyle = C.accent; ctx.lineWidth = 0.8;\nctx.beginPath(); ctx.arc(lx, ly, 2.2, 0, TAU); ctx.stroke();\nline(lx + 1.6, ly + 1.6, lx + 3.2, ly + 3.2);\n\nconst typed = 'Competencias Residentes...'.slice(0, Math.floor(seg(t, 0.4, 2.2) * 26));\ntxt(typed, lx + 5.5, ly, { size: 3.2, color: C.ink, align: 'left', family: FONT.mono, w: 600 });\nctx.restore();\n\nconst cardW = sw, cardH = 15;\nconst kCard1 = pop(t, 1.2, 0.4);\nconst kCard2 = pop(t, 2.0, 0.4);\n\nif (kCard1 > 0) {\n  ctx.save();\n  ctx.globalAlpha = kCard1;\n  const y1 = cy - A.h * 0.15;\n  ctx.fillStyle = C.panel;\n  ctx.strokeStyle = C.line;\n  ctx.lineWidth = 0.7;\n  rrect(cx - cardW / 2, y1, cardW, cardH, 10); ctx.fill(); ctx.stroke();\n\n  ctx.fillStyle = rgba(C.accent, 0.18);\n  rrect(cx - cardW * 0.44, y1 + 2.5, 10, 10, 4); ctx.fill();\n  medicalBadge(cx - cardW * 0.44 + 5, y1 + 7.5, 4.5, 1);\n\n  txt('CURSO 1: HERRAMIENTAS DE GESTIÓN', cx - cardW * 0.26, y1 + 5.2, { size: 3.0, color: C.accent, align: 'left', w: 800 });\n  txt('Programa Competencias Residentes', cx - cardW * 0.26, y1 + 10.2, { size: 2.5, color: C.muted, align: 'left', w: 500 });\n  checkBadge(cx + cardW * 0.42, y1 + 7.5, 2.4, 1);\n  ctx.restore();\n}\n\nif (kCard2 > 0) {\n  ctx.save();\n  ctx.globalAlpha = kCard2;\n  const y2 = cy + A.h * 0.05;\n  ctx.fillStyle = C.panel;\n  ctx.strokeStyle = C.line;\n  ctx.lineWidth = 0.7;\n  rrect(cx - cardW / 2, y2, cardW, cardH, 10); ctx.fill(); ctx.stroke();\n\n  ctx.fillStyle = rgba(C.accent2, 0.18);\n  rrect(cx - cardW * 0.44, y2 + 2.5, 10, 10, 4); ctx.fill();\n  ctx.strokeStyle = C.accent2; ctx.lineWidth = 0.8;\n  line(cx - cardW * 0.44 + 2, y2 + 10, cx - cardW * 0.44 + 5, y2 + 6);\n  line(cx - cardW * 0.44 + 5, y2 + 6, cx - cardW * 0.44 + 8, y2 + 4);\n\n  txt('CURSO 2: ECONOMÍA DE LA SALUD', cx - cardW * 0.26, y2 + 5.2, { size: 3.0, color: C.accent2, align: 'left', w: 800 });\n  txt('Para Residentes · Autogestionado', cx - cardW * 0.26, y2 + 10.2, { size: 2.5, color: C.muted, align: 'left', w: 500 });\n  checkBadge(cx + cardW * 0.42, y2 + 7.5, 2.4, 1);\n  ctx.restore();\n}\n\nif (t > 3.0) {\n  const kArrow = pop(t, 3.0, 0.3);\n  ctx.save();\n  ctx.globalAlpha = kArrow;\n  txt('Seleccioná el curso para matricularte ➔', cx, cy + A.h * 0.28, { size: 3.2, color: C.ink, w: 700 });\n  ctx.restore();\n}"
+    },
+    {
+      "id": "claves-acceso",
+      "texto": "Al ingresar usá las claves: Ges.residentes2026* para Gestión y Eco.residentes206* para Economía.",
+      "hablado": "Al ingresar usá las claves institucionales: Ges punto residentes dos mil veintiséis asterisco para Gestión, y Eco punto residentes doscientos seis asterisco para Economía.",
+      "alt": "Claves institucionales para ingresar a Gestión y Economía.",
+      "cam": [
+        [0, 0, 0, 1]
+      ],
+      "elementos": [
+        { "tipo": "grid", "opciones": { "alpha": 0.2 } },
+        { "tipo": "keys", "opciones": { "key1": "Ges.residentes2026*", "key2": "Eco.residentes206*" } }
+      ],
+      "drawCode": "drawBackgroundGrid(F, 0.2);\nconst A = F.area, cx = A.cx, cy = A.cy;\n\ntxt('CLAVES DE AUTOMATRICULACIÓN', cx, cy - A.h * 0.34, { size: 4.2, color: C.ink, w: 900 });\ntxt('Ingresá la clave institucional que corresponda:', cx, cy - A.h * 0.27, { size: 2.9, color: C.muted, w: 500 });\n\nconst boxW = A.w * 0.92, boxH = 18;\n\nconst k1 = pop(t, 0.3, 0.4);\nif (k1 > 0) {\n  ctx.save();\n  ctx.globalAlpha = k1;\n  const y1 = cy - A.h * 0.12;\n  ctx.fillStyle = C.panel;\n  ctx.strokeStyle = C.accent;\n  ctx.lineWidth = 1;\n  rrect(cx - boxW / 2, y1, boxW, boxH, 10); ctx.fill(); ctx.stroke();\n\n  txt('CURSO DE GESTIÓN EN SALUD', cx - boxW * 0.42, y1 + 4.5, { size: 2.8, color: C.muted, align: 'left', w: 700 });\n\n  ctx.fillStyle = C.panel2;\n  rrect(cx - boxW * 0.44, y1 + 7.5, boxW * 0.88, 8, 6); ctx.fill();\n  padlock(cx - boxW * 0.36, y1 + 10.5, 2.2, 1);\n  txt('Ges.residentes2026*', cx - boxW * 0.26, y1 + 11.5, { size: 3.6, color: C.accent, family: FONT.mono, align: 'left', w: 800 });\n  ctx.restore();\n}\n\nconst k2 = pop(t, 1.8, 0.4);\nif (k2 > 0) {\n  ctx.save();\n  ctx.globalAlpha = k2;\n  const y2 = cy + A.h * 0.10;\n  ctx.fillStyle = C.panel;\n  ctx.strokeStyle = C.accent2;\n  ctx.lineWidth = 1;\n  rrect(cx - boxW / 2, y2, boxW, boxH, 10); ctx.fill(); ctx.stroke();\n\n  txt('CURSO DE ECONOMÍA DE LA SALUD', cx - boxW * 0.42, y2 + 4.5, { size: 2.8, color: C.muted, align: 'left', w: 700 });\n\n  ctx.fillStyle = C.panel2;\n  rrect(cx - boxW * 0.44, y2 + 7.5, boxW * 0.88, 8, 6); ctx.fill();\n  padlock(cx - boxW * 0.36, y2 + 10.5, 2.2, 1);\n  txt('Eco.residentes206*', cx - boxW * 0.26, y2 + 11.5, { size: 3.6, color: C.accent2, family: FONT.mono, align: 'left', w: 800 });\n  ctx.restore();\n}\n\nif (t > 3.0) {\n  const kInfo = pop(t, 3.0, 0.3);\n  ctx.save();\n  ctx.globalAlpha = kInfo;\n  txt('¡Respetá mayúsculas, puntos y asteriscos!', cx, cy + A.h * 0.32, { size: 3.0, color: C.ok, w: 700 });\n  ctx.restore();\n}"
+    },
+    {
+      "id": "aula-habilitada",
+      "texto": "¡Listo! El aula virtual queda habilitada de forma permanente para cursar a tu ritmo.",
+      "hablado": "¡Listo! El aula virtual queda habilitada de forma permanente para cursar a tu ritmo.",
+      "alt": "Aula virtual desbloqueada con acceso garantizado.",
+      "cam": [
+        [0, 0, 0, 1]
+      ],
+      "elementos": [
+        { "tipo": "grid", "opciones": { "alpha": 0.2 } },
+        { "tipo": "unlocked-badge", "opciones": { "label": "AULA HABILITADA" } }
+      ],
+      "drawCode": "drawBackgroundGrid(F, 0.2);\nconst A = F.area, cx = A.cx, cy = A.cy;\nconst kAll = pop(t, 0.2, 0.5);\n\nctx.save();\nctx.globalAlpha = kAll;\n\nconst kPadlock = pop(t, 0.6, 0.5);\npadlock(cx, cy - A.h * 0.16, 12 * kPadlock, 0, 1);\n\ncheckBadge(cx + 12, cy - A.h * 0.22, 5, pop(t, 1.2, 0.3));\n\ntxt('AULA HABILITADA', cx, cy + A.h * 0.04, { size: 5.2, color: C.ok, w: 900 });\ntxt('Acceso Permanente Garantizado', cx, cy + A.h * 0.12, { size: 3.4, color: C.ink, w: 700 });\n\nconst cw = A.w * 0.88, ch = 9;\nctx.fillStyle = C.panel;\nctx.strokeStyle = C.line;\nctx.lineWidth = 0.6;\nrrect(cx - cw / 2, cy + A.h * 0.20, cw, ch, 6); ctx.fill(); ctx.stroke();\ntxt('⏱ Cursado 100% autoadministrado a tu ritmo', cx, cy + A.h * 0.20 + ch * 0.5, { size: 2.8, color: C.muted, w: 600 });\n\nrrect(cx - cw / 2, cy + A.h * 0.28, cw, ch, 6); ctx.fill(); ctx.stroke();\ntxt('📂 Materiales, evaluaciones y certificados activos', cx, cy + A.h * 0.28 + ch * 0.5, { size: 2.8, color: C.muted, w: 600 });\n\nctx.restore();"
+    },
+    {
+      "id": "nuevas-altas",
+      "texto": "Si no tenés cuenta solicitá el formulario a Residencias. Las altas se procesan los viernes a las doce horas.",
+      "hablado": "Si no tenés cuenta solicitá el formulario a Residencias. Las altas masivas se procesan los viernes a las doce horas.",
+      "alt": "Procedimiento de alta para residentes sin usuario con fecha de procesamiento semanal.",
+      "cam": [
+        [0, 0, 0, 1]
+      ],
+      "elementos": [
+        { "tipo": "grid", "opciones": { "alpha": 0.2 } },
+        { "tipo": "steps", "opciones": { "step1": "Contactá a Residencias", "step2": "Cargas semanales viernes 12:00 hs" } }
+      ],
+      "drawCode": "drawBackgroundGrid(F, 0.2);\nconst A = F.area, cx = A.cx, cy = A.cy;\n\ntxt('¿NO TENÉS USUARIO?', cx, cy - A.h * 0.34, { size: 4.4, color: C.warn, w: 900 });\ntxt('Procedimiento para nuevas altas:', cx, cy - A.h * 0.27, { size: 3.0, color: C.muted, w: 500 });\n\nconst fw = A.w * 0.9, fh = 16;\nconst kForm = pop(t, 0.3, 0.4);\n\nif (kForm > 0) {\n  ctx.save();\n  ctx.globalAlpha = kForm;\n  const y1 = cy - A.h * 0.12;\n  ctx.fillStyle = C.panel;\n  ctx.strokeStyle = C.line;\n  ctx.lineWidth = 0.7;\n  rrect(cx - fw / 2, y1, fw, fh, 10); ctx.fill(); ctx.stroke();\n\n  ctx.fillStyle = rgba(C.accent, 0.2);\n  rrect(cx - fw * 0.43, y1 + 3, 10, 10, 4); ctx.fill();\n  txt('📝', cx - fw * 0.43 + 5, y1 + 8, { size: 4.5 });\n\n  txt('1. Contactá a Residencias', cx - fw * 0.24, y1 + 5.5, { size: 3.2, color: C.ink, align: 'left', w: 800 });\n  txt('Completá el formulario online de alta', cx - fw * 0.24, y1 + 10.5, { size: 2.6, color: C.muted, align: 'left', w: 500 });\n  ctx.restore();\n}\n\nconst kClock = pop(t, 1.8, 0.4);\nif (kClock > 0) {\n  ctx.save();\n  ctx.globalAlpha = kClock;\n  const y2 = cy + A.h * 0.08;\n  ctx.fillStyle = C.panel;\n  ctx.strokeStyle = C.accent;\n  ctx.lineWidth = 1;\n  rrect(cx - fw / 2, y2, fw, fh + 4, 10); ctx.fill(); ctx.stroke();\n\n  ctx.fillStyle = rgba(C.accent, 0.2);\n  rrect(cx - fw * 0.43, y2 + 3.5, 12, 12, 4); ctx.fill();\n  txt('📅', cx - fw * 0.43 + 6, y2 + 9.5, { size: 5.0 });\n\n  txt('2. Cronograma de Procesamiento', cx - fw * 0.22, y2 + 5.5, { size: 3.1, color: C.accent, align: 'left', w: 800 });\n  txt('Cargas semanales: hasta VIERNES 12:00 hs', cx - fw * 0.22, y2 + 10.5, { size: 2.6, color: C.ink, align: 'left', w: 700 });\n  txt('Capacitación procesa los pedidos masivamente', cx - fw * 0.22, y2 + 14.5, { size: 2.4, color: C.muted, align: 'left', w: 500 });\n  ctx.restore();\n}"
+    },
+    {
+      "id": "soporte-tecnico",
+      "texto": "¿Consultas o dudas? Escribinos a deptocapacitacionminsalud@mendoza.gov.ar. ¡Buen inicio de cursada!",
+      "hablado": "¿Consultas o dudas? Escribinos a depto capacitación min salud arroba mendoza punto gov punto ar. ¡Buen inicio de cursada!",
+      "alt": "Mesa de ayuda técnica de la Dirección de Capacitación del Ministerio de Salud.",
+      "cam": [
+        [0, 0, 0, 1]
+      ],
+      "elementos": [
+        { "tipo": "grid", "opciones": { "alpha": 0.2 } },
+        { "tipo": "contact-card", "opciones": { "email": "deptocapacitacionminsalud@mendoza.gov.ar" } }
+      ],
+      "drawCode": "drawBackgroundGrid(F, 0.2);\nconst A = F.area, cx = A.cx, cy = A.cy;\nconst kEnd = pop(t, 0.2, 0.5);\n\nctx.save();\nctx.globalAlpha = kEnd;\n\nconst cw = A.w * 0.92, ch = A.h * 0.7;\nctx.fillStyle = C.panel;\nctx.strokeStyle = C.line;\nctx.lineWidth = 0.8;\nrrect(cx - cw / 2, cy - ch / 2, cw, ch, 14); ctx.fill(); ctx.stroke();\n\nconst kMail = pop(t, 0.6, 0.4);\nctx.save();\nctx.translate(cx, cy - ch * 0.24);\nctx.scale(kMail, kMail);\nctx.fillStyle = rgba(C.accent, 0.16);\nctx.strokeStyle = C.accent;\nctx.lineWidth = 0.8;\nrrect(-14, -10, 28, 20, 6); ctx.fill(); ctx.stroke();\nctx.beginPath(); ctx.moveTo(-14, -10); ctx.lineTo(0, 2); ctx.lineTo(14, -10); ctx.stroke();\nctx.restore();\n\ntxt('SOPORTE Y MESA DE AYUDA', cx, cy - ch * 0.04, { size: 4.2, color: C.ink, w: 900 });\ntxt('Departamento de Capacitación (MinSalud)', cx, cy + ch * 0.04, { size: 2.9, color: C.muted, w: 600 });\n\nconst mw = cw * 0.9, mh = 10;\nctx.fillStyle = C.panel2;\nctx.strokeStyle = C.accent;\nctx.lineWidth = 0.7;\nrrect(cx - mw / 2, cy + ch * 0.12, mw, mh, 6); ctx.fill(); ctx.stroke();\ntxt('deptocapacitacionminsalud@mendoza.gov.ar', cx, cy + ch * 0.12 + mh * 0.5, { size: 2.5, color: C.accent, family: FONT.mono, w: 700 });\n\ntxt('¡Éxitos en tu formación profesional!', cx, cy + ch * 0.32, { size: 3.4, color: C.ok, w: 800 });\n\nctx.restore();"
+    }
+  ]
+}

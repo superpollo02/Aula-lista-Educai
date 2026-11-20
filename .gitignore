@@ -5,3 +5,17 @@ cursos/gestion_personas_talento/media/
 cursos/gestion_personas_talento/lecturas/
 cursos/gestion_personas_talento/img/
 cursos/gestion_personas_talento/diapositivas/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node / dependencies
+node_modules/
+npm-debug.log*
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+

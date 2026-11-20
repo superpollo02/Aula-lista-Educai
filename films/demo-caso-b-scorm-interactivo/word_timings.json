@@ -1,0 +1,1050 @@
+{
+  "scene_01": [
+    {
+      "text": "Instructivo",
+      "start": 0.101,
+      "duration": 0.676,
+      "end": 0.777
+    },
+    {
+      "text": "Caso",
+      "start": 0.841,
+      "duration": 0.293,
+      "end": 1.134
+    },
+    {
+      "text": "B",
+      "start": 1.16,
+      "duration": 0.23,
+      "end": 1.39
+    },
+    {
+      "text": "Video-Cuestionario",
+      "start": 1.734,
+      "duration": 0.957,
+      "end": 2.691
+    },
+    {
+      "text": "SCORM",
+      "start": 2.69,
+      "duration": 0.395,
+      "end": 3.085
+    },
+    {
+      "text": "para",
+      "start": 3.111,
+      "duration": 0.166,
+      "end": 3.277
+    },
+    {
+      "text": "Moodle",
+      "start": 3.315,
+      "duration": 0.485,
+      "end": 3.8
+    }
+  ],
+  "scene_02": [
+    {
+      "text": "Cuando",
+      "start": 0.101,
+      "duration": 0.268,
+      "end": 0.369
+    },
+    {
+      "text": "necesitás",
+      "start": 0.42,
+      "duration": 0.574,
+      "end": 0.994
+    },
+    {
+      "text": "evaluar",
+      "start": 0.994,
+      "duration": 0.421,
+      "end": 1.415
+    },
+    {
+      "text": "la",
+      "start": 1.428,
+      "duration": 0.089,
+      "end": 1.517
+    },
+    {
+      "text": "comprensión",
+      "start": 1.581,
+      "duration": 0.561,
+      "end": 2.142
+    },
+    {
+      "text": "de",
+      "start": 2.18,
+      "duration": 0.064,
+      "end": 2.244
+    },
+    {
+      "text": "tus",
+      "start": 2.308,
+      "duration": 0.166,
+      "end": 2.474
+    },
+    {
+      "text": "alumnos",
+      "start": 2.473,
+      "duration": 0.434,
+      "end": 2.907
+    },
+    {
+      "text": "dentro",
+      "start": 2.933,
+      "duration": 0.268,
+      "end": 3.201
+    },
+    {
+      "text": "de",
+      "start": 3.277,
+      "duration": 0.013,
+      "end": 3.29
+    },
+    {
+      "text": "Moodle",
+      "start": 3.315,
+      "duration": 0.472,
+      "end": 3.787
+    },
+    {
+      "text": "el",
+      "start": 4.004,
+      "duration": 0.14,
+      "end": 4.144
+    },
+    {
+      "text": "camino",
+      "start": 4.157,
+      "duration": 0.434,
+      "end": 4.591
+    },
+    {
+      "text": "es",
+      "start": 4.655,
+      "duration": 0.166,
+      "end": 4.821
+    },
+    {
+      "text": "el",
+      "start": 4.82,
+      "duration": 0.089,
+      "end": 4.909
+    },
+    {
+      "text": "video-cuestionario",
+      "start": 4.935,
+      "duration": 0.88,
+      "end": 5.815
+    },
+    {
+      "text": "interactivo",
+      "start": 5.815,
+      "duration": 0.727,
+      "end": 6.542
+    },
+    {
+      "text": "Le",
+      "start": 7.5,
+      "duration": 0.14,
+      "end": 7.64
+    },
+    {
+      "text": "entregás",
+      "start": 7.64,
+      "duration": 0.446,
+      "end": 8.086
+    },
+    {
+      "text": "tu",
+      "start": 8.138,
+      "duration": 0.051,
+      "end": 8.189
+    },
+    {
+      "text": "apunte",
+      "start": 8.202,
+      "duration": 0.408,
+      "end": 8.61
+    },
+    {
+      "text": "y",
+      "start": 8.622,
+      "duration": 0.038,
+      "end": 8.66
+    },
+    {
+      "text": "le",
+      "start": 8.699,
+      "duration": 0.089,
+      "end": 8.788
+    },
+    {
+      "text": "pedís",
+      "start": 8.865,
+      "duration": 0.268,
+      "end": 9.133
+    },
+    {
+      "text": "que",
+      "start": 9.184,
+      "duration": 0.064,
+      "end": 9.248
+    },
+    {
+      "text": "formule",
+      "start": 9.273,
+      "duration": 0.434,
+      "end": 9.707
+    },
+    {
+      "text": "preguntas",
+      "start": 9.783,
+      "duration": 0.421,
+      "end": 10.204
+    },
+    {
+      "text": "de",
+      "start": 10.217,
+      "duration": 0.038,
+      "end": 10.255
+    },
+    {
+      "text": "opción",
+      "start": 10.268,
+      "duration": 0.306,
+      "end": 10.574
+    },
+    {
+      "text": "múltiple",
+      "start": 10.612,
+      "duration": 0.446,
+      "end": 11.058
+    },
+    {
+      "text": "al",
+      "start": 11.059,
+      "duration": 0.102,
+      "end": 11.161
+    },
+    {
+      "text": "cerrar",
+      "start": 11.186,
+      "duration": 0.395,
+      "end": 11.581
+    },
+    {
+      "text": "cada",
+      "start": 11.633,
+      "duration": 0.204,
+      "end": 11.837
+    },
+    {
+      "text": "concepto",
+      "start": 11.9,
+      "duration": 0.434,
+      "end": 12.334
+    },
+    {
+      "text": "importante",
+      "start": 12.334,
+      "duration": 0.714,
+      "end": 13.048
+    }
+  ],
+  "scene_03": [
+    {
+      "text": "La",
+      "start": 0.101,
+      "duration": 0.204,
+      "end": 0.305
+    },
+    {
+      "text": "regla",
+      "start": 0.343,
+      "duration": 0.306,
+      "end": 0.649
+    },
+    {
+      "text": "de",
+      "start": 0.701,
+      "duration": 0.089,
+      "end": 0.79
+    },
+    {
+      "text": "oro",
+      "start": 0.828,
+      "duration": 0.179,
+      "end": 1.007
+    },
+    {
+      "text": "del",
+      "start": 1.058,
+      "duration": 0.128,
+      "end": 1.186
+    },
+    {
+      "text": "sistema",
+      "start": 1.198,
+      "duration": 0.536,
+      "end": 1.734
+    },
+    {
+      "text": "es",
+      "start": 1.81,
+      "duration": 0.102,
+      "end": 1.912
+    },
+    {
+      "text": "no",
+      "start": 1.95,
+      "duration": 0.102,
+      "end": 2.052
+    },
+    {
+      "text": "cortar",
+      "start": 2.116,
+      "duration": 0.357,
+      "end": 2.473
+    },
+    {
+      "text": "jamás",
+      "start": 2.499,
+      "duration": 0.383,
+      "end": 2.882
+    },
+    {
+      "text": "la",
+      "start": 2.92,
+      "duration": 0.128,
+      "end": 3.048
+    },
+    {
+      "text": "voz",
+      "start": 3.086,
+      "duration": 0.166,
+      "end": 3.252
+    },
+    {
+      "text": "del",
+      "start": 3.264,
+      "duration": 0.115,
+      "end": 3.379
+    },
+    {
+      "text": "docente",
+      "start": 3.43,
+      "duration": 0.587,
+      "end": 4.017
+    },
+    {
+      "text": "Cada",
+      "start": 4.974,
+      "duration": 0.268,
+      "end": 5.242
+    },
+    {
+      "text": "pregunta",
+      "start": 5.319,
+      "duration": 0.383,
+      "end": 5.702
+    },
+    {
+      "text": "aparece",
+      "start": 5.702,
+      "duration": 0.446,
+      "end": 6.148
+    },
+    {
+      "text": "medio",
+      "start": 6.186,
+      "duration": 0.255,
+      "end": 6.441
+    },
+    {
+      "text": "segundo",
+      "start": 6.467,
+      "duration": 0.408,
+      "end": 6.875
+    },
+    {
+      "text": "después",
+      "start": 6.913,
+      "duration": 0.37,
+      "end": 7.283
+    },
+    {
+      "text": "de",
+      "start": 7.296,
+      "duration": 0.064,
+      "end": 7.36
+    },
+    {
+      "text": "que",
+      "start": 7.411,
+      "duration": 0.064,
+      "end": 7.475
+    },
+    {
+      "text": "termina",
+      "start": 7.538,
+      "duration": 0.383,
+      "end": 7.921
+    },
+    {
+      "text": "la",
+      "start": 7.946,
+      "duration": 0.089,
+      "end": 8.035
+    },
+    {
+      "text": "frase",
+      "start": 8.061,
+      "duration": 0.446,
+      "end": 8.507
+    },
+    {
+      "text": "Además",
+      "start": 9.503,
+      "duration": 0.663,
+      "end": 10.166
+    },
+    {
+      "text": "el",
+      "start": 10.319,
+      "duration": 0.102,
+      "end": 10.421
+    },
+    {
+      "text": "botón",
+      "start": 10.434,
+      "duration": 0.281,
+      "end": 10.715
+    },
+    {
+      "text": "de",
+      "start": 10.753,
+      "duration": 0.051,
+      "end": 10.804
+    },
+    {
+      "text": "pantalla",
+      "start": 10.88,
+      "duration": 0.408,
+      "end": 11.288
+    },
+    {
+      "text": "completa",
+      "start": 11.352,
+      "duration": 0.446,
+      "end": 11.798
+    },
+    {
+      "text": "se",
+      "start": 11.837,
+      "duration": 0.089,
+      "end": 11.926
+    },
+    {
+      "text": "ajusta",
+      "start": 11.939,
+      "duration": 0.421,
+      "end": 12.36
+    },
+    {
+      "text": "al",
+      "start": 12.36,
+      "duration": 0.102,
+      "end": 12.462
+    },
+    {
+      "text": "contenedor",
+      "start": 12.5,
+      "duration": 0.548,
+      "end": 13.048
+    },
+    {
+      "text": "para",
+      "start": 13.125,
+      "duration": 0.166,
+      "end": 13.291
+    },
+    {
+      "text": "que",
+      "start": 13.355,
+      "duration": 0.038,
+      "end": 13.393
+    },
+    {
+      "text": "el",
+      "start": 13.393,
+      "duration": 0.102,
+      "end": 13.495
+    },
+    {
+      "text": "cuestionario",
+      "start": 13.533,
+      "duration": 0.587,
+      "end": 14.12
+    },
+    {
+      "text": "nunca",
+      "start": 14.158,
+      "duration": 0.306,
+      "end": 14.464
+    },
+    {
+      "text": "quede",
+      "start": 14.541,
+      "duration": 0.128,
+      "end": 14.669
+    },
+    {
+      "text": "escondido",
+      "start": 14.668,
+      "duration": 0.536,
+      "end": 15.204
+    },
+    {
+      "text": "detrás",
+      "start": 15.281,
+      "duration": 0.306,
+      "end": 15.587
+    },
+    {
+      "text": "del",
+      "start": 15.612,
+      "duration": 0.115,
+      "end": 15.727
+    },
+    {
+      "text": "reproductor",
+      "start": 15.765,
+      "duration": 0.638,
+      "end": 16.403
+    }
+  ],
+  "scene_04": [
+    {
+      "text": "Para",
+      "start": 0.101,
+      "duration": 0.23,
+      "end": 0.331
+    },
+    {
+      "text": "que",
+      "start": 0.394,
+      "duration": 0.064,
+      "end": 0.458
+    },
+    {
+      "text": "no",
+      "start": 0.496,
+      "duration": 0.077,
+      "end": 0.573
+    },
+    {
+      "text": "tengas",
+      "start": 0.649,
+      "duration": 0.204,
+      "end": 0.853
+    },
+    {
+      "text": "problemas",
+      "start": 0.93,
+      "duration": 0.408,
+      "end": 1.338
+    },
+    {
+      "text": "de",
+      "start": 1.377,
+      "duration": 0.064,
+      "end": 1.441
+    },
+    {
+      "text": "cuota",
+      "start": 1.517,
+      "duration": 0.255,
+      "end": 1.772
+    },
+    {
+      "text": "en",
+      "start": 1.772,
+      "duration": 0.064,
+      "end": 1.836
+    },
+    {
+      "text": "el",
+      "start": 1.861,
+      "duration": 0.14,
+      "end": 2.001
+    },
+    {
+      "text": "campus",
+      "start": 2.04,
+      "duration": 0.523,
+      "end": 2.563
+    },
+    {
+      "text": "el",
+      "start": 2.856,
+      "duration": 0.115,
+      "end": 2.971
+    },
+    {
+      "text": "empaquetador",
+      "start": 2.984,
+      "duration": 0.625,
+      "end": 3.609
+    },
+    {
+      "text": "genera",
+      "start": 3.647,
+      "duration": 0.37,
+      "end": 4.017
+    },
+    {
+      "text": "dos",
+      "start": 4.068,
+      "duration": 0.191,
+      "end": 4.259
+    },
+    {
+      "text": "archivos",
+      "start": 4.259,
+      "duration": 0.459,
+      "end": 4.718
+    },
+    {
+      "text": "zip",
+      "start": 4.718,
+      "duration": 0.293,
+      "end": 5.011
+    },
+    {
+      "text": "el",
+      "start": 5.433,
+      "duration": 0.115,
+      "end": 5.548
+    },
+    {
+      "text": "paquete",
+      "start": 5.611,
+      "duration": 0.319,
+      "end": 5.93
+    },
+    {
+      "text": "completo",
+      "start": 5.981,
+      "duration": 0.459,
+      "end": 6.44
+    },
+    {
+      "text": "con",
+      "start": 6.491,
+      "duration": 0.128,
+      "end": 6.619
+    },
+    {
+      "text": "el",
+      "start": 6.644,
+      "duration": 0.102,
+      "end": 6.746
+    },
+    {
+      "text": "video",
+      "start": 6.772,
+      "duration": 0.281,
+      "end": 7.053
+    },
+    {
+      "text": "adentro",
+      "start": 7.053,
+      "duration": 0.485,
+      "end": 7.538
+    },
+    {
+      "text": "y",
+      "start": 7.869,
+      "duration": 0.064,
+      "end": 7.933
+    },
+    {
+      "text": "la",
+      "start": 7.971,
+      "duration": 0.089,
+      "end": 8.06
+    },
+    {
+      "text": "versión",
+      "start": 8.098,
+      "duration": 0.357,
+      "end": 8.455
+    },
+    {
+      "text": "liviana",
+      "start": 8.456,
+      "duration": 0.434,
+      "end": 8.89
+    },
+    {
+      "text": "de",
+      "start": 8.953,
+      "duration": 0.051,
+      "end": 9.004
+    },
+    {
+      "text": "menos",
+      "start": 9.042,
+      "duration": 0.281,
+      "end": 9.323
+    },
+    {
+      "text": "de",
+      "start": 9.336,
+      "duration": 0.064,
+      "end": 9.4
+    },
+    {
+      "text": "cuatrocientos",
+      "start": 9.463,
+      "duration": 0.638,
+      "end": 10.101
+    },
+    {
+      "text": "kilobytes",
+      "start": 10.152,
+      "duration": 0.548,
+      "end": 10.7
+    },
+    {
+      "text": "que",
+      "start": 10.726,
+      "duration": 0.077,
+      "end": 10.803
+    },
+    {
+      "text": "reproduce",
+      "start": 10.841,
+      "duration": 0.523,
+      "end": 11.364
+    },
+    {
+      "text": "el",
+      "start": 11.364,
+      "duration": 0.089,
+      "end": 11.453
+    },
+    {
+      "text": "video",
+      "start": 11.479,
+      "duration": 0.306,
+      "end": 11.785
+    },
+    {
+      "text": "desde",
+      "start": 11.823,
+      "duration": 0.217,
+      "end": 12.04
+    },
+    {
+      "text": "la",
+      "start": 12.078,
+      "duration": 0.089,
+      "end": 12.167
+    },
+    {
+      "text": "nube",
+      "start": 12.206,
+      "duration": 0.242,
+      "end": 12.448
+    },
+    {
+      "text": "sin",
+      "start": 12.486,
+      "duration": 0.191,
+      "end": 12.677
+    },
+    {
+      "text": "ocupar",
+      "start": 12.69,
+      "duration": 0.383,
+      "end": 13.073
+    },
+    {
+      "text": "espacio",
+      "start": 13.073,
+      "duration": 0.459,
+      "end": 13.532
+    },
+    {
+      "text": "en",
+      "start": 13.532,
+      "duration": 0.051,
+      "end": 13.583
+    },
+    {
+      "text": "el",
+      "start": 13.609,
+      "duration": 0.089,
+      "end": 13.698
+    },
+    {
+      "text": "servidor",
+      "start": 13.711,
+      "duration": 0.51,
+      "end": 14.221
+    }
+  ],
+  "scene_05": [
+    {
+      "text": "Subís",
+      "start": 0.101,
+      "duration": 0.497,
+      "end": 0.598
+    },
+    {
+      "text": "el",
+      "start": 0.598,
+      "duration": 0.077,
+      "end": 0.675
+    },
+    {
+      "text": "paquete",
+      "start": 0.739,
+      "duration": 0.357,
+      "end": 1.096
+    },
+    {
+      "text": "como",
+      "start": 1.147,
+      "duration": 0.191,
+      "end": 1.338
+    },
+    {
+      "text": "actividad",
+      "start": 1.338,
+      "duration": 0.561,
+      "end": 1.899
+    },
+    {
+      "text": "SCORM",
+      "start": 1.95,
+      "duration": 0.37,
+      "end": 2.32
+    },
+    {
+      "text": "a",
+      "start": 2.32,
+      "duration": 0.051,
+      "end": 2.371
+    },
+    {
+      "text": "tu",
+      "start": 2.448,
+      "duration": 0.064,
+      "end": 2.512
+    },
+    {
+      "text": "curso",
+      "start": 2.588,
+      "duration": 0.421,
+      "end": 3.009
+    },
+    {
+      "text": "y",
+      "start": 3.073,
+      "duration": 0.064,
+      "end": 3.137
+    },
+    {
+      "text": "definís",
+      "start": 3.175,
+      "duration": 0.446,
+      "end": 3.621
+    },
+    {
+      "text": "la",
+      "start": 3.672,
+      "duration": 0.115,
+      "end": 3.787
+    },
+    {
+      "text": "nota",
+      "start": 3.838,
+      "duration": 0.242,
+      "end": 4.08
+    },
+    {
+      "text": "de",
+      "start": 4.17,
+      "duration": 0.013,
+      "end": 4.183
+    },
+    {
+      "text": "aprobación",
+      "start": 4.195,
+      "duration": 0.714,
+      "end": 4.909
+    },
+    {
+      "text": "A",
+      "start": 5.829,
+      "duration": 0.115,
+      "end": 5.944
+    },
+    {
+      "text": "medida",
+      "start": 5.982,
+      "duration": 0.357,
+      "end": 6.339
+    },
+    {
+      "text": "que",
+      "start": 6.403,
+      "duration": 0.051,
+      "end": 6.454
+    },
+    {
+      "text": "los",
+      "start": 6.492,
+      "duration": 0.166,
+      "end": 6.658
+    },
+    {
+      "text": "estudiantes",
+      "start": 6.658,
+      "duration": 0.523,
+      "end": 7.181
+    },
+    {
+      "text": "miran",
+      "start": 7.219,
+      "duration": 0.268,
+      "end": 7.487
+    },
+    {
+      "text": "la",
+      "start": 7.487,
+      "duration": 0.115,
+      "end": 7.602
+    },
+    {
+      "text": "clase",
+      "start": 7.679,
+      "duration": 0.357,
+      "end": 8.036
+    },
+    {
+      "text": "y",
+      "start": 8.036,
+      "duration": 0.077,
+      "end": 8.113
+    },
+    {
+      "text": "responden",
+      "start": 8.15,
+      "duration": 0.459,
+      "end": 8.609
+    },
+    {
+      "text": "las",
+      "start": 8.61,
+      "duration": 0.153,
+      "end": 8.763
+    },
+    {
+      "text": "preguntas",
+      "start": 8.814,
+      "duration": 0.625,
+      "end": 9.439
+    },
+    {
+      "text": "Moodle",
+      "start": 9.745,
+      "duration": 0.332,
+      "end": 10.077
+    },
+    {
+      "text": "registra",
+      "start": 10.102,
+      "duration": 0.434,
+      "end": 10.536
+    },
+    {
+      "text": "los",
+      "start": 10.561,
+      "duration": 0.166,
+      "end": 10.727
+    },
+    {
+      "text": "intentos",
+      "start": 10.753,
+      "duration": 0.548,
+      "end": 11.301
+    },
+    {
+      "text": "y",
+      "start": 11.339,
+      "duration": 0.038,
+      "end": 11.377
+    },
+    {
+      "text": "asienta",
+      "start": 11.403,
+      "duration": 0.434,
+      "end": 11.837
+    },
+    {
+      "text": "la",
+      "start": 11.862,
+      "duration": 0.077,
+      "end": 11.939
+    },
+    {
+      "text": "calificación",
+      "start": 11.99,
+      "duration": 0.638,
+      "end": 12.628
+    },
+    {
+      "text": "directamente",
+      "start": 12.666,
+      "duration": 0.638,
+      "end": 13.304
+    },
+    {
+      "text": "en",
+      "start": 13.304,
+      "duration": 0.089,
+      "end": 13.393
+    },
+    {
+      "text": "el",
+      "start": 13.418,
+      "duration": 0.077,
+      "end": 13.495
+    },
+    {
+      "text": "libro",
+      "start": 13.495,
+      "duration": 0.306,
+      "end": 13.801
+    },
+    {
+      "text": "de",
+      "start": 13.852,
+      "duration": 0.064,
+      "end": 13.916
+    },
+    {
+      "text": "notas",
+      "start": 13.954,
+      "duration": 0.536,
+      "end": 14.49
+    }
+  ]
+}
