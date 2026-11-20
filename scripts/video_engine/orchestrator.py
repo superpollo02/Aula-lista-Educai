@@ -250,10 +250,33 @@ class EducAIPipeline:
         if not mp3_files:
             return
 
+        pause_sec = 0.55
+        tl_path = self.project_dir / "audio_timeline.json"
+        if tl_path.is_file():
+            try:
+                pause_sec = float(json.loads(tl_path.read_text(encoding="utf-8")).get("inter_scene_pause", 0.55))
+            except Exception:
+                pause_sec = 0.55
+
+        silence_file = self.project_dir / "_inter_pause.m4a"
+        if pause_sec > 0 and len(mp3_files) > 1:
+            cmd_silence = [
+                "ffmpeg", "-y",
+                "-f", "lavfi",
+                "-i", "anullsrc=r=44100:cl=stereo",
+                "-t", f"{pause_sec:.3f}",
+                "-c:a", "aac",
+                "-b:a", "192k",
+                str(silence_file),
+            ]
+            subprocess.run(cmd_silence, capture_output=True, check=True)
+
         concat_list = self.project_dir / "audio_concat.txt"
         with open(concat_list, "w", encoding="utf-8") as f:
-            for mp3 in mp3_files:
+            for idx, mp3 in enumerate(mp3_files):
                 f.write(f"file '{mp3.as_posix()}'\n")
+                if pause_sec > 0 and silence_file.is_file() and idx < len(mp3_files) - 1:
+                    f.write(f"file '{silence_file.as_posix()}'\n")
 
         cmd = [
             "ffmpeg", "-y",
@@ -267,11 +290,13 @@ class EducAIPipeline:
             str(output_path),
         ]
         subprocess.run(cmd, capture_output=True, text=True, check=True)
-        if concat_list.is_file():
-            try:
-                concat_list.unlink()
-            except OSError:
-                pass
+
+        for tmp in (concat_list, silence_file):
+            if tmp.is_file():
+                try:
+                    tmp.unlink()
+                except OSError:
+                    pass
 
     def _render_visuals(
         self,
