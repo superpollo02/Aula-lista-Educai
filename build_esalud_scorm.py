@@ -4,13 +4,12 @@ ESALUD Academic Program SCORM Package Builder
 Converts the academic program markdown file into a beautifully styled HTML SCORM 1.2 package in Spanish.
 """
 
-import os
 import re
 import zipfile
 from pathlib import Path
 
 # Paths
-ROOT_DIR = Path("c:/Users/mfischer/Documents/antigravitiy proyectos/CURSO SCORM/scorm-course-generator")
+ROOT_DIR = Path(__file__).parent.resolve()
 INPUT_FILE = ROOT_DIR / "programa-academico-esalud.md"
 OUTPUT_DIR = ROOT_DIR / "output/esalud-scorm"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
